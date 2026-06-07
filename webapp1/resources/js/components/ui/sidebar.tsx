@@ -127,6 +127,7 @@ function SidebarProvider({
   return (
     <SidebarContext.Provider value={contextValue}>
       <div
+        id="foo"
         data-slot="sidebar-wrapper"
         style={
           {
