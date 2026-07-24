@@ -1,8 +1,15 @@
 import { Link, router } from '@inertiajs/react';
 import {route} from 'ziggy-js';
 
+type Post = {
+    id: number,
+    title: string,
+    body: string,
+    views: number,
+    votes: number
+}
 export default function Index({ posts }: {posts:any}) {
-    const handleDelete = (id: {id :number}) => {
+    const handleDelete = (id: number ) => {
         if (confirm('Delete this post?')) {
             router.delete(route('posts.destroy', id));
         }
@@ -29,10 +36,10 @@ export default function Index({ posts }: {posts:any}) {
                     </tr>
                 </thead>
                 <tbody>
-                    {posts.data.map((post) => (
+                    {posts.data.map((post : Post ) => (
                         <tr key={post.id} className="border-b">
                             <td className="py-2">{post.title}</td>
-                            <td className="py-2">{post.published ? 'Yes' : 'No'}</td>
+                            {/* <td className="py-2">{post.published ? 'Yes' : 'No'}</td> */}
                             <td className="py-2 space-x-2">
                                 <Link
                                     href={route('posts.edit', post.id)}
