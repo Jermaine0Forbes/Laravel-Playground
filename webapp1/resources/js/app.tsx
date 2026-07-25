@@ -1,4 +1,5 @@
 import { createInertiaApp } from '@inertiajs/react';
+import { ReactComponent } from 'node_modules/@inertiajs/react/types/types';
 import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { initializeTheme } from '@/hooks/use-appearance';
@@ -14,9 +15,9 @@ createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
     resolve: (name:string) =>         
         resolvePageComponent(
-            `./pages/${name}.tsx`,
+            `./pages/${name}/*.tsx`,
             import.meta.glob('./pages/**/*.tsx')
-        ),
+        ) as Promise<ReactComponent>,
     layout: (name) => {
         switch (true) {
             case name === 'welcome':
