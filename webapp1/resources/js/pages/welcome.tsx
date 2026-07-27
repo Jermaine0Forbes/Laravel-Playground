@@ -1,7 +1,6 @@
 import { Head, Link, usePage } from '@inertiajs/react';
 import { dashboard, login, register } from '@/routes';
-import { index as posts} from '@/routes/posts';
-import {route} from 'ziggy-js';
+import posts from '@/routes/posts';
 
 export default function Welcome() {
     const { auth } = usePage().props;
@@ -21,7 +20,7 @@ export default function Welcome() {
                             </Link>
                         ) : (
                             <>
-                                <Link href={posts()}>
+                                <Link href={posts.list()}>
                                  Posts
                                 </Link>
                                 <Link

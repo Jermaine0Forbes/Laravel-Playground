@@ -14,7 +14,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render(
+            "posts/index",
+            [
+                "posts" =>
+                Inertia::scroll(fn() => Post::with("user:id,name")->latest()->paginate(10))
+            ]
+        );
     }
 
     /**
