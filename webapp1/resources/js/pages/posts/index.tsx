@@ -7,7 +7,12 @@ type Post = {
     body: string,
     views: number,
     votes: number,
-    user: string | object
+    user: string | Author
+}
+
+type Author = {
+    name: string,
+    id: number
 }
 export default function Index({ posts }: { posts: any }) {
     const handleDelete = (id: number) => {
@@ -35,7 +40,7 @@ export default function Index({ posts }: { posts: any }) {
                     <thead>
                         <tr className="text-left border-b">
                             <th className="py-2">Title</th>
-                            <th className="py-2">Published</th>
+                            <th className="py-2">Author</th>
                             <th className="py-2">Actions</th>
                         </tr>
                     </thead>
@@ -43,7 +48,14 @@ export default function Index({ posts }: { posts: any }) {
                         {posts.data.map((post: Post) => (
                             <tr key={post.id} className="border-b">
                                 <td className="py-2">{post.title}</td>
-                                {/* <td className="py-2">{post.published ? 'Yes' : 'No'}</td> */}
+                                <td className="py-2">
+                                    <Link
+                                        href={ "/user/" + typeof  post.user == "object" ? post.user.id : undefined}
+                                        // href={route('users.show', typeof  post.user == "object" ? post.user.id: undefined)}
+                                    >
+                                        { typeof  post.user == "object" ? post?.user?.name  : '' }
+                                    </Link>
+                                </td>
                                 <td className="py-2 space-x-2">
                                     <Link
                                         href={route('posts.edit', post.id)}
