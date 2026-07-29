@@ -16,7 +16,7 @@ type Author = {
 }
 
 function isAuthor(val: any): val is Author {
-    return  "id" in val && typeof val != "string";  
+    return "id" in val && typeof val != "string";
 }
 export default function Index({ posts }: { posts: any }) {
     const handleDelete = (id: number) => {
@@ -50,15 +50,16 @@ export default function Index({ posts }: { posts: any }) {
                     </thead>
                     <tbody>
                         {posts.data.map((post: Post) => (
-                           
+
                             <tr key={post.id} className="border-b">
                                 <td className="py-2">{post.title}</td>
                                 <td className="py-2">
                                     <Link
-                                        href={  isAuthor(post.user) ? "/user/" +post?.user?.id : undefined}
-                                        // href={route('users.show', typeof  post.user == "object" ? post.user.id: undefined)}
+                                        className="text-blue-600"
+                                        href={isAuthor(post.user) ? "/user/" + post?.user?.id : undefined}
+                                    // href={route('users.show', typeof  post.user == "object" ? post.user.id: undefined)}
                                     >
-                                        { typeof  post.user == "object" ? post?.user?.name  : '' }
+                                        {typeof post.user == "object" ? post?.user?.name : ''}
                                     </Link>
                                 </td>
                                 <td className="py-2 space-x-2">
