@@ -2,8 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 
 Route::inertia('/', 'welcome')->name('home');
+
+Route::resource('user', UserController::class)->names([
+ "index" => "user.list",
+ "create" => "user.create",
+ "store" => "user.store",
+ "show" => "user.show",
+ "edit" => "user.edit",
+ "update" => "user.update",
+ "destroy" => "user.destroy",
+
+]);
 
 Route::resource('posts', PostController::class)->names([
     "index" => "posts.list",
