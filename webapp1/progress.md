@@ -10,7 +10,7 @@
  
 # Webapp1 site
 - ~~create link to profile page on the posts page~~
-- create all react user pages
+- ~~create all react user pages~~
 - create a basic ui for user profile page 
  - create other react pages for post
  - implement create post logic

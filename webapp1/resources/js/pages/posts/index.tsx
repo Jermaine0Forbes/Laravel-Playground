@@ -56,8 +56,7 @@ export default function Index({ posts }: { posts: any }) {
                                 <td className="py-2">
                                     <Link
                                         className="text-blue-600"
-                                        href={isAuthor(post.user) ? "/user/" + post?.user?.id : undefined}
-                                    // href={route('users.show', typeof  post.user == "object" ? post.user.id: undefined)}
+                                    href={route('users.show', isAuthor(post.user) ?  post?.user?.id : undefined)}
                                     >
                                         {typeof post.user == "object" ? post?.user?.name : ''}
                                     </Link>
