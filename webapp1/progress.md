@@ -12,15 +12,16 @@
 - ~~create link to profile page on the posts page~~
 - ~~create all react user pages~~
 - create a basic ui for user profile page 
- - create other react pages for post
- - implement create post logic
- - refactor/organize code
- - implement update post logic
- - implement delete post logic
- - add login/registration logic
-  - refactor/organize code
- - implement roles and add middleware for roles
- - add ratelimits in login forms
- - create visit/history model
-  - refactor/organize code
- - add broadcasts or events to track user visits
+- change title based on page
+- create other react pages for post
+- implement create post logic
+- refactor/organize code
+- implement update post logic
+- implement delete post logic
+- add login/registration logic
+- refactor/organize code
+- implement roles and add middleware for roles
+- add ratelimits in login forms
+- create visit/history model
+- refactor/organize code
+- add broadcasts or events to track user visits

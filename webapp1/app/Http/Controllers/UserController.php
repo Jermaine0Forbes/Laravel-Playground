@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -37,7 +38,11 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-       return Inertia::render("user/show", [ "user" => $user]);
+       return Inertia::render("user/show", 
+       [ 
+        "user" => $user, 
+        "posts" => Post::select(['id', 'title'])->where("user_id", $user->id)->get()
+        ]);
     }
 
     /**
