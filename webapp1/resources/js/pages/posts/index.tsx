@@ -1,4 +1,4 @@
-import { Link, router, InfiniteScroll } from '@inertiajs/react';
+import { Link, router, InfiniteScroll, Head } from '@inertiajs/react';
 import { route } from 'ziggy-js';
 
 type Post = {
@@ -28,6 +28,8 @@ export default function Index({ posts }: { posts: any }) {
     console.log(posts)
 
     return (
+        <section>
+            <Head title="Posts" />
         <div className="max-w-4xl mx-auto py-8">
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-2xl font-bold">Posts</h1>
@@ -82,5 +84,7 @@ export default function Index({ posts }: { posts: any }) {
                 </table>
             </InfiniteScroll>
         </div>
+
+        </section>
     );
 }
