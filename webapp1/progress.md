@@ -13,7 +13,7 @@
 - ~~create all react user pages~~
 - ~~create a basic ui for user profile page~~ 
 - ~~change title based on page~~
-- create other react pages for post
+- ~~create other react pages for post~~
 - implement create post logic
 - refactor/organize code
 - implement update post logic
