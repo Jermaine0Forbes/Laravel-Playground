@@ -1,6 +1,7 @@
 import { Link, router, InfiniteScroll, Head } from '@inertiajs/react';
 import { route } from 'ziggy-js';
 
+
 type Post = {
     id: number,
     title: string,
