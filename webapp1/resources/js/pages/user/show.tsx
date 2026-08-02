@@ -1,4 +1,4 @@
-import { Link, router, InfiniteScroll } from '@inertiajs/react';
+import { Link, Head} from '@inertiajs/react';
 import { ReactNode, useState } from 'react';
 import { Tabs } from 'radix-ui';
 import { route } from 'ziggy-js';
@@ -26,6 +26,7 @@ export default function Show({ posts, user }: IProfile) {
     const [tab, setTab] = useState<string>("tab1")
     return (
         <section className="max-w-4xl mx-auto py-8 w-full">
+            <Head title={user.name+" profile"} />
             <div className="max-w-lg">
                 <h1 className="text-xl font-semibold">{user.name}</h1>
                 <Tabs.Root className="TabsRoot my-4" defaultValue="tab1" onValueChange={(e) => setTab(e)}>
