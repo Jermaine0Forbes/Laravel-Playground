@@ -27,7 +27,7 @@ export default function Show({ posts, user }: IProfile) {
     return (
         <section className="max-w-4xl mx-auto py-8 w-full">
             <Head title={user.name+" profile"} />
-            <div className="max-w-lg">
+            <div className="">
                 <h1 className="text-xl font-semibold">{user.name}</h1>
                 <Tabs.Root className="TabsRoot my-4" defaultValue="tab1" onValueChange={(e) => setTab(e)}>
                     <Tabs.List className="TabsList py-4" aria-label="Manage your account">
@@ -40,7 +40,7 @@ export default function Show({ posts, user }: IProfile) {
                     </Tabs.List>
                     <Tabs.Content className="TabsContent" value="tab1">
                         {
-                            posts != null && posts.map(p => <Link className="text-blue-600 block" href={route("posts.show", p.id)} key={p.id}>- {p.title}</Link>)
+                            posts != null && posts.map(p => <Link className="text-blue-600 block border-b" href={route("posts.show", p.id)} key={p.id}>- {p.title}</Link>)
                         }
                     </Tabs.Content>
                     <Tabs.Content className="TabsContent" value="tab2">
