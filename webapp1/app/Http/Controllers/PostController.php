@@ -5,10 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests;
 use Inertia\Inertia;
 
-class PostController extends Controller
+class PostController extends Controller implements HasMiddleware
 {
+
+    public static function middleware():array
+    {
+        return [
+            new Middleware(HandlePrecognitiveRequests::class, only:['post'])
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */
