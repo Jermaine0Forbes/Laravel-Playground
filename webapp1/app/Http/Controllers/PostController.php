@@ -10,15 +10,15 @@ use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests;
 use Inertia\Inertia;
 
-class PostController extends Controller implements HasMiddleware
+class PostController extends Controller 
 {
 
-    public static function middleware():array
-    {
-        return [
-            new Middleware(HandlePrecognitiveRequests::class, only:['post'])
-        ];
-    }
+    // public static function middleware():array
+    // {
+    //     return [
+    //         new Middleware(HandlePrecognitiveRequests::class, only:['store', 'create'])
+    //     ];
+    // }
 
     /**
      * Display a listing of the resource.
@@ -47,7 +47,11 @@ class PostController extends Controller implements HasMiddleware
      */
     public function store(StorePostRequest $request)
     {
-        //
+        $valid = $request->validated();
+
+        Post::create($valid);
+
+        // return redirect('/posts');
     }
 
     /**

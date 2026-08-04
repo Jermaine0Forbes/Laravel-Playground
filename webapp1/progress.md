@@ -14,13 +14,13 @@
 - ~~create a basic ui for user profile page~~ 
 - ~~change title based on page~~
 - ~~create other react pages for post~~
-- implement create post logic
-- refactor/organize code
-- implement update post logic
-- implement delete post logic
+- implement roles and add middleware for roles
 - add login/registration logic
 - refactor/organize code
-- implement roles and add middleware for roles
+- implement create post logic
+- implement update post logic
+- implement delete post logic
+- refactor/organize code
 - add ratelimits in login forms
 - create visit/history model
 - refactor/organize code
