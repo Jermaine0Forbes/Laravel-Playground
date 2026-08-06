@@ -14,7 +14,8 @@
 - ~~create a basic ui for user profile page~~ 
 - ~~change title based on page~~
 - ~~create other react pages for post~~
-- implement roles and add middleware for roles
+- implement roles
+- add middleware for roles
 - add login/registration logic
 - refactor/organize code
 - implement create post logic
