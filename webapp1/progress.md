@@ -15,7 +15,7 @@
 - ~~change title based on page~~
 - ~~create other react pages for post~~
 - ~~implement roles~~
-- add middleware for roles
+- ~~add middleware for roles~~
 - add login/registration logic
 - refactor/organize code
 - implement create post logic
