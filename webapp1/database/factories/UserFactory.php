@@ -37,11 +37,35 @@ class UserFactory extends Factory
     }
 
     /**
+     *  assign admin to newly created user
+     */
+    public function admin(): static
+    {
+        return $this->afterCreating(fn(User $user) => $user->assignRole("admin"));
+    }
+
+    /**
+     *  assign moderator to newly created user
+     */
+    public function moderator(): static
+    {
+        return $this->afterCreating(fn(User $user) => $user->assignRole("moderator"));
+    }
+
+    /**
+     *  assign user to newly created user
+     */
+    public function user(): static
+    {
+        return $this->afterCreating(fn(User $user) => $user->assignRole("user"));
+    }
+
+    /**
      * Indicate that the model's email address should be unverified.
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'email_verified_at' => null,
         ]);
     }
@@ -51,7 +75,7 @@ class UserFactory extends Factory
      */
     public function withTwoFactor(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'two_factor_secret' => encrypt('secret'),
             'two_factor_recovery_codes' => encrypt(json_encode(['recovery-code-1'])),
             'two_factor_confirmed_at' => now(),
