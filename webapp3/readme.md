@@ -5,7 +5,7 @@ A personal project where I'm going to try to upload a video/audio and extract, t
 - Laravel, Vue, Postgres
 
 ## Tasks
-- Create a postgresql service connection
+- ~~Create a postgresql service connection~~
 - Create a schema diagram to plan out the tables and their relationships
 - create the models and migration files
 - create the controllers
