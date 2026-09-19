@@ -5,7 +5,16 @@ A personal project where I'm going to try to upload a video/audio and extract, t
 - Laravel, Vue, Postgres
 
 ## Tasks
-
+- Create a postgresql service connection
+- Create a schema diagram to plan out the tables and their relationships
+- create the models and migration files
+- create the controllers
+- add fake data to users so that I can pass them through vue
+- add or verify login/registration works
+- create form to create a new user
+- create page to list users
+- create page to edit users
+- create option to delete or ban users
 
 
 ## What I've learned
