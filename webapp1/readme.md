@@ -1,7 +1,9 @@
 # Web App 1
 
-Created with laravel, react, laravel boost(Github copilot), phpunit, and some other stuff
+Created with laravel, react, mysql, phpunit, and some other stuff
 
+## Goal
+Create an app that allows users to signup, create posts, and categories. And allow admin to monitor user history, and perform actions on their account
 
 
 ## Tasks
