@@ -16,6 +16,8 @@ Create an app that allows users to signup, create posts, and categories. And all
 - ~~implement roles~~
 - ~~add middleware for roles~~
 - add login/registration logic
+    - figure out how to modify `passwordRules`
+- update the homepage
 - refactor/organize code
 - implement create post logic
 - implement update post logic
@@ -29,6 +31,8 @@ Create an app that allows users to signup, create posts, and categories. And all
 
 
 ## What I've learned
-
+- If you want to customize your passwordRules, you can call the `Password` facade, and chain
+multiple methods together. But you first have to call the `min` method first in order to start chaining additional methods like `numbers, mixedCase, letters, symbols, uncompromised`
+- In order to change the `passwordRules`, you need to go to `.\app\Concerns\PasswordValidationRules.php` and add additional items in the array of `passwordRules`
 
 ## Errors

@@ -7,6 +7,10 @@ A personal project where I'm going to try to upload a video/audio and extract, t
 ## Tasks
 - ~~Create a postgresql service connection~~
 - Create a schema diagram to plan out the tables and their relationships
+- create a docker container or image
+    - should have apache web server
+    - should have php and laravel installed
+    - should have postgres database
 - create the models and migration files
 - create the controllers
 - add fake data to users so that I can pass them through vue

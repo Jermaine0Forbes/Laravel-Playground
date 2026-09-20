@@ -14,6 +14,8 @@ type Props = {
 };
 
 export default function Register({ passwordRules }: Props) {
+
+    console.log(passwordRules)
     return (
         <>
             <Head title="Register" />
