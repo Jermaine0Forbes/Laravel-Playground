@@ -8,12 +8,16 @@ import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 import { login } from '@/routes';
 import { store } from '@/routes/register';
+import { useState } from 'react';
 
 type Props = {
     passwordRules: string;
 };
 
 export default function Register({ passwordRules }: Props) {
+
+    const [name, setName] = useState<string>("user1");
+    const [email, setEmail] = useState<string>("user1@example.com");
 
     console.log(passwordRules)
     return (
@@ -39,6 +43,9 @@ export default function Register({ passwordRules }: Props) {
                                     autoComplete="name"
                                     name="name"
                                     placeholder="Full name"
+                                    value={name}
+                                    onChange={(e) => (setName(e.target.value))}
+
                                 />
                                 <InputError
                                     message={errors.name}
@@ -55,6 +62,8 @@ export default function Register({ passwordRules }: Props) {
                                     tabIndex={2}
                                     autoComplete="email"
                                     name="email"
+                                    value={email}
+                                    onChange={(e) => (setEmail(e.target.value))}
                                     placeholder="email@example.com"
                                 />
                                 <InputError message={errors.email} />
@@ -69,6 +78,7 @@ export default function Register({ passwordRules }: Props) {
                                     autoComplete="new-password"
                                     name="password"
                                     placeholder="Password"
+                                    defaultValue="password123!"
                                     passwordrules={passwordRules}
                                 />
                                 <InputError message={errors.password} />
@@ -85,6 +95,7 @@ export default function Register({ passwordRules }: Props) {
                                     autoComplete="new-password"
                                     name="password_confirmation"
                                     placeholder="Confirm password"
+                                    defaultValue="password123!"
                                     passwordrules={passwordRules}
                                 />
                                 <InputError

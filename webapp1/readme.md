@@ -17,6 +17,7 @@ Create an app that allows users to signup, create posts, and categories. And all
 - ~~add middleware for roles~~
 - add login/registration logic
     - figure out how to modify `passwordRules`
+    - figure out how to add a role to a registered to user
 - update the homepage
 - refactor/organize code
 - implement create post logic
@@ -31,6 +32,9 @@ Create an app that allows users to signup, create posts, and categories. And all
 
 
 ## What I've learned
+- If you want modify `Fortify's` registration of users, you should go to `.\vendor\laravel\fortify\src\Http\Controllers\RegisteredUserController.php`. And look for the store method
+- If you want to modify anything authentication pages,(including passed down properties) in react that's connected **Fortify**, you should go to `app/Providers/FortifyServiceProvider.php`.
+- If you want to change the `passwordRules` property in the register page for react. You need to go to the `FortifyServiceProvider` and modify the `registerView` method to change the password rules
 - If you want to customize your passwordRules, you can call the `Password` facade, and chain
 multiple methods together. But you first have to call the `min` method first in order to start chaining additional methods like `numbers, mixedCase, letters, symbols, uncompromised`
 - In order to change the `passwordRules`, you need to go to `.\app\Concerns\PasswordValidationRules.php` and add additional items in the array of `passwordRules`
