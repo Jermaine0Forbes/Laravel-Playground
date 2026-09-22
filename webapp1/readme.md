@@ -16,8 +16,10 @@ Create an app that allows users to signup, create posts, and categories. And all
 - ~~implement roles~~
 - ~~add middleware for roles~~
 - add login/registration logic
-    - figure out how to modify `passwordRules`
-    - figure out how to add a role to a registered to user
+    - ~~figure out how to modify `passwordRules`~~
+    - ~~figure out how to add a role to a registered to user~~
+    - verify if login works
+    - verify if logout works
 - update the homepage
 - refactor/organize code
 - implement create post logic
