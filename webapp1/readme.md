@@ -34,6 +34,7 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 
 
 ## What I've learned
+- In order to add make a border to only one side in tailwind, you have to add the classes `border-b-2 border-b-black`
 - When needing to assign a role to a user, just use the `$user->assignRole("user")`, it will connect the user with the roles **that you created** and the permissions that are assigned to them.
 - If you want modify `Fortify's` registration of users, you should go to `.\vendor\laravel\fortify\src\Http\Controllers\RegisteredUserController.php`. And look for the store method
 - If you want to modify anything authentication pages,(including passed down properties) in react that's connected **Fortify**, you should go to `app/Providers/FortifyServiceProvider.php`.
