@@ -1,5 +1,7 @@
 import AppLayoutTemplate from '@/layouts/app/app-sidebar-layout';
 import type { BreadcrumbItem } from '@/types';
+import "@radix-ui/themes/styles.css";
+
 
 export default function HomeLayout({
     breadcrumbs = [],

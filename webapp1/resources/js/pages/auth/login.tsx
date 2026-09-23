@@ -10,6 +10,7 @@ import { Spinner } from '@/components/ui/spinner';
 import { register } from '@/routes';
 import { store } from '@/routes/login';
 import { request } from '@/routes/password';
+import { useState } from 'react';
 
 type Props = {
     status?: string;
@@ -17,6 +18,9 @@ type Props = {
 };
 
 export default function Login({ status, canResetPassword }: Props) {
+    console.log(status)
+    const [password, setPassword] = useState<string>("password123!");
+    const [email, setEmail] = useState<string>("user1@example.com");
     return (
         <>
             <Head title="Log in" />
@@ -40,6 +44,8 @@ export default function Login({ status, canResetPassword }: Props) {
                                     tabIndex={1}
                                     autoComplete="email"
                                     placeholder="email@example.com"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                                 <InputError message={errors.email} />
                             </div>
@@ -64,6 +70,8 @@ export default function Login({ status, canResetPassword }: Props) {
                                     tabIndex={2}
                                     autoComplete="current-password"
                                     placeholder="Password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                                 <InputError message={errors.password} />
                             </div>
