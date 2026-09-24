@@ -8,6 +8,8 @@ import HomeLayout from '@/layouts/home-layout';
 import AuthLayout from '@/layouts/auth-layout';
 import SettingsLayout from '@/layouts/settings/layout';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
+import '@radix-ui/themes/styles.css'; 
+import { Theme } from '@radix-ui/themes';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -33,10 +35,16 @@ createInertiaApp({
     strictMode: true,
     withApp(app) {
         return (
-            <TooltipProvider delayDuration={0}>
-                {app}
-                <Toaster />
-            </TooltipProvider>
+            <Theme
+             accentColor='ruby'
+             grayColor='slate'
+             radius="medium"
+            >
+                <TooltipProvider delayDuration={0}>
+                    {app}
+                    <Toaster />
+                </TooltipProvider>
+            </Theme>
         );
     },
     progress: {
