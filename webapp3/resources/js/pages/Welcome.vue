@@ -20,17 +20,23 @@ const increment = () => count.value++;
   >
     <NavBarDefault />
     <div
-      class="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0"
+      class="flex w-full justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0"
     >
       <main
         class="flex w-full max-w-[335px] flex-col overflow-hidden rounded-lg lg:max-w-4xl"
       >
-        <h1 class="text-xl mb-6">Testing out vue</h1>
-        <section>
-          <h2>Count</h2>
-          <button @click="increment"class="bg-teal-400 block p-2 border text-white">increment count</button>
+        <h1 class="text-2xl font-bold mb-6 text-center">Testing out vue features</h1>
+        <section class="mb-3">
+          <hgroup class="mb-2">
+            <h2 class="font-sans text-xl font-bold">Count</h2>
+            <p>Testing out the @click event to see how it updates state</p>
+          </hgroup>
+          <button @click="increment" class="bg-teal-400 block p-2 border text-white rounded-md hover:bg-teal-600 cursor-pointer">
+            increment count
+          </button>
           {{ count }}
         </section>
+
         <section></section>
         <section></section>
         <section></section>

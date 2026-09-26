@@ -1,7 +1,7 @@
 import { Head, Link, usePage } from '@inertiajs/react';
 import { dashboard, login, register } from '@/routes';
 import posts from '@/routes/posts';
-import { Text } from '@radix-ui/themes';
+import { Text, Container, Section } from '@radix-ui/themes';
 
 export default function Welcome() {
     const { auth } = usePage().props;
@@ -50,6 +50,11 @@ export default function Welcome() {
                     </div>
                 </header>
                 <h2>Post whatever you want</h2>
+                <Container>
+                    <Section>
+                        
+                    </Section>
+                </Container>
             </section>
         </>
     );
