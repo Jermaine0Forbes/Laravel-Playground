@@ -6,7 +6,8 @@ A personal project where I'm going to try to upload a video/audio and extract, t
 
 ## Tasks
 - ~~Create a postgresql service connection~~
-- Create a schema diagram to plan out the tables and their relationships
+- ~~Create a schema diagram to plan out the tables and their relationships~~
+- learning vue features 
 - update the homepage
 - create a docker container or image
     - should have apache web server

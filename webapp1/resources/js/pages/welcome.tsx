@@ -1,7 +1,7 @@
 import { Head, Link, usePage } from '@inertiajs/react';
 import { dashboard, login, register } from '@/routes';
 import posts from '@/routes/posts';
-import { Text, Container, Section } from '@radix-ui/themes';
+import { Text, Container, Box, Grid } from '@radix-ui/themes';
 
 export default function Welcome() {
     const { auth } = usePage().props;
@@ -50,10 +50,19 @@ export default function Welcome() {
                     </div>
                 </header>
                 <h2>Post whatever you want</h2>
-                <Container>
-                    <Section>
-                        
-                    </Section>
+                <Container className="w-full mt-5" >
+                    <Grid columns={{ initial: "1fr", md:"3fr 1fr"}} gap="5">
+                            <Box>
+                                <div className="h-50 mb-4 rounded-md bg-slate-300"> main content</div>
+                                <div className="h-50 mb-4 rounded-md bg-slate-300"> main content</div>
+                                <div className="h-50 mb-4 rounded-md bg-slate-300"> main content</div>
+                            </Box> 
+                            <Box display={{ initial: "none", md: "block" }}>
+                               <div className="h-250 mb-2"> side content</div>
+                               <div className="h-250 mb-2"> side content</div>
+                               <div className="h-250 mb-2"> side content</div>
+                            </Box> 
+                    </Grid>
                 </Container>
             </section>
         </>
