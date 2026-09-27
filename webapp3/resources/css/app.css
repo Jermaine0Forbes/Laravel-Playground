@@ -170,3 +170,7 @@
         @apply bg-background text-foreground;
     }
 }
+
+.btn-teal {
+    @apply  mr-2 inline-block bg-teal-400 block p-2 border text-white rounded-md hover:bg-teal-600 cursor-pointer
+}

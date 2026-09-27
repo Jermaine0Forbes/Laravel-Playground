@@ -8,6 +8,7 @@ import NavBarDefault from "@/components/NavBarDefault.vue";
 const count = ref(0);
 
 const increment = () => count.value++;
+const decrement = () => count.value--;
 </script>
 
 <template>
@@ -31,9 +32,15 @@ const increment = () => count.value++;
             <h2 class="font-sans text-xl font-bold">Count</h2>
             <p>Testing out the @click event to see how it updates state</p>
           </hgroup>
-          <button @click="increment" class="bg-teal-400 block p-2 border text-white rounded-md hover:bg-teal-600 cursor-pointer">
-            increment count
-          </button>
+          <div>
+            <button
+              @click="increment"
+              class="btn-teal"
+            >
+              increment count
+            </button>
+            <button @click="decrement" class="btn-teal">decrement count</button>
+          </div>
           {{ count }}
         </section>
 
