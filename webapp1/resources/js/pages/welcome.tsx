@@ -11,14 +11,14 @@ export default function Welcome() {
     return (
         <>
             <Head title="Welcome" />
-            <section className="flex min-h-screen flex-col items-center bg-[#FDFDFC]  text-[#1b1b18]  dark:bg-[#0a0a0a]">
+            <section className="flex min-h-screen flex-col items-center text-[#1b1b18] ">
                <NavHeaderHome />
                 <h2>Post whatever you want</h2>
                 <Container className="w-full mt-5" >
                     <Grid columns={{ initial: "1fr", md:"3fr 1fr"}} gap="4">
                             <Box>
-                                <div className="h-50 mb-4 rounded-md bg-slate-300"> 
-                                    <Button>
+                                <div className="bg-white mb-4 rounded-sm "> 
+                                    <Button className="p-3 text-xl">
                                         <NotebookPen /> <Text>Create a Post</Text>
                                     </Button>
                                     <Button>

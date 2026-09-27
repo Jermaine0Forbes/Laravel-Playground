@@ -39,6 +39,7 @@ createInertiaApp({
              accentColor='ruby'
              grayColor='slate'
              radius="medium"
+             panelBackground='solid'
             >
                 <TooltipProvider delayDuration={0}>
                     {app}
