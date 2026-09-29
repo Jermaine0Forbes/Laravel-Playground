@@ -6,9 +6,11 @@ import { ref } from "vue";
 import NavBarDefault from "@/components/NavBarDefault.vue";
 
 const count = ref(0);
+const food = ref("taco");
 
 const increment = () => count.value++;
 const decrement = () => count.value--;
+const updateFood = (e: any) => (food.value = e?.target?.value);
 </script>
 
 <template>
@@ -33,18 +35,33 @@ const decrement = () => count.value--;
             <p>Testing out the @click event to see how it updates state</p>
           </hgroup>
           <div>
-            <button
-              @click="increment"
-              class="btn-teal"
-            >
-              increment count
-            </button>
+            <button @click="increment" class="btn-teal">increment count</button>
             <button @click="decrement" class="btn-teal">decrement count</button>
           </div>
           {{ count }}
         </section>
 
-        <section></section>
+        <section class="mb-2">
+          <hgroup class="mb-2">
+            <h2 class="font-sans text-xl font-bold">Change options</h2>
+            <p>Testing out the @change event by updating the radio buttons</p>
+          </hgroup>
+          <p class="w-25 text-center capitalize">{{ food }}</p>
+          <div class="flex">
+            <div class="flex flex-col mr-2">
+              <input @change="updateFood" type="radio" id="taco" value="taco" v-model="food" />
+              <label for="taco">Taco</label>
+            </div>
+            <div class="flex flex-col mr-2">
+              <input @change="updateFood" type="radio" id="burger" value="burger" v-model="food"/>
+              <label for="burger">Burger</label>
+            </div>
+            <div class="flex flex-col mr-2">
+              <input  @change="updateFood" type="radio" id="hotdog" value="hotdog" v-model="food"/>
+              <label for="hotdog">Hotdog</label>
+            </div>
+          </div>
+        </section>
         <section></section>
         <section></section>
         <section></section>
