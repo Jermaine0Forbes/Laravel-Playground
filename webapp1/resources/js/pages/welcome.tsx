@@ -1,7 +1,7 @@
 import { Head, Link, usePage } from '@inertiajs/react';
 import { dashboard, login, register } from '@/routes';
 import posts from '@/routes/posts';
-import { Text, Container, Box, Grid, Button, TabNav } from '@radix-ui/themes';
+import { Text, Container, Box, Grid, Button, TabNav, Tabs, Avatar } from '@radix-ui/themes';
 import NavHeaderHome from '@/components/nav-header-home';
 import { NotebookPen, PencilLine } from 'lucide-react';
 
@@ -25,15 +25,42 @@ export default function Welcome() {
                                     <PencilLine /> <Text className="py-2">Create a Category</Text>
                                 </Button>
                             </div>
-                            <TabNav.Root className="bg-white mb-4 rounded-sm">
-                                <TabNav.Link href="#" active>
-                                    All
-                                </TabNav.Link>
-                                <TabNav.Link href="#">General</TabNav.Link>
-                                <TabNav.Link href="#">Tech</TabNav.Link>
-                            </TabNav.Root>
+                            <Tabs.Root value="all">
+                                <div className="bg-white mb-4 rounded-sm">
 
-                            <div className="h-50 mb-4 rounded-md bg-slate-300"> main content</div>
+                                    <Tabs.List >
+                                        <Tabs.Trigger value="all" >
+                                            All
+                                        </Tabs.Trigger>
+                                        <Tabs.Trigger value="general">General</Tabs.Trigger>
+                                        <Tabs.Trigger value="tech">Tech</Tabs.Trigger>
+                                        <Tabs.Trigger value="gaming">Gaming</Tabs.Trigger>
+                                        <Tabs.Trigger value="travel">Travel</Tabs.Trigger>
+                                    </Tabs.List>
+
+                                </div>
+
+                                <div id="tabs-content-container">
+
+                                    <Tabs.Content value="all">
+                                        <div className="min-h-50 mb-4 rounded-md bg-white p-2 flex">
+                                            <Text size="2">Make changes to your account.</Text>
+
+                                        </div>
+                                    </Tabs.Content>
+                                    <Tabs.Content value="tech">
+                                        <Text size="2">Make changes to your account.</Text>
+                                    </Tabs.Content>
+                                    <Tabs.Content value="gaming">
+                                        <Text size="2">Make changes to your account.</Text>
+                                    </Tabs.Content>
+                                    <Tabs.Content value="travel">
+                                        <Text size="2">Make changes to your account.</Text>
+                                    </Tabs.Content>
+
+                                </div>
+
+                            </Tabs.Root>
                         </Box>
                         <Box display={{ initial: "none", md: "block" }}>
                             <div className="h-70 mb-4 rounded-md bg-slate-300"> side content</div>
