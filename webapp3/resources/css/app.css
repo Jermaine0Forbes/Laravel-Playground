@@ -178,3 +178,7 @@
 .code {
     @apply text-teal-500 p-1 bg-teal-100 rounded-md italic
 }
+
+.section-block {
+    @apply mb-3 shadow-lg p-3 rounded-sm
+}

@@ -1,7 +1,7 @@
 import { Head, Link, usePage } from '@inertiajs/react';
 import { dashboard, login, register } from '@/routes';
 import posts from '@/routes/posts';
-import { Text, Container, Box, Grid, Button } from '@radix-ui/themes';
+import { Text, Container, Box, Grid, Button, TabNav } from '@radix-ui/themes';
 import NavHeaderHome from '@/components/nav-header-home';
 import { NotebookPen, PencilLine } from 'lucide-react';
 
@@ -12,27 +12,34 @@ export default function Welcome() {
         <>
             <Head title="Welcome" />
             <section className="flex min-h-screen flex-col items-center text-[#1b1b18] ">
-               <NavHeaderHome />
+                <NavHeaderHome />
                 <h2>Post whatever you want</h2>
                 <Container className="w-full mt-5" >
-                    <Grid columns={{ initial: "1fr", md:"3fr 1fr"}} gap="4">
-                            <Box>
-                                <div className="bg-white mb-4 rounded-sm "> 
-                                    <Button className="p-3 text-xl">
-                                        <NotebookPen /> <Text>Create a Post</Text>
-                                    </Button>
-                                    <Button>
-                                        <PencilLine /> <Text>Create a Category</Text>
-                                    </Button>
-                                </div>
-                                <div className="h-50 mb-4 rounded-md bg-slate-300"> main content</div>
-                                <div className="h-50 mb-4 rounded-md bg-slate-300"> main content</div>
-                            </Box> 
-                            <Box display={{ initial: "none", md: "block" }}>
-                               <div className="h-70 mb-4 rounded-md bg-slate-300"> side content</div>
-                               <div className="h-70 mb-4 rounded-md bg-slate-300"> side content</div>
-                               <div className="h-70 mb-4 rounded-md bg-slate-300"> side content</div>
-                            </Box> 
+                    <Grid columns={{ initial: "1fr", md: "3fr 1fr" }} gap="4">
+                        <Box>
+                            <div className="bg-white mb-4 rounded-sm p-2 grid grid-cols-3 gap-4">
+                                <Button size="3" className="p-3 text-xl mr-3">
+                                    <NotebookPen /> <Text className="py-2">Create a Post</Text>
+                                </Button>
+                                <Button size="3" className="p-3 text-xl mr-3">
+                                    <PencilLine /> <Text className="py-2">Create a Category</Text>
+                                </Button>
+                            </div>
+                            <TabNav.Root className="bg-white mb-4 rounded-sm">
+                                <TabNav.Link href="#" active>
+                                    All
+                                </TabNav.Link>
+                                <TabNav.Link href="#">General</TabNav.Link>
+                                <TabNav.Link href="#">Tech</TabNav.Link>
+                            </TabNav.Root>
+
+                            <div className="h-50 mb-4 rounded-md bg-slate-300"> main content</div>
+                        </Box>
+                        <Box display={{ initial: "none", md: "block" }}>
+                            <div className="h-70 mb-4 rounded-md bg-slate-300"> side content</div>
+                            <div className="h-70 mb-4 rounded-md bg-slate-300"> side content</div>
+                            <div className="h-70 mb-4 rounded-md bg-slate-300"> side content</div>
+                        </Box>
                     </Grid>
                 </Container>
             </section>

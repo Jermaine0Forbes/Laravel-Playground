@@ -5,21 +5,17 @@ import NavBarDefault from "@/components/NavBarDefault.vue";
 
 const count = ref(0);
 const food = ref("taco");
-const timer = ref(0);
-const timerAdd = ref(0);
-const timerId = ref(0);
+const ticketTot = ref(0);
+const ticketAmt = ref(0);
+const ticketPrc = ref(0);
 
 const increment = () => count.value++;
 const decrement = () => count.value--;
 const updateFood = (e: any) => (food.value = e?.target?.value);
-const initTimer = (n:number = 0) => {
-    timerAdd.value += n;
 
-    const intId = setInterval(() => timer.value += timerAdd.value , 1000);
-    timerId.value = intId;
-} ;
-
-const resetTimer = () => clearInterval(timerId.value)
+const updateTicketPrc = (e: any) => (ticketPrc.value = e?.target?.value);
+const addTicket = (n: number) => (ticketAmt.value += n);
+const ticketTotal = () => {};
 </script>
 
 <template>
@@ -34,19 +30,33 @@ const resetTimer = () => clearInterval(timerId.value)
     <div
       class="flex w-full justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0"
     >
-      <main
-        class="flex w-full max-w-[335px] flex-col overflow-hidden rounded-lg lg:max-w-4xl"
-      >
+      <main class="flex w-full max-w-[335px] flex-col rounded-lg lg:max-w-4xl">
         <h1 class="text-2xl font-bold mb-6 text-center">Testing out vue features</h1>
 
-        <section class="mb-3">
-            <hgroup class="mb-2">
+        <section class="section-block">
+          <hgroup class="mb-2">
             <h2 class="font-sans text-xl font-bold">Updating Count Timer</h2>
-            <p>Testing out the <span class="code">emit </span> function with the <span class="code">@click </span> event to see how it updates state</p>
+            <p>
+              Testing out the <span class="code">emit </span> function with the
+              <span class="code">@click </span> event to see how it updates state
+            </p>
           </hgroup>
-         <button>start timer</button>
+          <h3>Choose Tickets</h3>
+          <div>
+            <select>
+              <option value="1.99" @change="updateTicketPrc">NFL</option>
+              <option value="2.99"  @change="updateTicketPrc">Drag Queen Show</option>
+              <option value="3.99"  @change="updateTicketPrc">Slap Boxing Competition</option>
+            </select>
+          </div>
+          <div>
+            <button class="btn-teal">increase tickets</button>
+            <button class="btn-teal">calculate tickets</button>
+          </div>
+          <h3>Ticket Total</h3>
+          <p>${{ Number(ticketTot).toFixed(2) }}</p>
         </section>
-        <section class="mb-3">
+        <section class="section-block">
           <hgroup class="mb-2">
             <h2 class="font-sans text-xl font-bold">Count</h2>
             <p>Testing out the @click event to see how it updates state</p>
@@ -57,7 +67,7 @@ const resetTimer = () => clearInterval(timerId.value)
           </div>
           {{ count }}
         </section>
-        <section class="mb-3">
+        <section class="section-block">
           <hgroup class="mb-2">
             <h2 class="font-sans text-xl font-bold">Count</h2>
             <p>Testing out the @click event to see how it updates state</p>
@@ -69,7 +79,7 @@ const resetTimer = () => clearInterval(timerId.value)
           {{ count }}
         </section>
 
-        <section class="mb-2">
+        <section class="section-block">
           <hgroup class="mb-2">
             <h2 class="font-sans text-xl font-bold">Change options</h2>
             <p>
