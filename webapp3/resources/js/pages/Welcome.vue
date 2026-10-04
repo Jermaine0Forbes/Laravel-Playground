@@ -6,7 +6,7 @@ import NavBarDefault from "@/components/NavBarDefault.vue";
 const count = ref(0);
 const food = ref("taco");
 const ticketTot = ref(0);
-const ticketAmt = ref(0);
+const ticketAmt = ref(1);
 const ticketPrc = ref(0);
 
 const increment = () => count.value++;
@@ -15,7 +15,11 @@ const updateFood = (e: any) => (food.value = e?.target?.value);
 
 const updateTicketPrc = (e: any) => (ticketPrc.value = e?.target?.value);
 const addTicket = (n: number) => (ticketAmt.value += n);
-const ticketTotal = () => {};
+const ticketTotal = (n:number) => { 
+   ticketAmt.value += n;
+   console.log("foo")
+  ticketTot.value = ticketPrc.value * ticketAmt.value;
+  };
 </script>
 
 <template>
@@ -43,15 +47,18 @@ const ticketTotal = () => {};
           </hgroup>
           <h3>Choose Tickets</h3>
           <div>
+          {{ ticketAmt }} x
             <select>
+              <option value="0" @change="updateTicketPrc">Choose a show</option>
               <option value="1.99" @change="updateTicketPrc">NFL</option>
               <option value="2.99"  @change="updateTicketPrc">Drag Queen Show</option>
               <option value="3.99"  @change="updateTicketPrc">Slap Boxing Competition</option>
             </select>
           </div>
           <div>
-            <button class="btn-teal">increase tickets</button>
-            <button class="btn-teal">calculate tickets</button>
+            <button class="btn-teal" @click="$emit('adjustTicket',1)">increase tickets</button>
+            <button class="btn-teal" @click="$emit('adjustTicket',-1)">decrease tickets</button>
+            <button class="btn-teal" @adjust-ticket="ticketTotal" :disabled="!!ticketPrc">calculate tickets</button>
           </div>
           <h3>Ticket Total</h3>
           <p>${{ Number(ticketTot).toFixed(2) }}</p>
