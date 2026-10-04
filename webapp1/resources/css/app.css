@@ -149,3 +149,7 @@ body div.radix-themes {
         @apply bg-background text-foreground;
     }
 }
+
+.post-details {
+    width: 100%;
+}

@@ -1,7 +1,7 @@
 import { Head, Link, usePage } from '@inertiajs/react';
 import { dashboard, login, register } from '@/routes';
 import posts from '@/routes/posts';
-import { Text, Container, Box, Grid, Button, Tabs, Avatar, Flex } from '@radix-ui/themes';
+import { Text, Container, Box, Grid, Button, Tabs, Avatar, Flex, Badge } from '@radix-ui/themes';
 import NavHeaderHome from '@/components/nav-header-home';
 import { NotebookPen, PencilLine } from 'lucide-react';
 
@@ -43,18 +43,20 @@ export default function Welcome() {
                                 <div id="tabs-content-container">
 
                                     <Tabs.Content className="post-content-container" value="all">
-                                        <div className="min-h-50 mb-4 rounded-md bg-white p-2">
+                                        <div className="min-h-50 mb-4 rounded-md bg-white p-5">
                                             <Flex gap="3">
                                                 <Avatar className="max-w-[75]-px w-full" size="4" radius='full' fallback="A" />
                                                 <div className="post-details">
-                                                    <div className="post-details-block-1 flex align-items justify-between">
+                                                    <div className="post-details-block-1 flex align-items justify-between mb-2">
                                                         <Text size="5" className="capitalize font-bold">best travel destinations for 2022</Text>
-                                                        <span className="text-gray capitalize">posted: 12 hours ago</span>
+                                                        <span className="text-gray capitalize text-sm">posted by: 12 hours ago</span>
                                                     </div>
-
+                                                    <Flex className="post-details-2 items-center" gap="3">
+                                                    <Badge color="green" size="2">Travel</Badge>
+                                                    <Link className="post-details-user" href="#"><Text size="2">LisaM</Text></Link>
+                                                    </Flex>
                                                 </div>
                                             </Flex>
-
                                         </div>
                                     </Tabs.Content>
                                     <Tabs.Content className="post-content-container" value="tech">
