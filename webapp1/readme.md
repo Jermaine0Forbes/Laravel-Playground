@@ -34,6 +34,7 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 
 
 ## What I've learned
+- In radix UI, there is a Avatar component that can hold an image, but if an image doesn't exist you can use the property called `fallback` and give it a letter so that it can be shown in the UI as a default image. Also, the size property goes up by 9, and by default it will be 3
 - change certain themes in radix ui, you need to modify class `radix-themes` like this
 ```css
 body div.radix-themes{

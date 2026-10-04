@@ -1,7 +1,7 @@
 import { Head, Link, usePage } from '@inertiajs/react';
 import { dashboard, login, register } from '@/routes';
 import posts from '@/routes/posts';
-import { Text, Container, Box, Grid, Button, TabNav, Tabs, Avatar } from '@radix-ui/themes';
+import { Text, Container, Box, Grid, Button, Tabs, Avatar, Flex } from '@radix-ui/themes';
 import NavHeaderHome from '@/components/nav-header-home';
 import { NotebookPen, PencilLine } from 'lucide-react';
 
@@ -42,19 +42,28 @@ export default function Welcome() {
 
                                 <div id="tabs-content-container">
 
-                                    <Tabs.Content value="all">
-                                        <div className="min-h-50 mb-4 rounded-md bg-white p-2 flex">
-                                            <Text size="2">Make changes to your account.</Text>
+                                    <Tabs.Content className="post-content-container" value="all">
+                                        <div className="min-h-50 mb-4 rounded-md bg-white p-2">
+                                            <Flex gap="3">
+                                                <Avatar className="max-w-[75]-px w-full" size="4" radius='full' fallback="A" />
+                                                <div className="post-details">
+                                                    <div className="post-details-block-1 flex align-items justify-between">
+                                                        <Text size="5" className="capitalize font-bold">best travel destinations for 2022</Text>
+                                                        <span className="text-gray capitalize">posted: 12 hours ago</span>
+                                                    </div>
+
+                                                </div>
+                                            </Flex>
 
                                         </div>
                                     </Tabs.Content>
-                                    <Tabs.Content value="tech">
+                                    <Tabs.Content className="post-content-container" value="tech">
                                         <Text size="2">Make changes to your account.</Text>
                                     </Tabs.Content>
-                                    <Tabs.Content value="gaming">
+                                    <Tabs.Content className="post-content-container" value="gaming">
                                         <Text size="2">Make changes to your account.</Text>
                                     </Tabs.Content>
-                                    <Tabs.Content value="travel">
+                                    <Tabs.Content className="post-content-container" value="travel">
                                         <Text size="2">Make changes to your account.</Text>
                                     </Tabs.Content>
 
