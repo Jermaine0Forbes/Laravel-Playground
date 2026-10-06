@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { Head, Link } from "@inertiajs/vue3";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import NavBarDefault from "@/components/NavBarDefault.vue";
+import AdjustTicketBtns from "@/components/examples/AdjustTicketBtns.vue";
 
 const count = ref(0);
 const food = ref("taco");
@@ -14,10 +15,9 @@ const decrement = () => count.value--;
 const updateFood = (e: any) => (food.value = e?.target?.value);
 
 const updateTicketPrc = (e: any) => (ticketPrc.value = e?.target?.value);
-const addTicket = (n: number) => (ticketAmt.value += n);
-const ticketTotal = (n:number) => { 
-   ticketAmt.value += n;
-   console.log("foo")
+const handleTicketAmt = (n: number) => (ticketAmt.value += n);
+const noShow = computed(() => !ticketPrc.value)
+const ticketTotal = () => { 
   ticketTot.value = ticketPrc.value * ticketAmt.value;
   };
 </script>
@@ -56,9 +56,8 @@ const ticketTotal = (n:number) => {
             </select>
           </div>
           <div>
-            <button class="btn-teal" @click="$emit('adjustTicket',1)">increase tickets</button>
-            <button class="btn-teal" @click="$emit('adjustTicket',-1)">decrease tickets</button>
-            <button class="btn-teal" @adjust-ticket="ticketTotal" :disabled="!!ticketPrc">calculate tickets</button>
+            <AdjustTicketBtns @adjust-ticket="handleTicketAmt" />
+            <button class="btn-teal" @click="ticketTotal" :disabled="noShow">calculate tickets</button>
           </div>
           <h3>Ticket Total</h3>
           <p>${{ Number(ticketTot).toFixed(2) }}</p>

@@ -172,7 +172,7 @@
 }
 
 .btn-teal {
-    @apply  mr-2 inline-block bg-teal-400 block p-2 border text-white rounded-md hover:bg-teal-600 cursor-pointer
+    @apply  mr-2 inline-block bg-teal-400 block p-2 border text-white rounded-md hover:bg-teal-600 cursor-pointer disabled:cursor-not-allowed disabled:bg-gray-300
 }
 
 .code {
