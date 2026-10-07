@@ -34,6 +34,7 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 
 
 ## What I've learned
+- In Tailwind, in order to create an ellipis with content that might expand an element that makes the width too long. You should first put a max width on the parent element, and then maybe add the class `truncate` or `overflow-hidden` on the element that might have too text or information
 - In radix UI, the badge has a `color` property that only holds so many colors. So it would be impossible if you have an idea where you can want create custome colors for this badge.
 - In radix UI, there is a Avatar component that can hold an image, but if an image doesn't exist you can use the property called `fallback` and give it a letter so that it can be shown in the UI as a default image. Also, the size property goes up by 9, and by default it will be 3
 - change certain themes in radix ui, you need to modify class `radix-themes` like this
