@@ -3,7 +3,7 @@ import { dashboard, login, register } from '@/routes';
 import posts from '@/routes/posts';
 import { Text, Container, Box, Grid, Button, Tabs, Avatar, Flex, Badge } from '@radix-ui/themes';
 import NavHeaderHome from '@/components/nav-header-home';
-import { NotebookPen, PencilLine } from 'lucide-react';
+import { NotebookPen, PencilLine, MessageSquare, Heart, Share2, Pencil } from 'lucide-react';
 
 export default function Welcome() {
     const { auth } = usePage().props;
@@ -43,7 +43,7 @@ export default function Welcome() {
                                 <div id="tabs-content-container">
 
                                     <Tabs.Content className="post-content-container" value="all">
-                                        <div className="min-h-50 mb-4 rounded-md bg-white p-5">
+                                        <div className="min-h-40 mb-4 rounded-md bg-white p-5 shadow-sm">
                                             <Flex gap="3">
                                                 <Avatar className="max-w-[75]-px w-full" size="4" radius='full' fallback="A" />
                                                 <div className="post-details">
@@ -55,11 +55,23 @@ export default function Welcome() {
                                                         <Badge color="green" size="2">Travel</Badge>
                                                         <Link className="post-details-user" href="#"><Text size="2">LisaM</Text></Link>
                                                     </Flex>
-                                                    <div className='post-details-3'>
-                                                    <p className="overflow-hidden truncate">what are your top travel destinations for 2022? share your recommendations! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at pretium enim. Proin arcu urna, tempor quis fringilla nec, euismod eu nunc. Sed congue auctor finibus. Sed sed viverra ex. Suspendisse in odio convallis, ullamcorper ligula porttitor, semper turpis. Nulla varius odio a augue commodo tristique. Mauris dignissim sit amet diam sit amet dictum. Phasellus massa orci, pulvinar eu nunc a, lacinia interdum ligula. Donec viverra convallis nibh. Phasellus massa magna, venenatis vel gravida vel, maximus at felis. Etiam nec viverra massa.</p>
-
+                                                    <div className='post-details-3 py-2 border-b border-b-gray-300 mb-2'>
+                                                        <p className="overflow-hidden truncate italic font-light capitalize">what are your top travel destinations for 2022? share your recommendations! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at pretium enim. Proin arcu urna, tempor quis fringilla nec, euismod eu nunc. Sed congue auctor finibus. Sed sed viverra ex. Suspendisse in odio convallis, ullamcorper ligula porttitor, semper turpis. Nulla varius odio a augue commodo tristique. Mauris dignissim sit amet diam sit amet dictum. Phasellus massa orci, pulvinar eu nunc a, lacinia interdum ligula. Donec viverra convallis nibh. Phasellus massa magna, venenatis vel gravida vel, maximus at felis. Etiam nec viverra massa.</p>
                                                     </div>
-                                                    <div className="post-details-4"></div>
+                                                    <Flex className="post-details-4 gap-4 text-sm">
+                                                        <Link className="flex gap-3">
+                                                            <MessageSquare className="-scale-x-100 w-[20px]" />
+                                                            <span>Comment (0)</span>
+                                                        </Link>
+                                                        <Link className="flex gap-3">
+                                                            <Heart className="w-[20px]"/>
+                                                            <span>Like</span>
+                                                        </Link>
+                                                        <Link className="flex gap-3">
+                                                            <Share2 className="w-[20px]"/>
+                                                            <span>Share</span>
+                                                        </Link>
+                                                    </Flex>
                                                 </div>
                                             </Flex>
                                         </div>
