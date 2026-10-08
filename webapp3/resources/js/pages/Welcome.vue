@@ -15,10 +15,10 @@ const decrement = () => count.value--;
 const updateFood = (e: any) => (food.value = e?.target?.value);
 
 const handleTicketAmt = (n: number) => (ticketAmt.value += n);
-const noShow = computed(() => Number(ticketPrc.value) <= 0)
-const ticketTotal = () => { 
+const noShow = computed(() => Number(ticketPrc.value) <= 0);
+const ticketTotal = () => {
   ticketTot.value = ticketPrc.value * ticketAmt.value;
-  };
+};
 </script>
 
 <template>
@@ -34,18 +34,32 @@ const ticketTotal = () => {
       class="flex w-full justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0"
     >
       <main class="flex w-full max-w-[335px] flex-col rounded-lg lg:max-w-4xl">
-
         <h1 class="text-2xl font-bold mb-6 text-center">Testing out vue features</h1>
 
         <section class="section-block">
-                  <hgroup class="mb-2">
-            <h2 class="font-sans text-xl font-bold">Using event modifiers within forms</h2>
+          <hgroup class="mb-2">
+            <h2 class="font-sans text-xl font-bold">
+              Using event modifiers within forms
+            </h2>
             <p>
-              Testing out the event modifiers within different forms to see how the page responds
+              Testing out the event modifiers within different forms to see how the page
+              responds
             </p>
-              <p class="text-gray-400 italic">
-            </p>
+            <p class="text-gray-400 italic"></p>
           </hgroup>
+          <h3 class="text-lg font-bold mt-3 mb-1">submitting a form with no event modifiers</h3>
+          <p>will cause the page to reload because the form is not sending the data to an actual endpoint</p>
+          <form @submit="(e) => (console.log(e))">
+           <input type="text" name="username" placeholder="insert username"/>
+           <input class="btn-teal" type="submit" value="submit"/>
+          </form>
+
+          <h3 class="text-lg font-bold mt-3 mb-1">submitting a form with the <span class="code">@prevent</span> modifier</h3>
+          <form @submit.prevent="(e) => (console.log(e))">
+           <input type="text" name="username" placeholder="insert username"/>
+           <input class="btn-teal" type="submit" value="submit"/>
+          </form>
+
         </section>
         <section class="section-block">
           <hgroup class="mb-2">
@@ -54,30 +68,35 @@ const ticketTotal = () => {
               Testing out the <span class="code">emit </span> function with the
               <span class="code">@click </span> event to see how it updates state
             </p>
-              <p class="text-gray-400 italic">
-               So custom event handlers that use the emit keyword allow you to pass data that's in a child component all the way back to 
-               a parent component. So in a way, it similar to useContext within react because the data/prop can get
-               updated by a child so that the parent can receive the most updated state. Except, with 
-               useContext it was also supposed to prevent prop drilling, which I don't think the custom
-               events actually resolves. I would have to do more experiments to see if it's possible.
-               Okay, well doing a simple google search I found out that the custom events are only reliable
-               for child component that's only one level down. If you want to have a global data that can be 
-               shared like useContext, then you need to use <span class="code">provide</span > and <span class="code">inject</span>
+            <p class="text-gray-400 italic">
+              So custom event handlers that use the emit keyword allow you to pass data
+              that's in a child component all the way back to a parent component. So in a
+              way, it similar to useContext within react because the data/prop can get
+              updated by a child so that the parent can receive the most updated state.
+              Except, with useContext it was also supposed to prevent prop drilling, which
+              I don't think the custom events actually resolves. I would have to do more
+              experiments to see if it's possible. Okay, well doing a simple google search
+              I found out that the custom events are only reliable for child component
+              that's only one level down. If you want to have a global data that can be
+              shared like useContext, then you need to use
+              <span class="code">provide</span> and <span class="code">inject</span>
             </p>
           </hgroup>
           <h3>Choose Tickets</h3>
           <div>
-          {{ ticketAmt }} x
+            {{ ticketAmt }} x
             <select v-model="ticketPrc">
-              <option value="0" >Choose a show</option>
-              <option value="1.99" >NFL</option>
-              <option value="2.99"  >Drag Queen Show</option>
-              <option value="3.99" >Slap Boxing Competition</option>
+              <option value="0">Choose a show</option>
+              <option value="1.99">NFL</option>
+              <option value="2.99">Drag Queen Show</option>
+              <option value="3.99">Slap Boxing Competition</option>
             </select>
           </div>
           <div>
             <AdjustTicketBtns @adjust-ticket="handleTicketAmt" />
-            <button class="btn-teal" @click="ticketTotal" :disabled="noShow">calculate tickets</button>
+            <button class="btn-teal" @click="ticketTotal" :disabled="noShow">
+              calculate tickets
+            </button>
           </div>
           <h3>Ticket Total</h3>
           <p>${{ Number(ticketTot).toFixed(2) }}</p>
@@ -139,7 +158,6 @@ const ticketTotal = () => {
             </div>
           </div>
         </section>
-
 
         <section></section>
       </main>
