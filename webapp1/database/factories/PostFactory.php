@@ -22,7 +22,12 @@ class PostFactory extends Factory
            'body' => fake()->paragraph(4, true),
            'published' => fake()->boolean(70),
            'views' => fake()->numberBetween(0, 10000),
-           'votes' =>  fake()->numberBetween(0, 10000),
+        //    'votes' =>  fake()->numberBetween(0, 10000),
+           'likes' =>  0,
+           'locked' => fake()->boolean(15),
+           'soft_delete' => fake()->boolean(20),
+            'flagged' => (int)fake()->boolean(5),
+            'category_id' => 1,
            'user_id' =>  fake()->numberBetween(1, 50),
         ];
     }

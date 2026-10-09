@@ -1,7 +1,8 @@
 import { Link, usePage } from '@inertiajs/react';
 import { dashboard, login, register } from '@/routes';
 import posts from '@/routes/posts';
-import { Text } from '@radix-ui/themes';
+import { Text, Flex } from '@radix-ui/themes';
+import { NotebookPen } from 'lucide-react';
 
 export default function NavHeaderHome() {
     const { auth } = usePage().props;
@@ -12,7 +13,10 @@ export default function NavHeaderHome() {
                 id="nav-container"
                 className=" w-full max-w-[335px] text-sm not-has-[nav]:hidden lg:max-w-4xl flex justify-between items-center"
             >
-                <Text weight={"bold"} wrap="wrap" className="text-lg">Posty</Text>
+                <Flex gap="2">
+                    <NotebookPen />
+                    <Text weight={"bold"} wrap="wrap" className="text-lg"> Posty</Text>
+                </Flex>
                 <nav className="flex items-center justify-end gap-4">
                     {auth.user ? (
                         <Link

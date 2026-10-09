@@ -26,19 +26,25 @@ class RoleSeeder extends Seeder
         //User Permissions
         Permission::create(['name' => 'view admins']);
         Permission::create(['name' => 'edit admins']);
+        Permission::create(['name' => 'view moderators']);
+        Permission::create(['name' => 'edit moderators']);
+        Permission::create(['name' => 'create moderators']);
+        Permission::create(['name' => 'delete moderators']);        
         Permission::create(['name' => 'view users']);
         Permission::create(['name' => 'edit users']);
         Permission::create(['name' => 'create users']);
         Permission::create(['name' => 'delete users']);
+        Permission::create(['name' => 'ban users']);
 
         //Post Permissions
         Permission::create(['name' => 'edit posts']);
         Permission::create(['name' => 'view posts']);
         Permission::create(['name' => 'create posts']);
         Permission::create(['name' => 'delete posts']);
+        Permission::create(['name' => 'lock posts']);
 
         $admin->givePermissionTo(Permission::all());
-        $moderator->givePermissionTo(['create posts', 'view posts', 'view admins', 'manage notifications']);
+        $moderator->givePermissionTo(['create posts', 'view posts', 'view moderators', 'lock posts', 'ban users']);
         $user->givePermissionTo(['view posts', 'create posts']);
     }
 }

@@ -1,6 +1,4 @@
 import { Head, Link, usePage } from '@inertiajs/react';
-import { dashboard, login, register } from '@/routes';
-import posts from '@/routes/posts';
 import { Text, Container, Box, Grid, Button, Tabs, Avatar, Flex, Badge } from '@radix-ui/themes';
 import NavHeaderHome from '@/components/nav-header-home';
 import { NotebookPen, PencilLine, MessageSquare, Heart, Share2, Pencil } from 'lucide-react';

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -23,6 +24,10 @@ class DatabaseSeeder extends Seeder
         User::factory()->count(5)->admin()->create();
         User::factory()->count(10)->moderator()->create();
         User::factory()->count(35)->user()->create();
+        Category::factory()->create([
+            "name" => "all",
+            "user_id" => 1,
+        ]);
         Post::factory(300)->create();
 
 
