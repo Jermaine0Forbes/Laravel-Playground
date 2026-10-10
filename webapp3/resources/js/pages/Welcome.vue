@@ -47,21 +47,111 @@ const ticketTotal = () => {
             </p>
             <p class="text-gray-400 italic"></p>
           </hgroup>
-          <h3 class="text-lg font-bold my-3">submitting a form with no event modifiers</h3>
-          <p>will cause the page to reload because the form is not sending the data to an actual endpoint</p>
-          <form class="border border-gray-300 p-2 inline-block" @submit="(e) => (console.log(e))">
-           <input type="text" name="username" placeholder="insert username"/>
-           <input class="btn-teal" type="submit" value="submit"/>
+          <h3 class="text-lg font-bold my-3">
+            submitting a form with no event modifiers
+          </h3>
+          <p>
+            when clicking the submit button it will cause the page to reload because the
+            form is not sending the data to an actual endpoint
+          </p>
+          <form
+            class="border border-gray-300 p-2 inline-block"
+            @submit="(e) => console.log(e)"
+          >
+            <input type="text" name="username" placeholder="insert username" />
+            <input class="btn-teal" type="submit" value="submit" />
           </form>
 
-          <h3 class="text-lg font-bold my-3">submitting a form with the <span class="code">@prevent</span> modifier</h3>
-          <p>is calling prevent default with javascript, so the form does not reload or transfer you to another page</p>
-          <form class="border border-gray-300 p-2 inline-block" @submit.prevent="(e) => (console.log(e))">
-           <input type="text" name="username" placeholder="insert username"/>
-           <input class="btn-teal" type="submit" value="submit"/>
+          <h3 class="text-lg font-bold my-3">
+            submitting a form with the <span class="code">@prevent</span> modifier
+          </h3>
+          <p>
+            when clicking the submit button it's calling prevent default with javascript,
+            so the form does not reload or transfer you to another page
+          </p>
+          <form
+            class="border border-gray-300 p-2 inline-block"
+            @submit.prevent="(e) => console.log(e)"
+          >
+            <input type="text" name="username" placeholder="insert username" />
+            <input class="btn-teal" type="submit" value="submit" />
           </form>
 
+          <h3 class="text-lg font-bold my-3">
+            submitting a form with the <span class="code">@stop</span> modifier
+          </h3>
+          <p>
+            when clicking the submit button it's calling stop propagation with javascript.
+            Stop propagation method stops the event from bubbling up to the parent. Let's
+            say that there was a parent click event and a child click event inside of it.
+            If I clicked the child element and had stop propagation enabled the parent
+            element would not trigger
+          </p>
+          <form
+            class="border border-gray-300 p-2 inline-block"
+            @submit.stop="(e) => console.log(e)"
+          >
+            <input type="text" name="username" placeholder="insert username" />
+            <input class="btn-teal" type="submit" value="submit" />
+          </form>
+
+          <h3 class="text-lg font-bold my-3">
+            submitting a form with the <span class="code">@stop</span> modifier
+          </h3>
+          <p>
+            when clicking the submit button it's calling stop propagation with javascript.
+            Stop propagation method stops the event from bubbling up to the parent. Let's
+            say that there was a parent click event and a child click event inside of it.
+            If I clicked the child element and had stop propagation enabled the parent
+            element would not trigger
+          </p>
+          <form
+            class="border border-gray-300 p-2 inline-block"
+            @submit.stop="(e) => console.log(e)"
+          >
+            <input type="text" name="username" placeholder="insert username" />
+            <input class="btn-teal" type="submit" value="submit" />
+          </form>
+
+          <h3 class="text-lg font-bold my-3">
+            submitting a form with the <span class="code">@capture</span> modifier
+          </h3>
+          <p>
+            when clicking the submit button it's calling capture with javascript. So if
+            there's a parent element with an event attached, it will call that event first
+            and then the current/child elemet
+          </p>
+          <div
+            @click.capture="() => console.log('the parent element has been triggered')"
+          >
+            <form
+              class="border border-gray-300 p-2 inline-block"
+              @submit.prevent="(e) => console.log(e)"
+            >
+              <input type="text" name="username" placeholder="insert username" />
+              <input class="btn-teal" type="submit" value="submit" />
+            </form>
+          </div>
+
+                    <h3 class="text-lg font-bold my-3">
+            writing in a textarea element while using the <span class="code">@enter</span> modifier
+          </h3>
+          <p>
+            when clicking the submit button it's calling stop propagation with javascript.
+            Stop propagation method stops the event from bubbling up to the parent. Let's
+            say that there was a parent click event and a child click event inside of it.
+            If I clicked the child element and had stop propagation enabled the parent
+            element would not trigger
+          </p>
+          <form
+            class="border border-gray-300 p-2 inline-block"
+            @submit.stop="(e) => console.log(e)"
+          >
+            <input type="text" name="username" placeholder="insert username" />
+            <input class="btn-teal" type="submit" value="submit" />
+          </form>
         </section>
+
         <section class="section-block">
           <hgroup class="mb-2">
             <h2 class="font-sans text-xl font-bold">Updating Count Timer</h2>
