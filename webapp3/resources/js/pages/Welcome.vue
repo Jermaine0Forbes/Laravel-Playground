@@ -47,15 +47,16 @@ const ticketTotal = () => {
             </p>
             <p class="text-gray-400 italic"></p>
           </hgroup>
-          <h3 class="text-lg font-bold mt-3 mb-1">submitting a form with no event modifiers</h3>
+          <h3 class="text-lg font-bold my-3">submitting a form with no event modifiers</h3>
           <p>will cause the page to reload because the form is not sending the data to an actual endpoint</p>
-          <form @submit="(e) => (console.log(e))">
+          <form class="border border-gray-300 p-2 inline-block" @submit="(e) => (console.log(e))">
            <input type="text" name="username" placeholder="insert username"/>
            <input class="btn-teal" type="submit" value="submit"/>
           </form>
 
-          <h3 class="text-lg font-bold mt-3 mb-1">submitting a form with the <span class="code">@prevent</span> modifier</h3>
-          <form @submit.prevent="(e) => (console.log(e))">
+          <h3 class="text-lg font-bold my-3">submitting a form with the <span class="code">@prevent</span> modifier</h3>
+          <p>is calling prevent default with javascript, so the form does not reload or transfer you to another page</p>
+          <form class="border border-gray-300 p-2 inline-block" @submit.prevent="(e) => (console.log(e))">
            <input type="text" name="username" placeholder="insert username"/>
            <input class="btn-teal" type="submit" value="submit"/>
           </form>
