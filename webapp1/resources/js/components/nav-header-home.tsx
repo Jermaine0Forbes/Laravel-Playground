@@ -1,7 +1,7 @@
 import { Link, usePage } from '@inertiajs/react';
 import { dashboard, login, register } from '@/routes';
 import posts from '@/routes/posts';
-import { Text, TextField, Flex, Container, Button } from '@radix-ui/themes';
+import { Text, TextField, Flex, Container, Button, Separator } from '@radix-ui/themes';
 import { NotebookPen, Search} from 'lucide-react';
 
 export default function NavHeaderHome() {
@@ -17,21 +17,26 @@ export default function NavHeaderHome() {
                         <NotebookPen />
                         <Text weight={"bold"} wrap="wrap" className="text-lg"> Posty</Text>
                     </Flex>
-                    <TextField.Root placeholder="Search...">
+                    <TextField.Root  className="w-full max-w-[400px] " size="2" placeholder="Search...">
                         <TextField.Slot side="right">
-                            <Button>
+                            <Separator orientation="vertical"/>
                                 <Search/>
-                            </Button>
                         </TextField.Slot>
                     </TextField.Root>
                     <nav className="flex items-center justify-end gap-4">
                         {auth.user ? (
+                            <>
+                            <Link href="#">
+                                Notifications
+                            </Link>
                             <Link
                                 href={dashboard()}
-                                className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+                                className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b] capitalize"
                             >
-                                Dashboard
+                                {auth.user?.name}
                             </Link>
+                            
+                            </>
                         ) : (
                             <>
 

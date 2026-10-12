@@ -14,7 +14,7 @@ export default function Welcome() {
                 <h2>Post whatever you want</h2>
                 <Container className="w-full mt-5" >
                     <Grid columns={{ initial: "1fr", md: "3fr 1fr" }} gap="4">
-                        <Box>
+                        <Box id="main-container">
                             <div className="bg-white mb-4 rounded-sm p-2 grid grid-cols-3 gap-4">
                                 <Button size="3" className="p-3 text-xl mr-3">
                                     <Pencil /> <Text className="py-2">Create a Post</Text>
@@ -88,8 +88,13 @@ export default function Welcome() {
 
                             </Tabs.Root>
                         </Box>
-                        <Box display={{ initial: "none", md: "block" }}>
-                            <div className="h-70 mb-4 rounded-md bg-slate-300"> side content</div>
+                        <Box id="side-container" display={{ initial: "none", md: "block" }}>
+                            <div className="min-h-30 mb-4 p-3 rounded-sm bg-white">
+                                <div className="border-b border-b-gray-300">
+                                <Text size="4" className="font-medium capitalize pb-3 block">Popular topics</Text>
+
+                                </div>
+                            </div>
                             <div className="h-70 mb-4 rounded-md bg-slate-300"> side content</div>
                             <div className="h-70 mb-4 rounded-md bg-slate-300"> side content</div>
                         </Box>
