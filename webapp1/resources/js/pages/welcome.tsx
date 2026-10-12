@@ -17,7 +17,7 @@ export default function Welcome() {
                         <Box>
                             <div className="bg-white mb-4 rounded-sm p-2 grid grid-cols-3 gap-4">
                                 <Button size="3" className="p-3 text-xl mr-3">
-                                    <NotebookPen /> <Text className="py-2">Create a Post</Text>
+                                    <Pencil /> <Text className="py-2">Create a Post</Text>
                                 </Button>
                                 <Button size="3" className="p-3 text-xl mr-3">
                                     <PencilLine /> <Text className="py-2">Create a Category</Text>
@@ -41,7 +41,7 @@ export default function Welcome() {
                                 <div id="tabs-content-container">
 
                                     <Tabs.Content className="post-content-container" value="all">
-                                        <div className="min-h-40 mb-4 rounded-md bg-white p-5 shadow-sm">
+                                        <div className="min-h-40 mb-4 rounded-md bg-white p-4 shadow-sm">
                                             <Flex gap="3">
                                                 <Avatar className="max-w-[75]-px w-full" size="4" radius='full' fallback="A" />
                                                 <div className="post-details">
@@ -53,7 +53,7 @@ export default function Welcome() {
                                                         <Badge color="green" size="2">Travel</Badge>
                                                         <Link className="post-details-user" href="#"><Text size="2">LisaM</Text></Link>
                                                     </Flex>
-                                                    <div className='post-details-3 py-3 border-b border-b-gray-300 mb-2'>
+                                                    <div className='post-details-3 py-2 border-b border-b-gray-300 mb-3'>
                                                         <p className="overflow-hidden truncate italic font-light capitalize">what are your top travel destinations for 2022? share your recommendations! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at pretium enim. Proin arcu urna, tempor quis fringilla nec, euismod eu nunc. Sed congue auctor finibus. Sed sed viverra ex. Suspendisse in odio convallis, ullamcorper ligula porttitor, semper turpis. Nulla varius odio a augue commodo tristique. Mauris dignissim sit amet diam sit amet dictum. Phasellus massa orci, pulvinar eu nunc a, lacinia interdum ligula. Donec viverra convallis nibh. Phasellus massa magna, venenatis vel gravida vel, maximus at felis. Etiam nec viverra massa.</p>
                                                     </div>
                                                     <Flex className="post-details-4 gap-4 text-sm">

@@ -133,8 +133,9 @@ const ticketTotal = () => {
             </form>
           </div>
 
-                    <h3 class="text-lg font-bold my-3">
-            writing in a textarea element while using the <span class="code">@enter</span> modifier
+          <h3 class="text-lg font-bold my-3">
+            writing in a textarea element while using the
+            <span class="code">@enter</span> modifier
           </h3>
           <p>
             when clicking the submit button it's calling stop propagation with javascript.
