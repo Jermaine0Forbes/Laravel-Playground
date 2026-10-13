@@ -94,27 +94,27 @@ export default function Welcome() {
                                     <Text size="4" className="side-header-title">Popular topics</Text>
                                 </div>
 
-                                <ul className="capitalize">
-                                    <li>
-                                        <LinkUI href="#" className="truncate capitalize" size="2">
+                                <ul className="capitalize max-w-[215px]">
+                                    <li className="truncate capitalize">
+                                        <LinkUI href="#" size="2">
                                             Photography Tips
                                         </LinkUI>
                                     </li>
 
-                                    <li>
-                                        <LinkUI href="#" className="truncate capitalize" size="2">
-                                            pc build advice
+                                    <li className="truncate capitalize">
+                                        <LinkUI href="#" size="2">
+                                            pc build advice Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                         </LinkUI>
                                     </li>
 
-                                    <li>
-                                        <LinkUI className="truncate capitalize" href="#" size="2">
+                                    <li className="truncate capitalize">
+                                        <LinkUI href="#" size="2">
                                             best tv shows
                                         </LinkUI>
                                     </li>
 
-                                    <li>
-                                        <LinkUI href="#" className="truncate capitalize" size="2">
+                                    <li className="truncate capitalize">
+                                        <LinkUI href="#" size="2">
                                             camping gear recommendations
                                         </LinkUI>
                                     </li>
@@ -127,8 +127,8 @@ export default function Welcome() {
                                 </div>
                                 <div className="flex gap-2">
                                     <Avatar className="max-w-[75px] w-full" size="2" radius='full' fallback="A" />
-                                    <Flex justify="between" className=" w-full border-b border-b-gray-300 py-2">
-                                        <Text size="2" className="font-bold truncate">EmilyR</Text>
+                                    <Flex justify="between" className=" w-full border-b border-b-gray-300 last:border-none py-2">
+                                        <Text title="EmilyR" size="2" className="font-bold truncate overflow-hidden max-w-[60px]">EmilyRLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Text>
                                         <LinkUI href='#'>1,245 Posts</LinkUI>
                                     </Flex>
                                 </div>
@@ -142,6 +142,12 @@ export default function Welcome() {
                             <div className="side-container-block">
                                 <div className="side-header-container">
                                     <Text size="4" className="side-header-title">recent replies</Text>
+                                </div>
+                                <div className="flex gap-2 border-b border-b-gray-300 py-2 last:border-none">
+                                    <div className="max-w-[60px] truncate font-bold">
+                                        <LinkUI href="#" title="EmilyR" size="2">EmilyRLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</LinkUI>:
+                                    </div>
+                                    <p className="max-w-[200px] truncate">"<Text size="1">I agree, that's a great point Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Text>"</p>
                                 </div>
                             </div>
                         </Box>
