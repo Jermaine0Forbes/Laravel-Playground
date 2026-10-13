@@ -34,7 +34,7 @@ const ticketTotal = () => {
     <div
       class="flex w-full justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0"
     >
-      <main class="flex w-full max-w-[335px] flex-col rounded-lg lg:max-w-4xl">
+      <main class="flex w-full max-w-83.75 flex-col rounded-lg lg:max-w-4xl">
         <h1 class="text-2xl font-bold mb-6 text-center">Testing out vue features</h1>
 
         <section class="section-block">

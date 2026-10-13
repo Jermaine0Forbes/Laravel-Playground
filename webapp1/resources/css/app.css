@@ -154,3 +154,16 @@ body div.radix-themes {
     width: 100%;
     max-width: 740px;
 }
+
+.side-container-block {
+
+    @apply min-h-30 mb-4 p-3 rounded-sm bg-white;
+}
+
+.side-header-container {
+    @apply border-b border-b-gray-300 mb-3
+}
+
+.side-header-title {
+    @apply font-medium capitalize pb-3 block
+}

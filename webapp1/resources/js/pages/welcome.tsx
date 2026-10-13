@@ -1,5 +1,5 @@
 import { Head, Link, usePage } from '@inertiajs/react';
-import { Text, Container, Box, Grid, Button, Tabs, Avatar, Flex, Badge } from '@radix-ui/themes';
+import { Text, Container, Box, Grid, Button, Tabs, Avatar, Flex, Badge, Link as LinkUI } from '@radix-ui/themes';
 import NavHeaderHome from '@/components/nav-header-home';
 import { NotebookPen, PencilLine, MessageSquare, Heart, Share2, Pencil } from 'lucide-react';
 
@@ -43,7 +43,7 @@ export default function Welcome() {
                                     <Tabs.Content className="post-content-container" value="all">
                                         <div className="min-h-40 mb-4 rounded-md bg-white p-4 shadow-sm">
                                             <Flex gap="3">
-                                                <Avatar className="max-w-[75]-px w-full" size="4" radius='full' fallback="A" />
+                                                <Avatar className="max-w-[75px] w-full" size="4" radius='full' fallback="A" />
                                                 <div className="post-details">
                                                     <div className="post-details-block-1 flex align-items justify-between mb-2">
                                                         <Text size="5" className="capitalize font-bold">best travel destinations for 2022</Text>
@@ -62,11 +62,11 @@ export default function Welcome() {
                                                             <span>Comment (0)</span>
                                                         </Link>
                                                         <Link className="flex gap-2">
-                                                            <Heart className="w-[20px]"/>
+                                                            <Heart className="w-[20px]" />
                                                             <span>Like</span>
                                                         </Link>
                                                         <Link className="flex gap-2">
-                                                            <Share2 className="w-[20px]"/>
+                                                            <Share2 className="w-[20px]" />
                                                             <span>Share</span>
                                                         </Link>
                                                     </Flex>
@@ -89,14 +89,61 @@ export default function Welcome() {
                             </Tabs.Root>
                         </Box>
                         <Box id="side-container" display={{ initial: "none", md: "block" }}>
-                            <div className="min-h-30 mb-4 p-3 rounded-sm bg-white">
-                                <div className="border-b border-b-gray-300">
-                                <Text size="4" className="font-medium capitalize pb-3 block">Popular topics</Text>
+                            <div className="side-container-block">
+                                <div className="side-header-container">
+                                    <Text size="4" className="side-header-title">Popular topics</Text>
+                                </div>
+
+                                <ul className="capitalize">
+                                    <li>
+                                        <LinkUI href="#" className="truncate capitalize" size="2">
+                                            Photography Tips
+                                        </LinkUI>
+                                    </li>
+
+                                    <li>
+                                        <LinkUI href="#" className="truncate capitalize" size="2">
+                                            pc build advice
+                                        </LinkUI>
+                                    </li>
+
+                                    <li>
+                                        <LinkUI className="truncate capitalize" href="#" size="2">
+                                            best tv shows
+                                        </LinkUI>
+                                    </li>
+
+                                    <li>
+                                        <LinkUI href="#" className="truncate capitalize" size="2">
+                                            camping gear recommendations
+                                        </LinkUI>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div className="side-container-block">
+                                <div className="side-header-container">
+                                    <Text size="4" className="side-header-title">Top Contributors</Text>
+                                </div>
+                                <div className="flex gap-2">
+                                    <Avatar className="max-w-[75px] w-full" size="2" radius='full' fallback="A" />
+                                    <Flex justify="between" className=" w-full border-b border-b-gray-300 py-2">
+                                        <Text size="2" className="font-bold truncate">EmilyR</Text>
+                                        <LinkUI href='#'>1,245 Posts</LinkUI>
+                                    </Flex>
+                                </div>
+                            </div>
+                            <div className="side-container-block">
+                                <div className="side-header-container">
+                                    <Text size="4" className="side-header-title">follow us</Text>
 
                                 </div>
                             </div>
-                            <div className="h-70 mb-4 rounded-md bg-slate-300"> side content</div>
-                            <div className="h-70 mb-4 rounded-md bg-slate-300"> side content</div>
+                            <div className="side-container-block">
+                                <div className="side-header-container">
+                                    <Text size="4" className="side-header-title">recent replies</Text>
+                                </div>
+                            </div>
                         </Box>
                     </Grid>
                 </Container>
