@@ -40,6 +40,15 @@ const ticketTotal = () => {
         <section class="section-block">
           <div>
             <hgroup class="mb-2">
+              <h2 class="text-lg font-bold my-3">testing out watchers</h2>
+              <p></p>
+            </hgroup>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div>
+            <hgroup class="mb-2">
               <h2 class="font-sans text-xl font-bold">
                 Using event modifiers within forms
               </h2>
@@ -142,10 +151,15 @@ const ticketTotal = () => {
 
           <div>
             <h3 class="text-lg font-bold my-3">
-              writing in a textarea element while using the
+              writing in a text input element while using the
               <span class="code">@enter</span> modifier
             </h3>
-            <p></p>
+            <p>
+              When adding the event modifier <span class="code">@enter</span> to the
+              <span class="code">@keydown</span>
+              event it allows you to attach a callback for that specific action. In the
+              example, I just replaced the text with `the value has been changed`
+            </p>
 
             <form
               class="border border-gray-300 p-2 inline-block"
