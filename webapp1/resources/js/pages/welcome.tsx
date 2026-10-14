@@ -11,7 +11,6 @@ export default function Welcome() {
             <Head title="Welcome" />
             <section className="flex min-h-screen flex-col items-center text-[#1b1b18] ">
                 <NavHeaderHome />
-                <h2>Post whatever you want</h2>
                 <Container className="w-full mt-5" >
                     <Grid columns={{ initial: "1fr", md: "3fr 1fr" }} gap="4">
                         <Box id="main-container">

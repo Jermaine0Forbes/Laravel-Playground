@@ -1,20 +1,25 @@
 <script setup lang="ts">
 import { Head, Link } from "@inertiajs/vue3";
-import { computed, ref } from "vue";
+import { computed, ref, Ref } from "vue";
 import NavBarDefault from "@/components/NavBarDefault.vue";
 import AdjustTicketBtns from "@/components/examples/AdjustTicketBtns.vue";
-
+import { Movie } from "@/lib/types";
+import MovieBlock from "@/components/MovieBlock.vue";
 const count = ref(0);
 const food = ref("taco");
 const ticketTot = ref(0);
 const ticketAmt = ref(1);
 const ticketPrc = ref(0);
 const inptEnter = ref("enter some input");
+const movies: Ref<Movie[]> = ref([
+  { name: "Heretic", genre: "horror", rating: 7.4, year: 2024 },
+  { name: "Resident Evil", genre: "horror", rating: 7.7, year: 2026 },
+  { name: "Exit 8", genre: "horror", rating: 7.3, year: 2025 },
+]);
 
 const increment = () => count.value++;
 const decrement = () => count.value--;
 const updateFood = (e: any) => (food.value = e?.target?.value);
-
 const handleTicketAmt = (n: number) => (ticketAmt.value += n);
 const noShow = computed(() => Number(ticketPrc.value) <= 0);
 const ticketTotal = () => {
@@ -40,10 +45,16 @@ const ticketTotal = () => {
         <section class="section-block">
           <div>
             <hgroup class="mb-2">
-              <h2 class="text-lg font-bold my-3">testing out watchers</h2>
-              <p></p>
+              <h2 class="text-xl font-bold my-3">Testing out watchers</h2>
+              <p>
+                Testing out the different watcher methods, lists, and maybe conditionals
+              </p>
             </hgroup>
           </div>
+
+          <template v-if="movies">
+            <MovieBlock v-for="movie in movies" :key="movie.year" />
+          </template>
         </section>
 
         <section class="section-block">
