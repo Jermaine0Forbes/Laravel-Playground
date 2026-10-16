@@ -3,7 +3,7 @@ import { Head, Link } from "@inertiajs/vue3";
 import { computed, ref, Ref } from "vue";
 import NavBarDefault from "@/components/NavBarDefault.vue";
 import AdjustTicketBtns from "@/components/examples/AdjustTicketBtns.vue";
-import { Movie } from "@/lib/types";
+import { Movie, SelectMovie } from "@/lib/types";
 import MovieBlock from "@/components/MovieBlock.vue";
 const count = ref(0);
 const food = ref("taco");
@@ -16,6 +16,7 @@ const movies: Ref<Movie[]> = ref([
   { name: "Resident Evil", genre: "horror", rating: 7.7, year: 2026 },
   { name: "Exit 8", genre: "horror", rating: 7.3, year: 2025 },
 ]);
+const selectMovie: Ref<SelectMovie> = ref({});
 
 const increment = () => count.value++;
 const decrement = () => count.value--;
@@ -25,6 +26,7 @@ const noShow = computed(() => Number(ticketPrc.value) <= 0);
 const ticketTotal = () => {
   ticketTot.value = ticketPrc.value * ticketAmt.value;
 };
+const handleMovieSelection = (movie: SelectMovie) => (selectMovie.value = movie);
 </script>
 
 <template>
@@ -53,8 +55,19 @@ const ticketTotal = () => {
           </div>
 
           <template v-if="movies">
-            <MovieBlock v-for="movie in movies" :key="movie.year" />
+            <MovieBlock
+              v-for="movie in movies"
+              :name="movie.name"
+              :genre="movie.genre"
+              :rating="movie.rating"
+              :year="movie.year"
+              :key="movie.year"
+              @click="handleMovieSelection(movie)"
+            />
           </template>
+          <div v-if="selectMovie?.name">
+            <form @submit.prevent=""></form>
+          </div>
         </section>
 
         <section class="section-block">
