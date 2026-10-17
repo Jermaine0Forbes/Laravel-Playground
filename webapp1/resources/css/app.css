@@ -150,6 +150,10 @@ body div.radix-themes {
     }
 }
 
+.post-content {
+    @apply min-h-40 mb-4 rounded-md bg-white p-4 shadow-sm;
+}
+
 .post-details {
     width: 100%;
     max-width: 740px;
