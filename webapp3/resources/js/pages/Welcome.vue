@@ -3,7 +3,7 @@ import { Head, Link } from "@inertiajs/vue3";
 import { computed, ref, Ref } from "vue";
 import NavBarDefault from "@/components/NavBarDefault.vue";
 import AdjustTicketBtns from "@/components/examples/AdjustTicketBtns.vue";
-import { Movie, SelectMovie } from "@/lib/types";
+import { Movie } from "@/lib/types";
 import MovieBlock from "@/components/MovieBlock.vue";
 const count = ref(0);
 const food = ref("taco");
@@ -16,7 +16,7 @@ const movies: Ref<Movie[]> = ref([
   { name: "Resident Evil", genre: "horror", rating: 7.7, year: 2026 },
   { name: "Exit 8", genre: "horror", rating: 7.3, year: 2025 },
 ]);
-const selectMovie: Ref<SelectMovie> = ref({});
+const selectMovie: Ref<Partial<Movie>> = ref({});
 
 const increment = () => count.value++;
 const decrement = () => count.value--;
@@ -26,7 +26,7 @@ const noShow = computed(() => Number(ticketPrc.value) <= 0);
 const ticketTotal = () => {
   ticketTot.value = ticketPrc.value * ticketAmt.value;
 };
-const handleMovieSelection = (movie: SelectMovie) => (selectMovie.value = movie);
+const handleMovieSelection = (movie: Movie) => (selectMovie.value = movie);
 </script>
 
 <template>
@@ -66,7 +66,13 @@ const handleMovieSelection = (movie: SelectMovie) => (selectMovie.value = movie)
             />
           </template>
           <div v-if="selectMovie?.name">
-            <form @submit.prevent=""></form>
+            <form @submit.prevent="">
+              <input type="text" name="name" v-model="selectMovie.name" />
+              <input type="text" name="genre" v-model="selectMovie.genre" />
+              <input type="text" name="rating" v-model="selectMovie.rating" />
+              <input type="text" name="year" v-model="selectMovie.year" />
+              <input type="submit" class="btn-teal" value="submit" />
+            </form>
           </div>
         </section>
 

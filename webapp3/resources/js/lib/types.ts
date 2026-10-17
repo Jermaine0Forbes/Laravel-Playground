@@ -6,10 +6,3 @@ export type Movie = {
   updated?: boolean;
 };
 
-export type SelectMovie = {
-    name?:string,
-  genre?: string;
-  rating?: number;
-  year?: number;
-  updated?: boolean;
-}
