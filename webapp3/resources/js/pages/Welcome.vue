@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from "@inertiajs/vue3";
-import { computed, ref, Ref } from "vue";
+import { computed, ref, Ref, Reactive, reactive } from "vue";
 import NavBarDefault from "@/components/NavBarDefault.vue";
 import AdjustTicketBtns from "@/components/examples/AdjustTicketBtns.vue";
 import { Movie } from "@/lib/types";
@@ -11,7 +11,7 @@ const ticketTot = ref(0);
 const ticketAmt = ref(1);
 const ticketPrc = ref(0);
 const inptEnter = ref("enter some input");
-const movies: Ref<Movie[]> = ref([
+const movies: Reactive<Movie[]> = reactive([
   { name: "Heretic", genre: "horror", rating: 7.4, year: 2024 },
   { name: "Resident Evil", genre: "horror", rating: 7.7, year: 2026 },
   { name: "Exit 8", genre: "horror", rating: 7.3, year: 2025 },
@@ -27,6 +27,7 @@ const ticketTotal = () => {
   ticketTot.value = ticketPrc.value * ticketAmt.value;
 };
 const handleMovieSelection = (movie: Movie) => (selectMovie.value = movie);
+const handleMovieUpdate = (e: unknown) => console.log(e);
 </script>
 
 <template>
@@ -66,7 +67,7 @@ const handleMovieSelection = (movie: Movie) => (selectMovie.value = movie);
             />
           </template>
           <div v-if="selectMovie?.name">
-            <form @submit.prevent="">
+            <form @submit.prevent="handleMovieUpdate">
               <input type="text" name="name" v-model="selectMovie.name" />
               <input type="text" name="genre" v-model="selectMovie.genre" />
               <input type="text" name="rating" v-model="selectMovie.rating" />
