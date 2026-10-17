@@ -14,13 +14,13 @@ export default function Create(children: ReactNode) {
             <Form action={posts.store.post()} method="post" >
                 <fieldset className="my-4 ">
                     <label htmlFor="title">Title</label>
-                    <input className="border-1 border-color-black block rounded py-2 w-1/2" type="text" name='title'
+                    <input className="border border-color-black block rounded py-2 w-1/2" type="text" name='title'
                     />
                 </fieldset>
                 <fieldset className="my-4 ">
 
                     <label htmlFor="body">Message</label>
-                    <textarea className="border-1 border-color-black block rounded py-4 min-h-[150px] w-1/2" name="body">
+                    <textarea className="border border-color-black block rounded py-4 min-h-[150px] w-1/2" name="body">
 
                     </textarea>
                 </fieldset>

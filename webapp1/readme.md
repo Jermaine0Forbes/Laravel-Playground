@@ -20,7 +20,7 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
     - ~~figure out how to add a role to a registered to user~~
     - ~~verify if login works~~
     - ~~verify if logout works~~
-- update the homepage
+- ~~update the homepage~~
 - refactor/organize code
 - implement create post logic
 - implement update post logic
