@@ -1,7 +1,7 @@
 import { Link, usePage } from '@inertiajs/react';
 import { dashboard, login, register } from '@/routes';
 import posts from '@/routes/posts';
-import { Text, TextField, Flex, Container, Button, Separator } from '@radix-ui/themes';
+import { Text, TextField, Flex, Container, Separator } from '@radix-ui/themes';
 import { NotebookPen, Search} from 'lucide-react';
 
 export default function NavHeaderHome() {
@@ -17,7 +17,7 @@ export default function NavHeaderHome() {
                         <NotebookPen />
                         <Text weight={"bold"} wrap="wrap" className="text-lg"> Posty</Text>
                     </Flex>
-                    <TextField.Root  className="w-full max-w-[400px] " size="2" placeholder="Search...">
+                    <TextField.Root  className="w-full max-w-100 " size="2" placeholder="Search...">
                         <TextField.Slot side="right">
                             <Separator orientation="vertical"/>
                                 <Search/>
