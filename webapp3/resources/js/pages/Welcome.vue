@@ -27,7 +27,14 @@ const ticketTotal = () => {
   ticketTot.value = ticketPrc.value * ticketAmt.value;
 };
 const handleMovieSelection = (movie: Movie) => (selectMovie.value = movie);
-const handleMovieUpdate = (e: unknown) => console.log(e);
+const handleMovieUpdate = (e: SubmitEvent) => {
+  const m = Object.fromEntries(new FormData(e.currentTarget as HTMLFormElement));
+  console.log(m);
+  movies.values = movies.map((mv) => {
+    if (mv.name == m.name) return { ...m, updated: true };
+    else return mv;
+  });
+};
 </script>
 
 <template>
@@ -68,10 +75,10 @@ const handleMovieUpdate = (e: unknown) => console.log(e);
           </template>
           <div v-if="selectMovie?.name">
             <form @submit.prevent="handleMovieUpdate">
-              <input type="text" name="name" v-model="selectMovie.name" />
-              <input type="text" name="genre" v-model="selectMovie.genre" />
-              <input type="text" name="rating" v-model="selectMovie.rating" />
-              <input type="text" name="year" v-model="selectMovie.year" />
+              <input type="text" name="name" :value="selectMovie.name" />
+              <input type="text" name="genre" :value="selectMovie.genre" />
+              <input type="text" name="rating" :value="selectMovie.rating" />
+              <input type="text" name="year" :value="selectMovie.year" />
               <input type="submit" class="btn-teal" value="submit" />
             </form>
           </div>
