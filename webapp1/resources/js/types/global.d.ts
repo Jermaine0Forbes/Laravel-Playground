@@ -17,3 +17,37 @@ declare module '@inertiajs/core' {
         };
     }
 }
+
+
+export type SideBlockProps  = {
+    title: string, 
+    children: React.ReactNode,
+}
+
+export type Post = {
+    id: number,
+    title: string,
+    body: string,
+    views: number,
+    votes: number,
+    user: string | Author
+}
+
+export type Author = {
+    name: string,
+    id: number
+}
+
+export interface IProfile {
+    posts: Pick<Post, "id" | "title">[] | null,
+    user: User,
+    history?: object
+}
+
+
+export type User = {
+    id: number,
+    name: string,
+    email: string,
+
+}

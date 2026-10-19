@@ -34,6 +34,24 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 
 
 ## What I've learned
+- In order to use the `Pick` utility in typescript, the basic example is like this 
+```ts
+export type Post = {
+    id: number,
+    title: string,
+    body: string,
+    views: number,
+    votes: number,
+    user: string | Author
+}
+
+// in order to add multiple values you have to add the pipe symbol to separate the values
+export interface IProfile {
+    posts: Pick<Post, "id" | "title">[] | null,
+    user: User,
+    history?: object
+}
+```
 - To create a model and a migration file, you just run this command `php artisan make:model ModelName -m`
 - In Tailwind, in order to create an ellipis with content that might expand an element that makes the width too long. You should first put a max width on the parent element, and then maybe add the class `truncate` or `overflow-hidden` on the element that might have too text or information
 - In radix UI, the badge has a `color` property that only holds so many colors. So it would be impossible if you have an idea where you can want create custome colors for this badge.

@@ -2,24 +2,7 @@ import { Link, Head} from '@inertiajs/react';
 import { ReactNode, useState } from 'react';
 import { Tabs } from 'radix-ui';
 import { route } from 'ziggy-js';
-
-interface IProfile {
-    posts: Post[] | null,
-    user: User,
-    history?: object
-}
-
-type Post = {
-    id: number,
-    title: string
-};
-
-type User = {
-    id: number,
-    name: string,
-    email: string,
-
-}
+import { IProfile } from '@/types/global';
 
 export default function Show({ posts, user }: IProfile) {
     console.log(posts)

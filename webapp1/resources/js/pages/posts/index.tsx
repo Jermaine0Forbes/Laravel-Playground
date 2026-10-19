@@ -1,24 +1,13 @@
 import { Link, router, InfiniteScroll, Head } from '@inertiajs/react';
 import { route } from 'ziggy-js';
+import {Author, Post} from "@/types/global";
 
 
-type Post = {
-    id: number,
-    title: string,
-    body: string,
-    views: number,
-    votes: number,
-    user: string | Author
-}
-
-type Author = {
-    name: string,
-    id: number
-}
 
 function isAuthor(val: any): val is Author {
     return "id" in val && typeof val != "string";
 }
+
 export default function Index({ posts }: { posts: any }) {
     const handleDelete = (id: number) => {
         if (confirm('Delete this post?')) {

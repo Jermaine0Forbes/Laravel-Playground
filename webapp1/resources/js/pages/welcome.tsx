@@ -1,8 +1,9 @@
-import { Head} from '@inertiajs/react';
-import { Text, Container, Box, Grid, Button, Tabs, Avatar, Flex, Link as LinkUI } from '@radix-ui/themes';
+import { Head } from '@inertiajs/react';
+import { Text, Container, Box, Grid, Button, Avatar, Flex, Link as LinkUI } from '@radix-ui/themes';
 import NavHeaderHome from '@/components/nav-header-home';
 import SectionTabsHome from '@/components/section-tabs-home';
-import { PencilLine, MessageSquare, Heart, Share2, Pencil } from 'lucide-react';
+import SideContainerBlock from '@/components/side-container-block';
+import { PencilLine, Pencil } from 'lucide-react';
 
 
 export default function Welcome() {
@@ -23,14 +24,10 @@ export default function Welcome() {
                                     <PencilLine /> <Text className="py-2">Create a Category</Text>
                                 </Button>
                             </div>
-                            <SectionTabsHome/>
+                            <SectionTabsHome />
                         </Box>
                         <Box id="side-container" display={{ initial: "none", md: "block" }}>
-                            <div className="side-container-block">
-                                <div className="side-header-container">
-                                    <Text size="4" className="side-header-title">Popular topics</Text>
-                                </div>
-
+                            <SideContainerBlock title="Popular topicss">
                                 <ul className="capitalize max-w-53.75">
                                     <li className="truncate capitalize">
                                         <LinkUI href="#" size="2">
@@ -57,11 +54,8 @@ export default function Welcome() {
                                     </li>
 
                                 </ul>
-                            </div>
-                            <div className="side-container-block">
-                                <div className="side-header-container">
-                                    <Text size="4" className="side-header-title">Top Contributors</Text>
-                                </div>
+                            </SideContainerBlock>
+                            <SideContainerBlock title="Top Contributors">
                                 <div className="flex gap-2">
                                     <Avatar className="max-w-18.75 w-full" size="2" radius='full' fallback="A" />
                                     <Flex justify="between" className=" w-full border-b border-b-gray-300 last:border-none py-2">
@@ -69,18 +63,17 @@ export default function Welcome() {
                                         <LinkUI href='#'>1,245 Posts</LinkUI>
                                     </Flex>
                                 </div>
-                            </div>
-                            <div className="side-container-block">
-                                <div className="side-header-container">
-                                    <Text size="4" className="side-header-title">recent replies</Text>
-                                </div>
+                            </SideContainerBlock>
+
+                            <SideContainerBlock title="recent replies">
                                 <div className="flex gap-2 border-b border-b-gray-300 py-2 last:border-none">
                                     <div className="max-w-15 truncate font-bold">
                                         <LinkUI href="#" title="EmilyR" size="2">EmilyRLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</LinkUI>:
                                     </div>
                                     <p className="max-w-50 truncate">"<Text size="1">I agree, that's a great point Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Text>"</p>
                                 </div>
-                            </div>
+                            </SideContainerBlock>
+
                         </Box>
                     </Grid>
                 </Container>
