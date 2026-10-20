@@ -21,11 +21,17 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
     - ~~verify if login works~~
     - ~~verify if logout works~~
 - ~~update the homepage~~
-- refactor/organize code
+- ~~refactor/organize code~~
 - implement create post logic
+    - add middleware to verify if the person is logged in
+    - add category field
+    - autoupdate category if name exists or create a category if it doesn't
+    - add form validation
+    - view posts in specific category page
+- refactor/organize code
+- test code
 - implement update post logic
 - implement delete post logic
-- refactor/organize code
 - add ratelimits in login forms
 - create visit/history model
 - refactor/organize code
@@ -34,6 +40,7 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 
 
 ## What I've learned
+- In order to create a controller with an existing model, you have to write in the terminal `php artisan make:controller CategoryController --model=Category`
 - In order to use the `Pick` utility in typescript, the basic example is like this 
 ```ts
 export type Post = {

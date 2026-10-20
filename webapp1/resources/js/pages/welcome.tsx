@@ -1,4 +1,4 @@
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import { Text, Container, Box, Grid, Button, Avatar, Flex, Link as LinkUI } from '@radix-ui/themes';
 import NavHeaderHome from '@/components/nav-header-home';
 import SectionTabsHome from '@/components/section-tabs-home';
@@ -17,12 +17,16 @@ export default function Welcome() {
                     <Grid columns={{ initial: "1fr", md: "3fr 1fr" }} className="px-3" gap="4">
                         <Box id="main-container" className="w-full">
                             <div className="bg-white mb-4 rounded-sm p-2 grid grid-cols-3 gap-4">
-                                <Button size="3" className="p-3 text-xl mr-3">
-                                    <Pencil /> <Text className="py-2">Create a Post</Text>
-                                </Button>
-                                <Button size="3" className="p-3 text-xl mr-3">
-                                    <PencilLine /> <Text className="py-2">Create a Category</Text>
-                                </Button>
+                                <Link href="/posts/create">
+                                    <Button size="3" className="home-action-btn">
+                                        <Pencil /> <Text className="py-2">Create a Post</Text>
+                                    </Button>
+                                </Link>
+                                <Link href="/category/create">
+                                    <Button size="3" className="home-action-btn">
+                                        <PencilLine /> <Text className="py-2">Create a Category</Text>
+                                    </Button>
+                                </Link>
                             </div>
                             <SectionTabsHome />
                         </Box>
