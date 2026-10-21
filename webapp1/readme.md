@@ -30,6 +30,7 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
     - view posts in specific category page
 - refactor/organize code
 - test code
+- implement create category logic
 - implement update post logic
 - implement delete post logic
 - add ratelimits in login forms
@@ -40,6 +41,7 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 
 
 ## What I've learned
+- Adding `withoutMiddleware()` method to a route can remove certain routes from dealing with certain middleware ... in theory. Here's a [link](https://www.google.com/search?q=in+laravel+how+do+you+make+sure+the+some+methods+in+the+controller+are+in+middleware+and+the+other+are+not&oq=in+laravel+how+do+you+make+sure+the+some+methods+in+the+controller+are+in+middleware+and+the+other+are+not&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBCTQxMzc1ajBqN6gCALACAA&sourceid=chrome&source=chrome.ob&ie=UTF-8)
 - In order to create a controller with an existing model, you have to write in the terminal `php artisan make:controller CategoryController --model=Category`
 - In order to use the `Pick` utility in typescript, the basic example is like this 
 ```ts

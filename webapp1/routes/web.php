@@ -18,7 +18,20 @@ Route::resource('user', UserController::class)->names([
 
 ]);
 
-Route::resource('posts', PostController::class)->names([
+// Route::resource('posts', PostController::class)->names([
+//     "index" => "posts.list",
+//     "create" => "posts.create",
+//     "store" => "posts.store",
+//     "show" => "posts.show",
+//     "edit" => "posts.edit",
+//     "update" => "posts.update",
+//     "destroy" => "posts.destroy",
+// ]);
+
+Route::resource('posts', PostController::class)
+->middleware(['auth', 'verified'])
+->withoutMiddleware(['index', 'show'])
+->names([
     "index" => "posts.list",
     "create" => "posts.create",
     "store" => "posts.store",
@@ -28,8 +41,10 @@ Route::resource('posts', PostController::class)->names([
     "destroy" => "posts.destroy",
 ]);
 
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'dashboard')->name('dashboard');
+
 });
 
 Route::middleware(['auth', 'role:admin', 'role:moderator'])->group(function() {
