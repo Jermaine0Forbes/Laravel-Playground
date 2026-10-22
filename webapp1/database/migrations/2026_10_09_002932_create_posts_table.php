@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title', 100);
+            $table->string('slug');
             $table->text('body');
             $table->boolean('published')->default(false);
             $table->boolean('locked')->default(false);
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->integer('likes')->nullable()->default(0);
             $table->foreignId('user_id')->constrained();
             $table->foreignId('category_id')->constrained();
+            $table->index('slug');
             $table->timestamps();
         });
     }

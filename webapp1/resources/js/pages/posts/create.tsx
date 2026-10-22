@@ -1,8 +1,8 @@
 import { Link, router, Head, Form } from '@inertiajs/react';
 import { ReactNode } from 'react';
-import { route } from 'ziggy-js';
-import { Form as F } from 'radix-ui';
-import { TextArea, TextField } from '@radix-ui/themes';
+// import { route } from 'ziggy-js';
+// import { Form as F } from 'radix-ui';
+import { TextArea, TextField, Button } from '@radix-ui/themes';
 import posts from '@/routes/posts';
 
 export default function Create(children: ReactNode) {
@@ -14,17 +14,23 @@ export default function Create(children: ReactNode) {
             <Form action={posts.store.post()} method="post" >
                 <fieldset className="my-4 ">
                     <label htmlFor="title">Title</label>
-                    <input className="border border-color-black block rounded py-2 w-1/2" type="text" name='title'
+                    <TextField.Root className="border border-color-black block rounded py-2 w-1/2" type="text" name='title'
                     />
                 </fieldset>
                 <fieldset className="my-4 ">
+                    <label htmlFor="category">Category</label>
+                    <TextField.Root className="border border-color-black block rounded py-2 w-1/2" type="text" name='category'
+                    />
+                </fieldset>
+
+                <fieldset className="my-4 ">
 
                     <label htmlFor="body">Message</label>
-                    <textarea className="border border-color-black block rounded py-4 min-h-[150px] w-1/2" name="body">
+                    <TextArea className="border border-color-black block rounded py-4 min-h-37.5 w-1/2" name="body">
 
-                    </textarea>
+                    </TextArea>
                 </fieldset>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 capitalize" type="submit">create post</button>
+                <Button className="text-lg capitalize" type="submit">create post</Button>
             </Form>
         </section>
     )

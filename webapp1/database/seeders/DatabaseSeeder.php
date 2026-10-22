@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         Category::factory()->create([
             "name" => "all",
             "user_id" => 1,
+            "slug" => "all",
         ]);
         Post::factory(300)->create();
 

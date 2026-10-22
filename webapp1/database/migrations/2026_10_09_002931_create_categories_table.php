@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 50);
+            $table->string('slug');
             $table->foreignId('user_id')->constrained();
+            $table->index('slug');
             $table->timestamps();
         });
     }

@@ -30,7 +30,7 @@ Route::resource('user', UserController::class)->names([
 
 Route::resource('posts', PostController::class)
 ->middleware(['auth', 'verified'])
-->withoutMiddleware(['index', 'show'])
+->withoutMiddlewareFor(['index', 'show'], ['auth', 'verified'])
 ->names([
     "index" => "posts.list",
     "create" => "posts.create",

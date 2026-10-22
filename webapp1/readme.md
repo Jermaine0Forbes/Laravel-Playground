@@ -23,11 +23,18 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 - ~~update the homepage~~
 - ~~refactor/organize code~~
 - implement create post logic
-    - add middleware to verify if the person is logged in
-    - add category field
-    - autoupdate category if name exists or create a category if it doesn't
+    - ~~add middleware to verify if the person is logged in~~
+    - ~~add category field~~
+    - update migrations to add slugs fields for categories and posts
+    - refresh migrations
+    - pull all categories from category table
+    - send categories to create post page
+    - when saving post, create a new category based on post, and create slug
+    - when saved, should redirect to new post in specific category page
     - add form validation
-    - view posts in specific category page
+    - create a few posts with new categories
+    - create autofill, that will suggest existing categories based on what you type
+    - autoupdate category if name exists or create a category if it doesn't
 - refactor/organize code
 - test code
 - implement create category logic
@@ -41,6 +48,7 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 
 
 ## What I've learned
+- Using `withoutMiddlewareFor($methods, $middleware)` is ideal if you need to remove middleware for certain controller methods
 - Adding `withoutMiddleware()` method to a route can remove certain routes from dealing with certain middleware ... in theory. Here's a [link](https://www.google.com/search?q=in+laravel+how+do+you+make+sure+the+some+methods+in+the+controller+are+in+middleware+and+the+other+are+not&oq=in+laravel+how+do+you+make+sure+the+some+methods+in+the+controller+are+in+middleware+and+the+other+are+not&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBCTQxMzc1ajBqN6gCALACAA&sourceid=chrome&source=chrome.ob&ie=UTF-8)
 - In order to create a controller with an existing model, you have to write in the terminal `php artisan make:controller CategoryController --model=Category`
 - In order to use the `Pick` utility in typescript, the basic example is like this 
