@@ -27,8 +27,8 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
     - ~~add category field~~
     - update migrations to add slugs fields for categories and posts
     - refresh migrations
-    - pull all categories from category table
-    - send categories to create post page
+    - get all categories within the index of the categories controller
+    - create fetch request to categories in the create post page
     - when saving post, create a new category based on post, and create slug
     - when saved, should redirect to new post in specific category page
     - add form validation
