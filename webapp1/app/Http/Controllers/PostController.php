@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -39,7 +40,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return Inertia::render("posts/create");
+        return Inertia::render("posts/create", [
+            'categories' =>  Category::all()->select(['id', 'name'])
+        ]);
     }
 
     /**

@@ -16,6 +16,14 @@ class CategoryController extends Controller
     }
 
     /**
+     * Get all category names and id's
+     */
+    public function get()
+    {
+     return Category::select(['id', 'name'])->latest();
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

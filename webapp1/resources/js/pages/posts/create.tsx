@@ -7,6 +7,10 @@ import posts from '@/routes/posts';
 
 export default function Create(children: ReactNode) {
 
+    const {categories} = children;
+    console.log(categories)
+    console.log('foo')
+
     return (
         <section className="max-w-4xl mx-auto py-8 w-full">
             <Head title="Create a post" />
