@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Exception;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests;
@@ -52,7 +53,14 @@ class PostController extends Controller
     {
         $valid = $request->validated();
 
-        Post::create($valid);
+        if($valid)
+        {
+            $cat = Category::firstOrCreate(['name' => $request->input('category') , 'user_id' => $request->input('user_id')]);
+            Post::create(array_merge($valid, ["category_id" => $cat->id]));
+
+        }else {
+            throw new Exception('store post request was not valid');
+        }
 
         // return redirect('/posts');
     }

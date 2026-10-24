@@ -5,9 +5,17 @@ import { ReactNode } from 'react';
 import { TextArea, TextField, Button } from '@radix-ui/themes';
 import posts from '@/routes/posts';
 
-export default function Create(children: ReactNode) {
+type CategoryObj = {
+    id: number,
+    name: string
+}
 
-    const {categories} = children;
+type PostCreateProps = {
+    categories : Array<CategoryObj | null>
+}
+
+export default function Create({categories} : PostCreateProps) {
+
     console.log(categories)
     console.log('foo')
 

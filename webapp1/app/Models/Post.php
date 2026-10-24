@@ -19,4 +19,11 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    protected static function booted(): void
+    {
+        static::creating(function(Post $post) {
+            $post->slug = str($post->title)->lower()->slug('-');
+        });
+    }
 }
