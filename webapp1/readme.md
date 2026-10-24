@@ -47,6 +47,22 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 
 
 ## What I've learned
+- if you want to fill a column before you save to a model you can add in logic in a `static::creating` method like so 
+```php
+class Post extends Model
+{
+    protected static function booted(): void
+    {
+        static::creating(function (Post $post) {
+            // Automatically set the slug before creation
+            $post->slug = Str::slug($post->title);
+            
+            // Or set a unique API token
+            $post->api_token = Str::random(60);
+        });
+    }
+}
+```
 - If you want to create a slug for a post or category can use the `Str` facade to add separators to your string with `slug` and make the words lowercase with `lower` like so `Str::of($title)->lower()->slug('-')`
 - Using `withoutMiddlewareFor($methods, $middleware)` is ideal if you need to remove middleware for certain controller methods
 - Adding `withoutMiddleware()` method to a route can remove certain routes from dealing with certain middleware ... in theory. Here's a [link](https://www.google.com/search?q=in+laravel+how+do+you+make+sure+the+some+methods+in+the+controller+are+in+middleware+and+the+other+are+not&oq=in+laravel+how+do+you+make+sure+the+some+methods+in+the+controller+are+in+middleware+and+the+other+are+not&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBCTQxMzc1ajBqN6gCALACAA&sourceid=chrome&source=chrome.ob&ie=UTF-8)

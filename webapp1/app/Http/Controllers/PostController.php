@@ -12,7 +12,7 @@ use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests;
 use Inertia\Inertia;
 
-class PostController extends Controller 
+class PostController extends Controller
 {
 
     // public static function middleware():array
@@ -53,16 +53,19 @@ class PostController extends Controller
     {
         $valid = $request->validated();
 
-        if($valid)
-        {
-            $cat = Category::firstOrCreate(['name' => $request->input('category') , 'user_id' => $request->input('user_id')]);
-            Post::create(array_merge($valid, ["category_id" => $cat->id]));
+        try {
 
-        }else {
+            if ($valid) {
+                $cat = Category::firstOrCreate(['name' => $request->input('category'), 'user_id' => $request->input('user_id')]);
+                Post::create(array_merge($valid, ["category_id" => $cat->id]));
+            }
+        } catch (Exception $e) {
             throw new Exception('store post request was not valid');
         }
 
-        // return redirect('/posts');
+
+
+        return redirect('/posts');
     }
 
     /**

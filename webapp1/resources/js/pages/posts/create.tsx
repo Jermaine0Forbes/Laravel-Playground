@@ -1,4 +1,4 @@
-import { Link, router, Head, Form } from '@inertiajs/react';
+import { Link, router, Head, Form, usePage } from '@inertiajs/react';
 import { ReactNode } from 'react';
 // import { route } from 'ziggy-js';
 // import { Form as F } from 'radix-ui';
@@ -11,13 +11,12 @@ type CategoryObj = {
 }
 
 type PostCreateProps = {
-    categories : Array<CategoryObj | null>
+    categories: Array<CategoryObj | null>
 }
 
-export default function Create({categories} : PostCreateProps) {
-
+export default function Create({ categories }: PostCreateProps) {
+     const { auth } = usePage().props;
     console.log(categories)
-    console.log('foo')
 
     return (
         <section className="max-w-4xl mx-auto py-8 w-full">
@@ -42,6 +41,8 @@ export default function Create({categories} : PostCreateProps) {
 
                     </TextArea>
                 </fieldset>
+                <TextField.Root className="none" type="hidden" name='user_id' value={auth?.user?.id}
+                />
                 <Button className="text-lg capitalize" type="submit">create post</Button>
             </Form>
         </section>

@@ -11,4 +11,11 @@ class Category extends Model
     /** @use HasFactory<CategoryFactory> */
     use HasFactory;
     //
+
+    protected static function booted(): void
+    {
+        static::creating(function (Category $category) {
+            $category->slug = str($category->name)->lower()->slug('-');
+        });
+    }
 }
