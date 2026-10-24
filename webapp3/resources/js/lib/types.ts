@@ -1,7 +1,7 @@
 export type Movie = {
   name: string;
   genre: string;
-  rating: number;
+  rating: string | number;
   year: number;
   updated?: boolean;
 };

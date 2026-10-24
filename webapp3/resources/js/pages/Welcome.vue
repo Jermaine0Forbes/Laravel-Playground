@@ -11,7 +11,7 @@ const ticketTot = ref(0);
 const ticketAmt = ref(1);
 const ticketPrc = ref(0);
 const inptEnter = ref("enter some input");
-const movies: Reactive<Movie[]> = reactive([
+const movies: Ref<Movie[]> = ref([
   { name: "Heretic", genre: "horror", rating: 7.4, year: 2024 },
   { name: "Resident Evil", genre: "horror", rating: 7.7, year: 2026 },
   { name: "Exit 8", genre: "horror", rating: 7.3, year: 2025 },
@@ -29,9 +29,11 @@ const ticketTotal = () => {
 const handleMovieSelection = (movie: Movie) => (selectMovie.value = movie);
 const handleMovieUpdate = (e: SubmitEvent) => {
   const m = Object.fromEntries(new FormData(e.currentTarget as HTMLFormElement));
+  console.log("m");
   console.log(m);
-  movies.values = movies.map((mv) => {
-    if (mv.name == m.name) return { ...m, updated: true };
+
+  movies.value = movies.value.map((mv) => {
+    if (mv.name == m.name) return { ...mv, ...m, updated: true };
     else return mv;
   });
 };
@@ -78,7 +80,7 @@ const handleMovieUpdate = (e: SubmitEvent) => {
               <input type="text" name="name" :value="selectMovie.name" />
               <input type="text" name="genre" :value="selectMovie.genre" />
               <input type="text" name="rating" :value="selectMovie.rating" />
-              <input type="text" name="year" :value="selectMovie.year" />
+              <input type="number" name="year" :value="selectMovie.year" />
               <input type="submit" class="btn-teal" value="submit" />
             </form>
           </div>
