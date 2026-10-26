@@ -47,6 +47,29 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 
 
 ## What I've learned
+
+- If you want to assign roles to a newly created user, you should not hard code the logic in the `fortify` vendor directory. Instead, you should go to `webapp1\app\Actions\Fortify\CreateNewUser.php` in order to make sure you `assignRole` with the spatie package
+- In order to enable database transaction so that you can rollback changes if an error occurs, you have to create it this manner
+```php
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+
+DB::beginTransaction();
+
+try {
+    $user = User::create(['name' => 'Jane Doe']);
+    
+    // Perform other database operations...
+
+    DB::commit();
+} catch (\Throwable $e) {
+    DB::rollBack();
+    throw $e;
+}
+
+```
+- In order to make xdebug work with laravel when running `composer run dev`, you need to start the development server in a terminal like so `php -S localhost:8000 -t webapp1/public`. Then, you need to run your vite in another terminal with `npm run dev` in order to get the hmr to work. And lastly, you turn on the xdebug in vscode in order for the breakpoints to actually work
+
 - if you want to fill a column before you save to a model you can add in logic in a `static::creating` method like so 
 ```php
 class Post extends Model
