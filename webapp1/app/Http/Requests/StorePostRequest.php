@@ -12,7 +12,11 @@ class StorePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        // return true;
+        $user = $this->user();
+        // return $user && $user->can('create posts');
+        $x = $user->hasPermissionTo('create posts');
+        return $user && $user->can('create posts');
     }
 
     /**
@@ -23,10 +27,21 @@ class StorePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'unique:posts', 'max:5'],
+            'title' => ['required', 'unique:posts', 'min:5'],
             'body' => ['required'],
             'user_id' => ['required', 'numeric'],
             'category' => ['required', 'string', 'max:50']
+        ];
+    }
+
+        public function messages(): array
+    {
+        return [
+            'title.required' => 'A distinct title is required for your post.',
+            // 'title.max' => 'your title is too long',
+            'body.required' => 'body is required',
+            'user_id.required' => 'user_id is required',
+            'category.required' => 'category is required',
         ];
     }
 }
