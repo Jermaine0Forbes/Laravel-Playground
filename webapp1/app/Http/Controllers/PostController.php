@@ -76,9 +76,12 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(Category $category, Post $post)
     {
-        //
+        Inertia::render('posts/show', [
+            'category' => $category,
+            'post' => $post
+        ]);
     }
 
     /**

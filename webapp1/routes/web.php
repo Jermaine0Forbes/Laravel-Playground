@@ -28,6 +28,9 @@ Route::resource('user', UserController::class)->names([
 //     "destroy" => "posts.destroy",
 // ]);
 
+Route::get('posts/{category:slug}/{post:slug}', [PostController::class, 'show'])
+    ->name('posts.show');
+
 Route::resource('posts', PostController::class)
 ->middleware(['auth', 'verified'])
 ->withoutMiddlewareFor(['index', 'show'], ['auth', 'verified'])
@@ -35,11 +38,12 @@ Route::resource('posts', PostController::class)
     "index" => "posts.list",
     "create" => "posts.create",
     "store" => "posts.store",
-    "show" => "posts.show",
+    // "show" => "posts.show",
     "edit" => "posts.edit",
     "update" => "posts.update",
     "destroy" => "posts.destroy",
-]);
+])
+->except('show');
 
 
 Route::middleware(['auth', 'verified'])->group(function () {

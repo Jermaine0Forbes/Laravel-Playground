@@ -28,7 +28,7 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
     - ~~update migrations to add slugs fields for categories and posts~~
     - ~~refresh migrations~~
     - ~~fetch all the categories in the create post page~~
-    - when saving post, create a new category based on post, and create slug
+    - ~~when saving post, create a new category based on post, and create slug~~
     - when saved, should redirect to new post in specific category page
     - add form validation
     - create a few posts with new categories
@@ -47,6 +47,24 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 
 
 ## What I've learned
+- In order to set a column before the model creates the attribute, you can go inside the model class and add logic in a method called `booted`. Within that method, you can call method called `creating` that will allow you to assign a value to a column with values that might have already been set by the model like so 
+```php
+
+class Category extends Model
+{
+    /** @use HasFactory<CategoryFactory> */
+    use HasFactory;
+    //
+    protected $fillable = ['name', 'slug', 'user_id' ];
+
+    protected static function booted(): void
+    {
+        static::creating(function (Category $category) {
+            $category->slug = str($category->name)->lower()->slug('-');
+        });
+    }
+}
+```
 
 - If you want to assign roles to a newly created user, you should not hard code the logic in the `fortify` vendor directory. Instead, you should go to `webapp1\app\Actions\Fortify\CreateNewUser.php` in order to make sure you `assignRole` with the spatie package
 - In order to enable database transaction so that you can rollback changes if an error occurs, you have to create it this manner
