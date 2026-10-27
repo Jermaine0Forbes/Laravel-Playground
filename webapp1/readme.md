@@ -47,6 +47,7 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 
 
 ## What I've learned
+- In order to include relationships with a particular model. You first need to include them by...
 - In order to set a column before the model creates the attribute, you can go inside the model class and add logic in a method called `booted`. Within that method, you can call method called `creating` that will allow you to assign a value to a column with values that might have already been set by the model like so 
 ```php
 
