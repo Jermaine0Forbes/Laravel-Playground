@@ -29,7 +29,7 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
     - ~~refresh migrations~~
     - ~~fetch all the categories in the create post page~~
     - ~~when saving post, create a new category based on post, and create slug~~
-    - when saved, should redirect to new post in specific category page
+    - ~~when saved, should redirect to new post in specific category page~~
     - add form validation
     - create a few posts with new categories
     - create autofill, that will suggest existing categories based on what you type
@@ -43,11 +43,51 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 - create visit/history model
 - refactor/organize code
 - add broadcasts or events to track user visits
+- add oauth and mfa
 - add breadcrumbs to layout
 
 
 ## What I've learned
-- In order to include relationships with a particular model. You first need to include them by...
+- In order to include relationships with a particular model. You first need to include them by connecting the relationship in your model with one of the many relationship methods from the `HasRelationships` trait like `hasOne, hasMany, belongsTo`. Then when you're making a query request you need to include the name of the table, the id, then other columns that you wish to pull from. And lastly, if you're using the `select` command you need to include the foreign_id within the selection or you will receive a `null` result. Here is an example
+```php
+class Post extends Model
+{
+    /** @use HasFactory<\Database\Factories\PostFactory> */
+    use HasFactory;
+
+    protected $fillable = ['title', 'body', 'views', 'likes', 'slug', 'category_id', 'user_id'];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function category():BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+    ...
+
+```
+
+```php
+// inside post controller
+    public function index()
+    {
+        return Inertia::render(
+            "posts/index",
+            [
+                "posts" =>
+                Inertia::scroll(fn() => 
+                // It's important to include the id with the table name or you will get a null result
+                Post::with(["user:id,name", "category:id,slug"])
+                // It's also important to include the foreign keys like user_id , category_id or you will receive a null result
+                ->select(['id', 'title', 'slug', 'user_id', 'category_id'])->latest()->paginate(10))
+            ]
+        );
+    }
+```
+
 - In order to set a column before the model creates the attribute, you can go inside the model class and add logic in a method called `booted`. Within that method, you can call method called `creating` that will allow you to assign a value to a column with values that might have already been set by the model like so 
 ```php
 

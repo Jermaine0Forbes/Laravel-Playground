@@ -45,7 +45,7 @@ export default function Index({ posts }: { posts: any }) {
 
                                 <tr key={post.id} className="border-b">
                                     <td className="py-2">
-                                        <Link href={route('posts.show')}
+                                        <Link href={route('posts.show', {category: post?.category?.slug, post: post?.slug})}
                                         >
                                             {post.title}
                                         </Link>

@@ -60,7 +60,7 @@ class PostController extends Controller
 
             if ($valid) {
                 $cat = Category::firstOrCreate(['name' => $request->input('category'), 'user_id' => $request->input('user_id')]);
-                Post::create(array_merge($valid, ["category_id" => $cat->id]));
+                $post = Post::create(array_merge($valid, ["category_id" => $cat->id]));
                 DB::commit();
             }
         } catch (Exception $e) {
@@ -70,7 +70,8 @@ class PostController extends Controller
 
 
 
-        return redirect('/posts');
+        return redirect("/posts/$cat->slug/$post->slug");
+        // return redirect("/posts");
     }
 
     /**
@@ -78,7 +79,7 @@ class PostController extends Controller
      */
     public function show(Category $category, Post $post)
     {
-        Inertia::render('posts/show', [
+        return Inertia::render('posts/show', [
             'category' => $category,
             'post' => $post
         ]);
