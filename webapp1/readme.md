@@ -48,6 +48,84 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 
 
 ## What I've learned
+-  There are two ways to use inertia's form to process data. One way is to use the `Form` component and the other is to use the `useForm` hook. Looking at the code is self explanatory so I will just provide it below
+
+### With useForm Hook
+```jsx
+import { useForm } from '@inertiajs/react';
+
+export default function CreateUser() {
+  const { data, setData, post, errors, processing } = useForm({
+    name: '',
+    email: '',
+  });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    post('/users');
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Name</label>
+        <input type="text" value={data.name} onChange={e => setData('name', e.target.value)} />
+        {errors.name && <div class="error">{errors.name}</div>}
+      </div>
+
+      <div>
+        <label>Email</label>
+        <input type="email" value={data.email} onChange={e => setData('email', e.target.value)} />
+        {errors.email && <div class="error">{errors.email}</div>}
+      </div>
+
+      <button type="submit" disabled={processing}>Submit</button>
+    </form>
+  );
+}
+```
+
+### With Form component
+
+```jsx
+import { Form } from '@inertiajs/react';
+
+export default function CreateUser() {
+  return (
+    /* 
+      1. Define the server route and HTTP method directly on the component.
+      2. Pass a function as children to access the form's real-time state.
+    */
+    <Form action="/users" method="post">
+      {({ errors, processing }) => (
+        <>
+          {/* Name Field */}
+          <div>
+            <label htmlFor="name">Name</label>
+            {/* Just provide a 'name' attribute; Inertia reads the value automatically */}
+            <input id="name" type="text" name="name" />
+            
+            {/* Display validation errors dynamically forwarded by the server */}
+            {errors.name && <div className="error">{errors.name}</div>}
+          </div>
+
+          {/* Email Field */}
+          <div>
+            <label htmlFor="email">Email</label>
+            <input id="email" type="email" name="email" />
+            {errors.email && <div className="error">{errors.email}</div>}
+          </div>
+
+          {/* Disable button automatically during active backend validation */}
+          <button type="submit" disabled={processing}>
+            {processing ? 'Saving...' : 'Submit'}
+          </button>
+        </>
+      )}
+    </Form>
+  );
+}
+```
 - In order to include relationships with a particular model. You first need to include them by connecting the relationship in your model with one of the many relationship methods from the `HasRelationships` trait like `hasOne, hasMany, belongsTo`. Then when you're making a query request you need to include the name of the table, the id, then other columns that you wish to pull from. And lastly, if you're using the `select` command you need to include the foreign_id within the selection or you will receive a `null` result. Here is an example
 ```php
 class Post extends Model

@@ -19,17 +19,22 @@ declare module '@inertiajs/core' {
 }
 
 
-export type SideBlockProps  = {
-    title: string, 
+export type SideBlockProps = {
+    title: string,
     children: React.ReactNode,
 }
 
 export type Post = {
     id: number,
     title: string,
+    category: {
+        id: number
+        slug: string
+    },
+    slug: string
     body: string,
     views: number,
-    votes: number,
+    likes: number,
     user: string | Author
 }
 

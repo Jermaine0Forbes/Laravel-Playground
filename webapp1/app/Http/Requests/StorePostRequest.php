@@ -12,9 +12,7 @@ class StorePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        // return true;
         $user = $this->user();
-        // return $user && $user->can('create posts');
         $x = $user->hasPermissionTo('create posts');
         return $user && $user->can('create posts');
     }
