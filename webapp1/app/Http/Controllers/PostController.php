@@ -32,7 +32,7 @@ class PostController extends Controller
             "posts/index",
             [
                 "posts" =>
-                Inertia::scroll(fn() => Post::with(["user:id,name", "category:id,slug"])->select(['id', 'title', 'slug', 'user_id', 'category_id'])->latest()->paginate(10))
+                Inertia::scroll(fn() => Post::with(["user:id,name", "category:id,name,slug"])->select(['id', 'title', 'slug', 'user_id', 'category_id'])->latest()->paginate(10))
             ]
         );
     }

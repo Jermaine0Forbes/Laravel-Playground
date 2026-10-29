@@ -24,13 +24,17 @@ export type SideBlockProps = {
     children: React.ReactNode,
 }
 
+export type Category = {
+id: number, 
+name: string,
+slug: string,
+
+}
+
 export type Post = {
     id: number,
     title: string,
-    category: {
-        id: number
-        slug: string
-    },
+    category?:Category
     slug: string
     body: string,
     views: number,
@@ -38,12 +42,7 @@ export type Post = {
     user: string | Author
 }
 
-export type Category = {
-id: number, 
-name: string,
-slug: string,
 
-}
 
 export type Author = {
     name: string,

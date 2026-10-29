@@ -36,6 +36,7 @@ export default function Index({ posts }: { posts: any }) {
                         <thead>
                                 <tr className="text-left border-b">
                                 <th className="py-2">Title</th>
+                                <th className="py-2">Category</th>
                                 <th className="py-2">Author</th>
                                 <th className="py-2">Actions</th>
                             </tr>
@@ -48,6 +49,11 @@ export default function Index({ posts }: { posts: any }) {
                                         <Link href={route('posts.show', {category: post?.category?.slug, post: post?.slug})}
                                         >
                                             {post.title}
+                                        </Link>
+                                    </td>
+                                    <td className="py-2">
+                                        <Link href="#">
+                                            {post?.category?.name }
                                         </Link>
                                     </td>
                                     <td className="py-2">

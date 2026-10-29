@@ -48,6 +48,7 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 
 
 ## What I've learned
+- In radix, they don't have an autocomplete component like MUI does. So if you want to create a search engine with prepopulated terms or categories, then you have to create it yourself. Also, radix has only a certain amount of accent colors to choose from. However, if you want to add a color to a css selector you have to look for the `--accent-0` instead of looking for the variable that might have the color's name
 -  There are two ways to use inertia's form to process data. One way is to use the `Form` component and the other is to use the `useForm` hook. Looking at the code is self explanatory so I will just provide it below
 
 ### With useForm Hook
