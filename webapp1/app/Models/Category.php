@@ -14,6 +14,7 @@ class Category extends Model
     use HasFactory;
     //
     protected $fillable = ['name', 'slug', 'user_id' ];
+    protected $table = 'categories';
 
     protected static function booted(): void
     {

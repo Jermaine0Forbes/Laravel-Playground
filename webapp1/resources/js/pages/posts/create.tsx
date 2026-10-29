@@ -43,11 +43,11 @@ export default function Create({ categories, name, errors, sideBarOpen }: PostCr
                     </fieldset>
                     <fieldset className="my-4 ">
                         <label htmlFor="category">Category</label>
-                        <TextField.Root className="border border-color-black block rounded py-2 w-1/2" type="text" name='category'
+                        <TextField.Root className="border border-color-black block rounded py-2 w-1/2" type="text" name='name'
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
                         />
-                        {errors.category && <div className="text-red-800">{errors.category}</div>}
+                        {errors.name && <div className="text-red-800">{errors.name}</div>}
                     </fieldset>
 
                     <fieldset className="my-4 ">
@@ -60,8 +60,8 @@ export default function Create({ categories, name, errors, sideBarOpen }: PostCr
                         </TextArea>
                         {errors.body && <div className="text-red-800">{errors.body}</div>}
                     </fieldset>
-                    <input className="none" type="hidden" name='user_id' value={auth?.user?.id}
-                    />
+                    {/* <input className="none" type="hidden" name='user_id' value={auth?.user?.id}
+                    /> */}
                     <Button className="text-lg capitalize" disabled={processing} type="submit">create post</Button>
                     
                     </>

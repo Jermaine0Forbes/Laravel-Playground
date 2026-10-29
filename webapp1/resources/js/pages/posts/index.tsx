@@ -34,7 +34,7 @@ export default function Index({ posts }: { posts: any }) {
                 <InfiniteScroll data={"posts"}>
                     <table className="w-full border-collapse">
                         <thead>
-                            <tr className="text-left border-b">
+                                <tr className="text-left border-b">
                                 <th className="py-2">Title</th>
                                 <th className="py-2">Author</th>
                                 <th className="py-2">Actions</th>

@@ -38,6 +38,13 @@ export type Post = {
     user: string | Author
 }
 
+export type Category = {
+id: number, 
+name: string,
+slug: string,
+
+}
+
 export type Author = {
     name: string,
     id: number
@@ -55,4 +62,9 @@ export type User = {
     name: string,
     email: string,
 
+}
+
+export type ShowPostProps = {
+    category: Category,
+    post: Post
 }

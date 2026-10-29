@@ -52,15 +52,13 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        $request;
-        // dd("hello");
         $valid = $request->validated();
         DB::beginTransaction();
         try {
 
             if ($valid) {
-                $cat = Category::firstOrCreate(['name' => $request->input('category'), 'user_id' => $request->input('user_id')]);
-                $post = Post::create(array_merge($valid, ["category_id" => $cat->id]));
+                $cat = Category::firstOrCreate(['name' => $request->input('name'), 'user_id' => $request->user()->id]);
+                $post = Post::create(array_merge($valid, ["category_id" => $cat->id , 'user_id' => $request->user()->id]));
                 DB::commit();
             }
         } catch (Exception $e) {

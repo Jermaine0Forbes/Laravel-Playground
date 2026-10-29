@@ -105,6 +105,10 @@ body div.radix-themes {
     background-color: var(--theme-background) ;
 }
 
+body .radix-themes .ruby {
+    color: var(--accent-9);
+}
+
 .dark {
     --background: oklch(0.145 0 0);
     --foreground: oklch(0.985 0 0);

@@ -13,7 +13,6 @@ class StorePostRequest extends FormRequest
     public function authorize(): bool
     {
         $user = $this->user();
-        $x = $user->hasPermissionTo('create posts');
         return $user && $user->can('create posts');
     }
 
@@ -25,10 +24,9 @@ class StorePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'unique:posts', 'min:5'],
+            'title' => ['required', 'unique:posts', 'min:5', 'max:100'],
             'body' => ['required'],
-            'user_id' => ['required', 'numeric'],
-            'category' => ['required', 'string', 'max:50']
+            'name' => ['required', 'string', 'unique:categories', 'max:50']
         ];
     }
 
@@ -36,10 +34,10 @@ class StorePostRequest extends FormRequest
     {
         return [
             'title.required' => 'A distinct title is required for your post.',
-            // 'title.max' => 'your title is too long',
+            'title.max' => 'your title is too long',
             'body.required' => 'body is required',
-            'user_id.required' => 'user_id is required',
-            'category.required' => 'category is required',
+            'name.required' => 'category is required',
+            'name.unique' => 'this category already exists',
         ];
     }
 }
