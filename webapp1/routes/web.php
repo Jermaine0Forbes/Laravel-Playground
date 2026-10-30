@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 
 Route::inertia('/', 'welcome')->name('home');
 
@@ -18,15 +19,6 @@ Route::resource('user', UserController::class)->names([
 
 ]);
 
-// Route::resource('posts', PostController::class)->names([
-//     "index" => "posts.list",
-//     "create" => "posts.create",
-//     "store" => "posts.store",
-//     "show" => "posts.show",
-//     "edit" => "posts.edit",
-//     "update" => "posts.update",
-//     "destroy" => "posts.destroy",
-// ]);
 
 Route::get('posts/{category:slug}/{post:slug}', [PostController::class, 'show'])
     ->name('posts.show');
@@ -38,10 +30,25 @@ Route::resource('posts', PostController::class)
     "index" => "posts.list",
     "create" => "posts.create",
     "store" => "posts.store",
-    // "show" => "posts.show",
     "edit" => "posts.edit",
     "update" => "posts.update",
     "destroy" => "posts.destroy",
+])
+->except('show');
+
+Route::get('categories/{category:slug}', [CategoryController::class, 'show'])
+    ->name('categories.show');
+
+Route::resource('categories', CategoryController::class)
+->middleware(['auth', 'verified'])
+->withoutMiddlewareFor(['index', 'show'], ['auth', 'verified'])
+->names([
+    "index" => "categories.list",
+    "create" => "categories.create",
+    "store" => "categories.store",
+    "edit" => "categories.edit",
+    "update" => "categories.update",
+    "destroy" => "categories.destroy",
 ])
 ->except('show');
 

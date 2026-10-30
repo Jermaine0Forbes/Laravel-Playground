@@ -5,20 +5,13 @@ import { useState } from 'react';
 import { TextArea, TextField, Button } from '@radix-ui/themes';
 import { faker } from '@faker-js/faker';
 import {store} from '@/routes/posts';
+import { Category, PostCreateProps } from '@/types/global';
 
-type CategoryObj = {
-    id: number,
-    name: string
-}
 
-type PostCreateProps = {
-    categories: Array<CategoryObj | null>,
-    name: string,
-    errors?: object,
-    sideBarOpen: boolean,
-}
 
-export default function Create({ categories, name, errors, sideBarOpen }: PostCreateProps) {
+
+export default function Create( children : PostCreateProps) {
+    const { categories, name, errors, sideBarOpen } = children;
      const { auth } = usePage().props;
      const [title, setTitle] = useState<string>(faker.word.words({ count:{min: 3, max: 10}}));
      const [category, setCategory] = useState<string>(faker.word.sample());

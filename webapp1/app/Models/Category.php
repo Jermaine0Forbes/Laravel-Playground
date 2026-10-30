@@ -12,8 +12,8 @@ class Category extends Model
 {
     /** @use HasFactory<CategoryFactory> */
     use HasFactory;
-    //
-    protected $fillable = ['name', 'slug', 'user_id' ];
+    
+    protected $fillable = ['name', 'slug', 'user_id'];
     protected $table = 'categories';
 
     protected static function booted(): void
@@ -23,7 +23,7 @@ class Category extends Model
         });
     }
 
-    public function posts():HasMany
+    public function posts(): HasMany
     {
         return $this->HasMany(Post::class);
     }

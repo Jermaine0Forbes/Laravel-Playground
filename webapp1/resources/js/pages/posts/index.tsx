@@ -52,7 +52,7 @@ export default function Index({ posts }: { posts: any }) {
                                         </Link>
                                     </td>
                                     <td className="py-2">
-                                        <Link href="#">
+                                        <Link href={route('categories.show', post?.category?.slug )}>
                                             {post?.category?.name }
                                         </Link>
                                     </td>

@@ -63,7 +63,15 @@ export type User = {
 
 }
 
-export type ShowPostProps = {
+export type PostShowProps = {
     category: Category,
     post: Post
+}
+
+
+export type PostCreateProps = {
+    categories: Array<Category | null>,
+    name: string,
+    errors?: object,
+    sideBarOpen: boolean,
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -45,7 +46,17 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return Inertia::render('categories/show', [
+            'category' => $category,
+            'posts' =>  
+            Inertia::scroll(fn() => 
+            Post::with(["user:id,name"])->
+            select(['id', 'title', 'slug', 'user_id', 'likes', 'views', 'updated_at'])
+            ->where('category_id', $category->id)
+            ->latest()
+            ->paginate(10)
+            ),
+        ]);
     }
 
     /**

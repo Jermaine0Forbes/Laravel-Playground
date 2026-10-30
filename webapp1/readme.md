@@ -31,7 +31,8 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
     - ~~when saving post, create a new category based on post, and create slug~~
     - ~~when saved, should redirect to new post in specific category page~~
     - ~~add form validation~~
-    - create posts with new categories and add categories listing page
+    - create posts with new categories and add categories page that shows posts
+    -  create categories listing page
     - create autofill, that will suggest existing categories based on what you type
     - autoupdate category if name exists or create a category if it doesn't
 - refactor/organize code
@@ -48,6 +49,7 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 
 
 ## What I've learned
+- With the laravel permission package, there are a number of methods that allow you to give permission to users or reset user's roles or permissions. Here is the [link](https://www.google.com/search?q=in+laravel+what+are+the+different+methods+in+the+laravel-permission+package&oq=in+laravel+what+are+the+different+methods+in+the+laravel-permission+package&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAtIBCTE1MTM1ajBqN6gCALACAA&sourceid=chrome&source=chrome.ob&ie=UTF-8) to it.
 - In radix, they don't have an autocomplete component like MUI does. So if you want to create a search engine with prepopulated terms or categories, then you have to create it yourself. Also, radix has only a certain amount of accent colors to choose from. However, if you want to add a color to a css selector you have to look for the `--accent-0` instead of looking for the variable that might have the color's name
 -  There are two ways to use inertia's form to process data. One way is to use the `Form` component and the other is to use the `useForm` hook. Looking at the code is self explanatory so I will just provide it below
 
