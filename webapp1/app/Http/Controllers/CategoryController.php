@@ -50,8 +50,8 @@ class CategoryController extends Controller
             'category' => $category,
             'posts' =>  
             Inertia::scroll(fn() => 
-            Post::with(["user:id,name"])->
-            select(['id', 'title', 'slug', 'user_id', 'likes', 'views', 'updated_at'])
+            Post::with(["user:id,name", 'category:id,name,slug'])->
+            select(['id', 'title', 'slug', 'user_id', 'likes', 'views', 'body', 'updated_at', 'category_id'])
             ->where('category_id', $category->id)
             ->latest()
             ->paginate(10)

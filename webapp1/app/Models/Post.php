@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\User;
 use App\Models\Category;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 
 class Post extends Model
@@ -21,15 +23,21 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function category():BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
     protected static function booted(): void
     {
-        static::creating(function(Post $post) {
+        static::creating(function (Post $post) {
             $post->slug = str($post->title)->lower()->slug('-');
         });
+
+    }
+
+    protected function updatedAt(): Attribute
+    {
+        return Attribute::make(get: fn($value, $attributes) => Carbon::parse($value)->diffForHumans());
     }
 }

@@ -39,7 +39,8 @@ export type Post = {
     body: string,
     views: number,
     likes: number,
-    user: string | Author
+    user:  Author,
+    updated_at: string,
 }
 
 
@@ -63,15 +64,42 @@ export type User = {
 
 }
 
+export type BaseProps = {
+     name: string,
+    errors?: object,
+    sideBarOpen: boolean,
+}
+
 export type PostShowProps = {
     category: Category,
     post: Post
-}
+} & BaseProps;
 
 
 export type PostCreateProps = {
     categories: Array<Category | null>,
-    name: string,
-    errors?: object,
-    sideBarOpen: boolean,
+
+} & BaseProps;
+
+export type CategoryShowProps =  {
+    category: Category,
+    posts:InertiaScroll<Post>
+} & BaseProps;
+
+export type DataForScroll = Post | Category;
+
+export type InertiaScroll<T> = {
+    current_page: number,
+    data:Array<T>,
+    first_page_url: string,
+    from: number,
+    last_page: number,
+    last_page_url:string,
+    links:Array<object>,
+    next_page_url: string | null,
+    path: string,
+    per_page: number,
+    prev_page_url: string,
+    to: number,
+    totatl: number,
 }

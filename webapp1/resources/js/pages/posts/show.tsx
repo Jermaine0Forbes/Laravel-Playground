@@ -9,7 +9,7 @@ export default function Show( children : PostShowProps) {
         <section className="max-w-4xl mx-auto py-8 w-full">
             <Head title="Post"/>
             <h1 className="text-xl font-bold capitalize mb-1">{title}</h1>
-             <div className="font-semibold capitalize ruby mb-4">Categories: <Link href={'/category/'+category?.slug}>{category?.name}</Link></div>
+             <div className="font-semibold capitalize ruby mb-4">Categories: <Link href={route('categories.show',category?.slug)}>{category?.name}</Link></div>
             <p>{body}</p>
             <div className="text-md flex max-w-[200px] justify-between my-2">
                 <div className="capitalize">Views: {views}</div>
