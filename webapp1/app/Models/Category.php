@@ -16,7 +16,7 @@ class Category extends Model
     use HasFactory;
     
     protected $fillable = ['name', 'slug', 'user_id'];
-    protected $table = 'categories';
+    // protected $appends = ['user_count', 'post_count'];
 
     protected static function booted(): void
     {
@@ -31,8 +31,22 @@ class Category extends Model
         return $this->HasMany(Post::class);
     }
 
-    protected function updatedAtFormatted(): Attribute 
+    protected function updatedAt(): Attribute 
     {
         return Attribute::make( get: fn ($value, $attributes) => Carbon::parse($value)->diffForHumans());
+    }
+
+    protected function userCount() : Attribute
+    {
+        return Attribute::make(
+            get: fn(mixed $value, array $attributes) => $this->posts()->select('user_id')->pluck('user_id')->unique()->count(),
+        );
+    }
+
+    protected function postCount() : Attribute 
+    {
+        return Attribute::make(
+            get: fn(mixed $value, array $attributes) => $this->posts()->count(),
+        );
     }
 }

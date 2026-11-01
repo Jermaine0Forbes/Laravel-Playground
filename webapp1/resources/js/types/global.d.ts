@@ -28,6 +28,8 @@ export type Category = {
 id: number, 
 name: string,
 slug: string,
+user_count?: number,
+post_count?:number
 
 }
 

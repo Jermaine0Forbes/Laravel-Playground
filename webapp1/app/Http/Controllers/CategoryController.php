@@ -14,7 +14,15 @@ class CategoryController extends Controller
      */
     public function index()
     {
-       return Inertia::render('categories/index', [ 'categories' =>  Inertia::scroll(fn() => Category::orderBy('id', 'desc')->cursorPaginate(10))]);
+       return Inertia::render(
+        'categories/index', 
+        [ 'categories' =>  
+        Inertia::scroll(
+            fn() => Category::orderBy('id', 'desc')
+            ->cursorPaginate(10)
+            ->through( fn($cat) =>$cat->append('user_count'))
+            ->through( fn($cat) =>$cat->append('post_count'))
+            )]);
     }
 
     /**

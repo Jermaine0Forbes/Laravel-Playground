@@ -49,6 +49,60 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 
 
 ## What I've learned
+- In order to get a distinct number of a certain property/column, use this `Collection` chain `$this->posts()->select('user_id')->pluck('user_id')->unique()->count()`
+- you can append an attribute or column that's not in table with the `$append` property and creating the attribute in the model. So whenever you do a query request that attribute will be automatically within the result. But if you want to be very selective on when a query can receive the attribute all you have to do is create it in the model and retrieve it like so
+```php
+// in the model
+class Category extends Model
+{
+       protected function postCount() : Attribute 
+    {
+        return Attribute::make(
+            get: fn(mixed $value, array $attributes) => $this->posts()->count(),
+        );
+    }
+}
+```
+
+```php
+class CategoryController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+       return Inertia::render(
+        'categories/index', 
+        [ 'categories' =>  
+        Inertia::scroll(
+            fn() => Category::orderBy('id', 'desc')
+            ->cursorPaginate(10)
+            ->through( fn($cat) =>$cat->append('post_count')) //appending the attribute in the query
+            )]);
+    }
+}
+```
+- the best use case to retrieve paginated data with infinite scroll enabled is `cursorPaginate`, the best retrieval method for getting data based on api called is `paginate`, for background processing maybe use `chunkById`
+- `static::creating(callable)` is a lifecycle event that triggers before information gets saved in an Eloquent model, there's also a bunch of other methods like `created, updating, updated, retrieved, etc` to see more look at this [link](https://www.google.com/search?q=in+laravel+what+are+all+the+other+similar+model+methods+like+static%3A%3Acreating&sca_esv=8c8b6b66d5a82012&sxsrf=AKL5yDiIRwoYmHnSzEWJRG55YnfRrwOWkA%3A1793464104278&ei=tRbmao_HAbmykvQP7L6_8AM&biw=1180&bih=899&uact=5&sclient=gws-wiz-serp&udm=50&fbs=ACAhTvwdifjn2dKXmjtOfBxVFl_k7xB_bJXhWBZp-REbIUHBWJHiNrkaF5oReiPuK8V5GojOYBarRHgVZLIZnngl5kpOn4Ef9sgfDw5xNFffWLeg8eDJu7aTbAPPV7gcqmwfeQkryNBbSmjwKhWcOL-cRS3KgXgR5gkd4NL1iOqrcC-WXimXscqEuzVNscHyyrjIAOli9CtngR8w8TIwtjHscIVU8WxnRg&aep=10&ntc=1&mstk=AUtExfD7qG-GCJzIfXG668lmd21KiPlJxZmsE3CJ4DcsT7jCbf32NTgf5ZxC0Dz1y04GSVjR70-gbVIhyla7d-QYqobJIoyXGozJTCWmWiXnjmE0dlzsD4SSlWmXNBolvK1utyYQWX3IX1tx_n3YhOx6L8lKjbA7XbH0rVSoTwUPHIX8-ToSk5ukf3a4ZFLez1m575Qt4XV0x9SYp-MA7-Yy03N-EtutFfRp9UqPiDrMNUgNpyPSpxE8vhXH_XDfaIDH9lq1QIEsEqKIeM_65fxIrMpW59v_WKBw10P6fp3Z2U8A-bQGxMIrya72KVtgURWOPr6GdPTQMZoIqov30enMsyg2n0Pe10BmzFpVzpK3NED7yDhyWB4pRyPSkOenjzWZD0CGEdFrXAmVsr4Ec_ZpQdFmDP-jxIDp0XRrOPJDUDCR1xR31ihFY9gnlpJkM_IIKiAv8nLOIfI&aioh=3&csuir=1&cs=0&mtid=KBfmaufvJcT9wbkPgbu6kA4)
+- If you want to do implicit route model binding to a specific route, but you already have your routes predefined because you are using the method `Route::resource('posts', PostController::class)`. The recommended way to add it to that specific route is to define it separately, and then exclude it from the resource method like [so](https://www.google.com/search?q=in+laravel+how+do+you+I+enable+implicit+model+binding+for+the+slug+name+of+a+model&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBCTMxNDQ3ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8&udm=50&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cxpBkeIeqYwoCbfNVc4vKE9OqRMKGD2T9lFDfEKBBAAmW5ocR386QO4cT2Z22CGZR-lG_dnZTBDkDAZZ-sV6vXVq8lWenx01Be5VWhhOPqR1Untj6x7mDqp2PrNNE1lh7yAMRS19W3wbAZQ1I3WsQPw7UGDRkw2-CGQVEOrF0kItzTLwsULoz9pGPi-UBSsrvkha-2A&aep=10&ntc=1&sxsrf=APpeQnvDEvJgzcB1_cefGZ_Frk0eiAIcyw%3A1793016295708&mstk=AUtExfBdMa5aWE49W42dXCo0KIxa5LzFs1MeZ5xlJopSnSG74banoarF9rT60Z0OB9h2Hd7RdRm2PaPHR9g6oqZRoR3s6KpELkS2OifMCNP4LpLBf9ZYISTip_NYx7ebjORWMpljrJ3jrKHZcad9oPmCA_ccwVDLzBTcDiH342oiC-vlrEjQqHOWpEUtLEYmDRQckg29yhyzLVqhnrM9Z9Ng0SI42159Gpk2NjQa93fEjt7NGW6Nmv2NsMrBnTqsCW251qjWNy8ZyHM5SokzOxPa1gFfQwTQJotpAX-NyqlydHbPT1fljksomjLob8J2XIeRRKPlFyBZh8tFxw&aioh=3&csuir=1&cs=0&mtid=6EHfaon5BvCIwbkPo7LM8Qo)
+
+```php
+Route::get('posts/{category:slug}/{post:slug}', [PostController::class, 'show'])
+    ->name('posts.show');
+
+Route::resource('posts', PostController::class)
+->names([
+    "index" => "posts.list",
+    "create" => "posts.create",
+    "store" => "posts.store",
+    "edit" => "posts.edit",
+    "update" => "posts.update",
+    "destroy" => "posts.destroy",
+])
+->except('show');
+
+```
 - With the laravel permission package, there are a number of methods that allow you to give permission to users or reset user's roles or permissions. Here is the [link](https://www.google.com/search?q=in+laravel+what+are+the+different+methods+in+the+laravel-permission+package&oq=in+laravel+what+are+the+different+methods+in+the+laravel-permission+package&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAtIBCTE1MTM1ajBqN6gCALACAA&sourceid=chrome&source=chrome.ob&ie=UTF-8) to it.
 - In radix, they don't have an autocomplete component like MUI does. So if you want to create a search engine with prepopulated terms or categories, then you have to create it yourself. Also, radix has only a certain amount of accent colors to choose from. However, if you want to add a color to a css selector you have to look for the `--accent-0` instead of looking for the variable that might have the color's name
 -  There are two ways to use inertia's form to process data. One way is to use the `Form` component and the other is to use the `useForm` hook. Looking at the code is self explanatory so I will just provide it below
