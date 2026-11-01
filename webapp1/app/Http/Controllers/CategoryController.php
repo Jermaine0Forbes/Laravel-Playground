@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        Inertia::render('categories', [ 'categories' => Category::all()->latest()]);
+       return Inertia::render('categories/index', [ 'categories' =>  Inertia::scroll(fn() => Category::orderBy('id', 'desc')->cursorPaginate(10))]);
     }
 
     /**

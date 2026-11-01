@@ -7,6 +7,7 @@ export default function Index( children : ReactNode) {
     return(
         <section className="max-w-4xl mx-auto py-8 w-full">
             <Head title="Users list"/>
+             this is a list
         </section>
     )
 };

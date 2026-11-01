@@ -65,6 +65,9 @@ export type User = {
 }
 
 export type BaseProps = {
+    auth:{
+        user: Author
+    },
      name: string,
     errors?: object,
     sideBarOpen: boolean,
@@ -84,6 +87,11 @@ export type PostCreateProps = {
 export type CategoryShowProps =  {
     category: Category,
     posts:InertiaScroll<Post>
+} & BaseProps;
+
+
+export type CategoryListProps = {
+    categories: InertiaScroll<Category>
 } & BaseProps;
 
 export type DataForScroll = Post | Category;

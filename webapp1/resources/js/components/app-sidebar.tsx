@@ -16,6 +16,7 @@ import {
 import { dashboard} from '@/routes';
 import user from '@/routes/user';
 import posts from '@/routes/posts';
+import categories from '@/routes/categories';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
@@ -33,6 +34,11 @@ const mainNavItems: NavItem[] = [
     {
         title: "Posts",
         href:  posts.list(),
+        icon: BookOpen,
+    },
+    {
+        title: "Categories",
+        href:  categories.list(),
         icon: BookOpen,
     },
     {
