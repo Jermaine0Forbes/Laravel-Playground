@@ -111,5 +111,5 @@ export type InertiaScroll<T> = {
     per_page: number,
     prev_page_url: string,
     to: number,
-    totatl: number,
+    total: number,
 }

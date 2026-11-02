@@ -6,6 +6,7 @@ import { TextArea, TextField, Button } from '@radix-ui/themes';
 import { faker } from '@faker-js/faker';
 import {store} from '@/routes/posts';
 import { Category, PostCreateProps } from '@/types/global';
+import Autocomplete from '@/components/ui/autocomplete';
 
 
 
@@ -18,6 +19,13 @@ export default function Create( children : PostCreateProps) {
      const [msg, setMessage] = useState<string>(faker.lorem.sentences());
     console.log(categories)
     console.log(name)
+
+    const NAMES = [
+  "Alejandro", "Alexandra", "Alice", "Alicia", "Amelia",
+  "Andrés", "Andrea", "Antonio", "Beatriz", "Benjamin",
+  "Camila", "Carlos", "Carolina", "Daniel", "Diana",
+];
+
 
     return (
         <section className="max-w-4xl mx-auto py-8 w-full">
@@ -36,9 +44,16 @@ export default function Create( children : PostCreateProps) {
                     </fieldset>
                     <fieldset className="my-4 ">
                         <label htmlFor="category">Category</label>
-                        <TextField.Root className="border border-color-black block rounded py-2 w-1/2" type="text" name='name'
+                        {/* <TextField.Root className="border border-color-black block rounded py-2 w-1/2" type="text" name='name'
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
+                        /> */}
+                        <Autocomplete 
+                        options={NAMES} 
+                        name={'name'} 
+                        value={category} 
+                        onChange={setCategory}
+                        onSelect={(n) => console.log("Selected:", n)}
                         />
                         {errors.name && <div className="text-red-800">{errors.name}</div>}
                     </fieldset>
