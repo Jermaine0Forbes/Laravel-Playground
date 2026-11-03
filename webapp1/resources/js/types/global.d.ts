@@ -82,7 +82,7 @@ export type PostShowProps = {
 
 
 export type PostCreateProps = {
-    categories: Array<Category | null>,
+    categories: string[],
 
 } & BaseProps;
 

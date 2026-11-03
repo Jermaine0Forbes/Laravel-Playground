@@ -40,4 +40,6 @@ class Post extends Model
     {
         return Attribute::make(get: fn($value, $attributes) => Carbon::parse($value)->diffForHumans());
     }
+
+
 }

@@ -43,7 +43,9 @@ class PostController extends Controller
     public function create()
     {
         return Inertia::render("posts/create", [
-            'categories' =>  Category::all()->select(['id', 'name'])
+            'categories' =>
+            Category::select('name')
+                ->pluck('name'),
         ]);
     }
 
@@ -57,8 +59,12 @@ class PostController extends Controller
         try {
 
             if ($valid) {
-                $cat = Category::firstOrCreate(['name' => $request->input('name'), 'user_id' => $request->user()->id]);
-                $post = Post::create(array_merge($valid, ["category_id" => $cat->id , 'user_id' => $request->user()->id]));
+                $name = str($request->input('name'))->trim();
+                $cat = Category::where('name', $name)->first();
+                if ($cat != null) {
+                    $cat = Category::firstOrCreate(['name' => $name, 'user_id' => $request->user()->id]);
+                }
+                $post = Post::create(array_merge($valid, ["category_id" => $cat->id, 'user_id' => $request->user()->id]));
                 DB::commit();
             }
         } catch (Exception $e) {

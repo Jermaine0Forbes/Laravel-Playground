@@ -43,13 +43,13 @@ export default function Create( children : PostCreateProps) {
                         {errors.title && <div className="text-red-800">{errors.title}</div>}
                     </fieldset>
                     <fieldset className="my-4 ">
-                        <label htmlFor="category">Category</label>
+                        <label htmlFor="name">Category</label>
                         {/* <TextField.Root className="border border-color-black block rounded py-2 w-1/2" type="text" name='name'
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
                         /> */}
                         <Autocomplete 
-                        options={NAMES} 
+                        options={ categories} 
                         name={'name'} 
                         value={category} 
                         onChange={setCategory}

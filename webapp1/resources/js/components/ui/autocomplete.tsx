@@ -128,15 +128,15 @@ export default function Autocomplete({
             <Popover.Root open={isOpen} onOpenChange={setOpen}>
                 {/* Anchor (not Trigger): the input positions the popover but doesn't toggle it. */}
                 <Popover.Anchor asChild>
-                    <div className="ac-input-wrap relative bg-white border border-gray-300 rounded-md" ref={anchorRef}>
-                        <div className="ac-ghost overflow-hidden absolute inset-0 pointer-events-none" aria-hidden="true">
-                            <span className="ac-ghost-typed hidden">{text}</span>
-                            <span className="ac-ghost-rest text-gray-400">{ghostRest}</span>
+                    <div className="ac-input-wrap relative bg-white border border-gray-300 rounded w-1/2" ref={anchorRef}>
+                        <div className="ac-ghost overflow-hidden absolute inset-0 pointer-events-none white-space-pre leading-[24px] top-[5px]" aria-hidden="true">
+                            <span className="ac-ghost-typed invisible pl-1">{text}</span>
+                            <span className="ac-ghost-rest text-gray-300 pl-1">{ghostRest}</span>
                         </div>
                         <input
                             id={`${listId}-input`}
                             ref={inputRef}
-                            className="ac-input px-2 border border-color-black block rounded py-2 w-1/2"
+                            className="ac-input px-2 border border-color-black block rounded py-1 w-full leading-[24px] "
                             value={text}
                             placeholder={placeholder}
                             onChange={handleChange}
