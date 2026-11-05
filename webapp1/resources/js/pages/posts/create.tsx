@@ -1,4 +1,4 @@
-import { Head, Form, usePage } from '@inertiajs/react';
+import { Head, Form } from '@inertiajs/react';
 import { useState } from 'react';
 import { TextArea, TextField, Button } from '@radix-ui/themes';
 import { faker } from '@faker-js/faker';
