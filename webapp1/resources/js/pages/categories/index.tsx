@@ -1,11 +1,10 @@
 import { CategoryListProps, Category } from '@/types/global';
-import { Link, router, Head, InfiniteScroll } from '@inertiajs/react';
+import { Link, Head, InfiniteScroll } from '@inertiajs/react';
 import { route } from 'ziggy-js';
 import {  Box, Card } from '@radix-ui/themes';
 
 export default function Index(children: CategoryListProps) {
     const { categories } = children
-    console.log(children)
     return (
         <section className="max-w-4xl mx-auto py-8 w-full">
             <Head title="List categories" />

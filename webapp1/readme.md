@@ -34,7 +34,7 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
     - ~~create posts with new categories and add categories page that shows posts~~
     -  ~~create categories listing page~~
     - ~~create autofill, that will suggest existing categories based on what you type~~
-- refactor/organize code
+- ~~refactor/organize code~~
 - implement create category logic
 - implement update post logic
 - implement delete post logic

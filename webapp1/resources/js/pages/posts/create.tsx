@@ -1,30 +1,20 @@
-import { Link, router, Head, Form, usePage } from '@inertiajs/react';
+import { Head, Form, usePage } from '@inertiajs/react';
 import { useState } from 'react';
-// import { route } from 'ziggy-js';
-// import { Form as F } from 'radix-ui';
 import { TextArea, TextField, Button } from '@radix-ui/themes';
 import { faker } from '@faker-js/faker';
 import {store} from '@/routes/posts';
-import { Category, PostCreateProps } from '@/types/global';
+import { PostCreateProps } from '@/types/global';
 import Autocomplete from '@/components/ui/autocomplete';
 
 
 
 
 export default function Create( children : PostCreateProps) {
-    const { categories, name, errors, sideBarOpen } = children;
-     const { auth } = usePage().props;
+    const { categories} = children;
      const [title, setTitle] = useState<string>(faker.word.words({ count:{min: 3, max: 10}}));
      const [category, setCategory] = useState<string>(faker.word.sample());
      const [msg, setMessage] = useState<string>(faker.lorem.sentences());
-    console.log(categories)
-    console.log(name)
 
-    const NAMES = [
-  "Alejandro", "Alexandra", "Alice", "Alicia", "Amelia",
-  "Andrés", "Andrea", "Antonio", "Beatriz", "Benjamin",
-  "Camila", "Carlos", "Carolina", "Daniel", "Diana",
-];
 
 
     return (
@@ -44,10 +34,6 @@ export default function Create( children : PostCreateProps) {
                     </fieldset>
                     <fieldset className="my-4 ">
                         <label htmlFor="name">Category</label>
-                        {/* <TextField.Root className="border border-color-black block rounded py-2 w-1/2" type="text" name='name'
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                        /> */}
                         <Autocomplete 
                         options={ categories} 
                         name={'name'} 

@@ -1,6 +1,5 @@
 import { PostShowProps } from '@/types/global';
-import { Link, router, Head} from '@inertiajs/react';
-import { ReactNode } from 'react';
+import { Link,  Head} from '@inertiajs/react';
 import { route } from 'ziggy-js';
 
 export default function Show( children : PostShowProps) {

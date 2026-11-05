@@ -16,7 +16,6 @@ class Category extends Model
     use HasFactory;
     
     protected $fillable = ['name', 'slug', 'user_id'];
-    // protected $appends = ['user_count', 'post_count'];
 
     protected static function booted(): void
     {

@@ -27,7 +27,6 @@ class StorePostRequest extends FormRequest
             'title' => ['required', 'unique:posts', 'min:5', 'max:100'],
             'body' => ['required'],
             'name' => ['required', 'string', 
-            // 'unique:categories', 
             'max:50']
         ];
     }
@@ -39,7 +38,6 @@ class StorePostRequest extends FormRequest
             'title.max' => 'your title is too long',
             'body.required' => 'body is required',
             'name.required' => 'category is required',
-            // 'name.unique' => 'this category already exists',
         ];
     }
 }
