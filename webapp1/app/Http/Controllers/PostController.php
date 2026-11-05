@@ -61,7 +61,7 @@ class PostController extends Controller
             if ($valid) {
                 $name = str($request->input('name'))->trim();
                 $cat = Category::where('name', $name)->first();
-                if ($cat != null) {
+                if ($cat == null) {
                     $cat = Category::firstOrCreate(['name' => $name, 'user_id' => $request->user()->id]);
                 }
                 $post = Post::create(array_merge($valid, ["category_id" => $cat->id, 'user_id' => $request->user()->id]));
