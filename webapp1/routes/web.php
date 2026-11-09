@@ -36,9 +36,6 @@ Route::resource('posts', PostController::class)
 ])
 ->except('show');
 
-Route::get('categories/{category:slug}', [CategoryController::class, 'show'])
-    ->name('categories.show');
-
 Route::resource('categories', CategoryController::class)
 ->middleware(['auth', 'verified'])
 ->withoutMiddlewareFor(['index', 'show'], ['auth', 'verified'])
@@ -51,6 +48,10 @@ Route::resource('categories', CategoryController::class)
     "destroy" => "categories.destroy",
 ])
 ->except('show');
+
+Route::get('categories/{category:slug}', [CategoryController::class, 'show'])
+    ->name('categories.show');
+
 
 
 Route::middleware(['auth', 'verified'])->group(function () {

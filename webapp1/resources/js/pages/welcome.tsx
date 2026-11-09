@@ -4,6 +4,8 @@ import NavHeaderHome from '@/components/nav-header-home';
 import SectionTabsHome from '@/components/section-tabs-home';
 import SideContainerBlock from '@/components/side-container-block';
 import { PencilLine, Pencil } from 'lucide-react';
+import categories from '@/routes/categories';
+import posts from '@/routes/posts';
 
 
 export default function Welcome() {
@@ -17,12 +19,12 @@ export default function Welcome() {
                     <Grid columns={{ initial: "1fr", md: "3fr 1fr" }} className="px-3" gap="4">
                         <Box id="main-container" className="w-full">
                             <div className="bg-white mb-4 rounded-sm p-2 grid grid-cols-3 gap-4">
-                                <Link href="/posts/create">
+                                <Link href={posts.create()}>
                                     <Button size="3" className="home-action-btn">
                                         <Pencil /> <Text className="py-2">Create a Post</Text>
                                     </Button>
                                 </Link>
-                                <Link href="/category/create">
+                                <Link href={categories.create()}>
                                     <Button size="3" className="home-action-btn">
                                         <PencilLine /> <Text className="py-2">Create a Category</Text>
                                     </Button>

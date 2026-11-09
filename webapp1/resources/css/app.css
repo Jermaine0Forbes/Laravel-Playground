@@ -109,6 +109,26 @@ body .radix-themes .ruby {
     color: var(--accent-9);
 }
 
+body .radix-themes .text-ruby-strong {
+    color: var(--accent-9);
+}
+
+body .radix-themes .bg-ruby-strong {
+    background-color: var(--accent-9);
+}
+
+.text-ruby {
+    color: var(--accent-9);
+}
+
+.bg-ruby {
+    background-color: var(--accent-9);
+}
+
+form button:disabled, form input[type='submit']:disabled {
+ @apply bg-gray-300;
+}
+
 .dark {
     --background: oklch(0.145 0 0);
     --foreground: oklch(0.985 0 0);
