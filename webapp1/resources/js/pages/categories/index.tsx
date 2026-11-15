@@ -2,18 +2,23 @@ import { CategoryListProps, Category } from '@/types/global';
 import { Link, Head, InfiniteScroll } from '@inertiajs/react';
 import { route } from 'ziggy-js';
 import {  Box, Card } from '@radix-ui/themes';
+import {create} from "@/routes/categories";
 
 export default function Index(children: CategoryListProps) {
     const { categories } = children
     return (
         <section className="max-w-4xl mx-auto py-8 w-full">
             <Head title="List categories" />
+            <div className="flex justify-between mb-3">
             <h1 className="text-2xl font-bold py-1">Categories</h1>
+            <Link href={create()} className="bg-ruby rounded-sm p-2 text-white cursor-pointer">Create Category</Link>
+
+            </div>
             <InfiniteScroll data="categories">
                 {
                     categories.data.length > 0 && categories.data.map((cat: Category, i: number) => (
                         <Link href={route('categories.show', cat.slug)} key={i}>
-                            <Box maxWidth={'240px'} className="mb-3">
+                            <Box maxWidth={'400px'} className="mb-3">
                                 <Card>
                                     <h3 className="text-lg font-bold block">{cat.name}</h3>
                                     <div className="flex gap-2 justify-between text-sm mt-2">

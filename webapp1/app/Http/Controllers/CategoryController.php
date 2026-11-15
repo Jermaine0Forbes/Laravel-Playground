@@ -48,7 +48,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $valid = $request->validate(['name' => ['required', 'string', 'unique:categories','max:50']]);
+       Category::create([...$valid, ...[ "user_id" => $request->user()->id]]);
+       return redirect()->route('categories.list');
     }
 
     /**

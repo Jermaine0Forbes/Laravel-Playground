@@ -125,6 +125,11 @@ body .radix-themes .bg-ruby-strong {
     background-color: var(--accent-9);
 }
 
+.btn-ruby {
+    @apply rounded-sm p-2 text-white cursor-pointer capitalize;
+    background-color: var(--accent-9);
+}
+
 form button:disabled, form input[type='submit']:disabled {
  @apply bg-gray-300;
 }
