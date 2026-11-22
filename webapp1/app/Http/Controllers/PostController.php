@@ -98,7 +98,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        // dd($post);
+        return Inertia::render('posts/edit', [
+            'post' => $post,
+            'category' => $post->category,
+        ]);
     }
 
     /**
@@ -106,7 +110,19 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        DB::beginTransaction();
+        try{
+            // $post->updateOrFail($request->all());
+            $post->title = $request->input('title');
+            $post->body = $request->input('body');
+            $post->save();
+            $cSlug = $post->category->slug;
+            DB::commit();
+        }catch(Exception $e) {
+            DB::rollBack();
+            throw new Exception($e->getMessage());
+        }
+        return redirect()->route('posts.show', ['category' => $cSlug, 'post' => $post->slug]);
     }
 
     /**

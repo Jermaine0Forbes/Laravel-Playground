@@ -12,7 +12,9 @@ class UpdatePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        $post = $this->route('post');
+
+        return auth()->id() == $post->user_id || $this->user()->hasRole('admin');
     }
 
     /**
@@ -23,7 +25,20 @@ class UpdatePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => ['required',  'min:5', 'max:100'],
+            'body' => ['required', 'min:5'],
+            'name' => ['required', 'string', 'max:50']
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'A distinct title is required for your post.',
+            'title.max' => 'your title is too long',
+            'title.min' => 'your title is too short',
+            'body.required' => 'body is required',
+            'body.min' => 'You need more than 5 words in a post',
         ];
     }
 }

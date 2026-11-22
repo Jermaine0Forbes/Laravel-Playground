@@ -16,8 +16,8 @@ type Props = {
 
 export default function Register({ passwordRules }: Props) {
 
-    const [name, setName] = useState<string>("user1");
-    const [email, setEmail] = useState<string>("user1@example.com");
+    const [name, setName] = useState<string>("user3");
+    const [email, setEmail] = useState<string>("user3@example.com");
 
     console.log(passwordRules)
     return (

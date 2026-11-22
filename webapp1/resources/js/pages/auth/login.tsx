@@ -20,7 +20,7 @@ type Props = {
 export default function Login({ status, canResetPassword }: Props) {
     console.log(status)
     const [password, setPassword] = useState<string>("password123!");
-    const [email, setEmail] = useState<string>("user1@example.com");
+    const [email, setEmail] = useState<string>("user3@example.com");
     return (
         <>
             <Head title="Log in" />

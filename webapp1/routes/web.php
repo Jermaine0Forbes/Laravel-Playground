@@ -19,10 +19,6 @@ Route::resource('user', UserController::class)->names([
 
 ]);
 
-
-Route::get('posts/{category:slug}/{post:slug}', [PostController::class, 'show'])
-    ->name('posts.show');
-
 Route::resource('posts', PostController::class)
 ->middleware(['auth', 'verified'])
 ->withoutMiddlewareFor(['index', 'show'], ['auth', 'verified'])
@@ -35,6 +31,9 @@ Route::resource('posts', PostController::class)
     "destroy" => "posts.destroy",
 ])
 ->except('show');
+Route::get('posts/{category:slug}/{post:slug}', [PostController::class, 'show'])
+    ->name('posts.show');
+
 
 Route::resource('categories', CategoryController::class)
 ->middleware(['auth', 'verified'])

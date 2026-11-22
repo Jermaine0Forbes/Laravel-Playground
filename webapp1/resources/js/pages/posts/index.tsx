@@ -25,7 +25,7 @@ export default function Index({ posts }: { posts: any }) {
                     <h1 className="text-2xl font-bold">Posts</h1>
                     <Link
                         href={route('posts.create', '')}
-                        className="bg-blue-600 text-white px-4 py-2 rounded"
+                        className="bg-ruby text-white px-4 py-2 rounded"
                     >
                         New Post
                     </Link>
@@ -59,7 +59,6 @@ export default function Index({ posts }: { posts: any }) {
                                     <td className="py-2">
                                         <Link
                                             className="text-blue-600"
-                                            // href={route('posts.show')}
                                             href={route('user.show', isAuthor(post.user) ? post?.user?.id : undefined)}
                                         >
                                             {typeof post.user == "object" ? post?.user?.name : ''}

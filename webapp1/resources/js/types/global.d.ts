@@ -113,3 +113,9 @@ export type InertiaScroll<T> = {
     to: number,
     total: number,
 }
+
+
+export type PostEditProps =  {
+    post: Post,
+    category: Category,
+}

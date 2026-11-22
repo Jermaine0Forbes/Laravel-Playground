@@ -34,6 +34,10 @@ class Post extends Model
             $post->slug = str($post->title)->lower()->slug('-');
         });
 
+        static::updating(function (Post $post) {
+            $post->slug = str($post->title)->lower()->slug('-');
+        });
+
     }
 
     protected function updatedAt(): Attribute
