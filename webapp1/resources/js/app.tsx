@@ -1,24 +1,24 @@
 import { createInertiaApp } from '@inertiajs/react';
-import { ReactComponent } from 'node_modules/@inertiajs/react/types/types';
+import { Theme } from '@radix-ui/themes';
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import type { ReactComponent } from 'node_modules/@inertiajs/react/types/types';
 import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { initializeTheme } from '@/hooks/use-appearance';
 import AppLayout from '@/layouts/app-layout';
-import HomeLayout from '@/layouts/home-layout';
 import AuthLayout from '@/layouts/auth-layout';
+import HomeLayout from '@/layouts/home-layout';
 import SettingsLayout from '@/layouts/settings/layout';
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
-import '@radix-ui/themes/styles.css'; 
-import { Theme } from '@radix-ui/themes';
+import '@radix-ui/themes/styles.css';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
-    resolve: (name:string) =>         
+    resolve: (name: string) =>
         resolvePageComponent(
             `./pages/${name}.tsx`,
-            import.meta.glob('./pages/**/*.tsx')
+            import.meta.glob('./pages/**/*.tsx'),
         ) as Promise<ReactComponent>,
     layout: (name) => {
         switch (true) {
@@ -36,10 +36,10 @@ createInertiaApp({
     withApp(app) {
         return (
             <Theme
-             accentColor='ruby'
-             grayColor='slate'
-             radius="medium"
-             panelBackground='solid'
+                accentColor="ruby"
+                grayColor="slate"
+                radius="medium"
+                panelBackground="solid"
             >
                 <TooltipProvider delayDuration={0}>
                     {app}

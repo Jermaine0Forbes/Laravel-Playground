@@ -13,37 +13,37 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard} from '@/routes';
-import user from '@/routes/user';
-import posts from '@/routes/posts';
+import { dashboard } from '@/routes';
 import categories from '@/routes/categories';
+import posts from '@/routes/posts';
+import user from '@/routes/user';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
     {
         title: 'Home',
-        href: "/",
+        href: '/',
         icon: House,
     },
-    
+
     {
         title: 'Dashboard',
         href: dashboard(),
         icon: LayoutGrid,
     },
     {
-        title: "Posts",
-        href:  posts.list(),
+        title: 'Posts',
+        href: posts.list(),
         icon: BookOpen,
     },
     {
-        title: "Categories",
-        href:  categories.list(),
+        title: 'Categories',
+        href: categories.list(),
         icon: BookOpen,
     },
     {
-        title: "Users",
-        href:  user.list(),
+        title: 'Users',
+        href: user.list(),
         icon: Users,
     },
 ];

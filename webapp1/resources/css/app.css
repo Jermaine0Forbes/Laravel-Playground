@@ -7,8 +7,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-
-
 @theme {
     --font-sans:
         'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
@@ -101,8 +99,7 @@
 }
 
 body div.radix-themes {
-
-    background-color: var(--theme-background) ;
+    background-color: var(--theme-background);
 }
 
 body .radix-themes .ruby {
@@ -126,12 +123,13 @@ body .radix-themes .bg-ruby-strong {
 }
 
 .btn-ruby {
-    @apply rounded-sm p-2 text-white cursor-pointer capitalize;
+    @apply cursor-pointer rounded-sm p-2 text-white capitalize;
     background-color: var(--accent-9);
 }
 
-form button:disabled, form input[type='submit']:disabled {
- @apply bg-gray-300;
+form button:disabled,
+form input[type='submit']:disabled {
+    @apply bg-gray-300;
 }
 
 .dark {
@@ -180,12 +178,11 @@ form button:disabled, form input[type='submit']:disabled {
 }
 
 button.home-action-btn {
-
-    @apply p-3 text-xl mr-3 w-full
+    @apply mr-3 w-full p-3 text-xl;
 }
 
 .post-content {
-    @apply min-h-40 mb-7 rounded-md bg-white p-4 shadow-sm mx-1 ;
+    @apply mx-1 mb-7 min-h-40 rounded-md bg-white p-4 shadow-sm;
 }
 
 .post-details {
@@ -194,14 +191,13 @@ button.home-action-btn {
 }
 
 .side-container-block {
-
-    @apply min-h-30 mb-4 p-3 rounded-sm bg-white;
+    @apply mb-4 min-h-30 rounded-sm bg-white p-3;
 }
 
 .side-header-container {
-    @apply border-b border-b-gray-300 mb-3
+    @apply mb-3 border-b border-b-gray-300;
 }
 
 .side-header-title {
-    @apply font-medium capitalize pb-3 block
+    @apply block pb-3 font-medium capitalize;
 }

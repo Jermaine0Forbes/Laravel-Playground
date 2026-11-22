@@ -1,4 +1,5 @@
 import { Form, Head } from '@inertiajs/react';
+import { useState } from 'react';
 import InputError from '@/components/input-error';
 import PasswordInput from '@/components/password-input';
 import TextLink from '@/components/text-link';
@@ -10,17 +11,13 @@ import { Spinner } from '@/components/ui/spinner';
 import { register } from '@/routes';
 import { store } from '@/routes/login';
 import { request } from '@/routes/password';
-import { useState } from 'react';
+import type { AuthLoginProps } from '@/types/global';
 
-type Props = {
-    status?: string;
-    canResetPassword: boolean;
-};
+export default function Login({ status, canResetPassword }: AuthLoginProps) {
+    console.log(status);
+    const [password, setPassword] = useState<string>('password123!');
+    const [email, setEmail] = useState<string>('user3@example.com');
 
-export default function Login({ status, canResetPassword }: Props) {
-    console.log(status)
-    const [password, setPassword] = useState<string>("password123!");
-    const [email, setEmail] = useState<string>("user3@example.com");
     return (
         <>
             <Head title="Log in" />
@@ -71,7 +68,9 @@ export default function Login({ status, canResetPassword }: Props) {
                                     autoComplete="current-password"
                                     placeholder="Password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(e) =>
+                                        setPassword(e.target.value)
+                                    }
                                 />
                                 <InputError message={errors.password} />
                             </div>

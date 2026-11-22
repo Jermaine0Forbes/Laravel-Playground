@@ -14,7 +14,7 @@ class UpdatePostRequest extends FormRequest
     {
         $post = $this->route('post');
 
-        return auth()->id() == $post->user_id || $this->user()->hasRole('admin');
+        return $this->user()->id == $post->user_id || $this->user()->hasRole('admin');
     }
 
     /**

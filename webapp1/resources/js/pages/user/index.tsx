@@ -1,13 +1,10 @@
-import { Link, router, Head } from '@inertiajs/react';
-import { ReactNode } from 'react';
-import { route } from 'ziggy-js';
+import { Head } from '@inertiajs/react';
 
-export default function Index( children : ReactNode) {
-
-    return(
-        <section className="max-w-4xl mx-auto py-8 w-full">
-            <Head title="Users list"/>
-             this is a list
+export default function Index() {
+    return (
+        <section className="mx-auto w-full max-w-4xl py-8">
+            <Head title="Users list" />
+            this is a list
         </section>
-    )
-};
+    );
+}

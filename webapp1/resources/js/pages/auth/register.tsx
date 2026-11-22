@@ -1,4 +1,5 @@
 import { Form, Head } from '@inertiajs/react';
+import { useState } from 'react';
 import InputError from '@/components/input-error';
 import PasswordInput from '@/components/password-input';
 import TextLink from '@/components/text-link';
@@ -8,18 +9,14 @@ import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 import { login } from '@/routes';
 import { store } from '@/routes/register';
-import { useState } from 'react';
+import type { AuthRegisterProps } from '@/types/global';
 
-type Props = {
-    passwordRules: string;
-};
+export default function Register({ passwordRules }: AuthRegisterProps) {
+    const [name, setName] = useState<string>('user3');
+    const [email, setEmail] = useState<string>('user3@example.com');
 
-export default function Register({ passwordRules }: Props) {
+    console.log(passwordRules);
 
-    const [name, setName] = useState<string>("user3");
-    const [email, setEmail] = useState<string>("user3@example.com");
-
-    console.log(passwordRules)
     return (
         <>
             <Head title="Register" />
@@ -44,8 +41,7 @@ export default function Register({ passwordRules }: Props) {
                                     name="name"
                                     placeholder="Full name"
                                     value={name}
-                                    onChange={(e) => (setName(e.target.value))}
-
+                                    onChange={(e) => setName(e.target.value)}
                                 />
                                 <InputError
                                     message={errors.name}
@@ -63,7 +59,7 @@ export default function Register({ passwordRules }: Props) {
                                     autoComplete="email"
                                     name="email"
                                     value={email}
-                                    onChange={(e) => (setEmail(e.target.value))}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     placeholder="email@example.com"
                                 />
                                 <InputError message={errors.email} />

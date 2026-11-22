@@ -2,6 +2,7 @@ import type { InertiaLinkProps } from '@inertiajs/react';
 import { clsx } from 'clsx';
 import type { ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import type { Author } from '@/types/global';
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -9,4 +10,8 @@ export function cn(...inputs: ClassValue[]) {
 
 export function toUrl(url: NonNullable<InertiaLinkProps['href']>): string {
     return typeof url === 'string' ? url : url.url;
+}
+
+export function isAuthor(val: any): val is Author {
+    return 'id' in val && typeof val != 'string';
 }

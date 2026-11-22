@@ -18,104 +18,107 @@ declare module '@inertiajs/core' {
     }
 }
 
-
 export type SideBlockProps = {
-    title: string,
-    children: React.ReactNode,
-}
+    title: string;
+    children: React.ReactNode;
+};
 
 export type Category = {
-id: number, 
-name: string,
-slug: string,
-user_count?: number,
-post_count?:number
-
-}
+    id: number;
+    name: string;
+    slug: string;
+    user_count?: number;
+    post_count?: number;
+};
 
 export type Post = {
-    id: number,
-    title: string,
-    category?:Category
-    slug: string
-    body: string,
-    views: number,
-    likes: number,
-    user:  Author,
-    updated_at: string,
-}
-
-
+    id: number;
+    title: string;
+    category?: Category;
+    slug: string;
+    body: string;
+    views: number;
+    likes: number;
+    user: Author;
+    updated_at: string;
+};
 
 export type Author = {
-    name: string,
-    id: number
-}
-
-export interface IProfile {
-    posts: Pick<Post, "id" | "title">[] | null,
-    user: User,
-    history?: object
-}
-
+    name: string;
+    id: number;
+};
 
 export type User = {
-    id: number,
-    name: string,
-    email: string,
-
-}
+    id: number;
+    name: string;
+    email: string;
+};
 
 export type BaseProps = {
-    auth:{
-        user: Author
-    },
-     name: string,
-    errors?: object,
-    sideBarOpen: boolean,
+    auth: {
+        user: Author;
+    };
+    name: string;
+    errors?: object;
+    sideBarOpen: boolean;
+};
+
+export interface UserShowProps {
+    posts: Pick<Post, 'id' | 'title'>[] | null;
+    user: User;
+    history?: object;
 }
 
-export type PostShowProps = {
-    category: Category,
-    post: Post
+export type AuthLoginProps = {
+    status?: string;
+    canResetPassword: boolean;
 } & BaseProps;
 
+export type AuthRegisterProps = {
+    passwordRules: string;
+} & BaseProps;
+
+export type PostIndexProps = {
+    posts: InertiaScroll<Post>;
+} & BaseProps;
+
+export type PostShowProps = {
+    category: Category;
+    post: Post;
+} & BaseProps;
 
 export type PostCreateProps = {
-    categories: string[],
-
+    categories: string[];
 } & BaseProps;
 
-export type CategoryShowProps =  {
-    category: Category,
-    posts:InertiaScroll<Post>
+export type CategoryShowProps = {
+    category: Category;
+    posts: InertiaScroll<Post>;
 } & BaseProps;
-
 
 export type CategoryListProps = {
-    categories: InertiaScroll<Category>
+    categories: InertiaScroll<Category>;
 } & BaseProps;
 
 export type DataForScroll = Post | Category;
 
 export type InertiaScroll<T> = {
-    current_page: number,
-    data:Array<T>,
-    first_page_url: string,
-    from: number,
-    last_page: number,
-    last_page_url:string,
-    links:Array<object>,
-    next_page_url: string | null,
-    path: string,
-    per_page: number,
-    prev_page_url: string,
-    to: number,
-    total: number,
-}
+    current_page: number;
+    data: Array<T>;
+    first_page_url: string;
+    from: number;
+    last_page: number;
+    last_page_url: string;
+    links: Array<object>;
+    next_page_url: string | null;
+    path: string;
+    per_page: number;
+    prev_page_url: string;
+    to: number;
+    total: number;
+};
 
-
-export type PostEditProps =  {
-    post: Post,
-    category: Category,
-}
+export type PostEditProps = {
+    post: Post;
+    category: Category;
+};
