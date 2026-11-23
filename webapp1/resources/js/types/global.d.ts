@@ -79,7 +79,7 @@ export type AuthRegisterProps = {
 } & BaseProps;
 
 export type PostIndexProps = {
-    posts: InertiaScroll<Post>;
+    posts: InertiaScroll<Omit<Post, 'body' | "views" | "likes", "updated_at" >>;
 } & BaseProps;
 
 export type PostShowProps = {
@@ -113,7 +113,7 @@ export type InertiaScroll<T> = {
     next_page_url: string | null;
     path: string;
     per_page: number;
-    prev_page_url: string;
+    prev_page_url: string | null;
     to: number;
     total: number;
 };

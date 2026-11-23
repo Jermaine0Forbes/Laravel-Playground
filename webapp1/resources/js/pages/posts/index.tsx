@@ -10,9 +10,10 @@ export default function Index({ posts }: PostIndexProps) {
             router.delete(route('posts.destroy', id));
         }
     };
+    console.log(posts)
 
     return (
-        <section>
+        <section data-testid="posts-index-section">
             <Head title="Posts" />
             <div className="mx-auto max-w-4xl py-8">
                 <div className="mb-6 flex items-center justify-between">

@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Models\User;
 
 /**
  * @extends Factory<Post>
@@ -34,5 +35,13 @@ class PostFactory extends Factory
             'category_id' => 1,
            'user_id' =>  fake()->numberBetween(1, 50),
         ];
+    }
+
+
+    public function withUser()
+    {
+        return $this->state(fn(array $attributes) => [
+            'user_id' => User::factory()
+        ]);
     }
 }
