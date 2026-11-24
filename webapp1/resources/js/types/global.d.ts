@@ -11,7 +11,7 @@ declare module '@inertiajs/core' {
     export interface InertiaConfig {
         sharedPageProps: {
             name: string;
-            auth: Auth;
+            auth: { user:AuthUser};
             sidebarOpen: boolean;
             [key: string]: unknown;
         };
@@ -41,6 +41,7 @@ export type Post = {
     likes: number;
     user: Author;
     updated_at: string;
+    user_id: number,
 };
 
 export type Author = {
@@ -54,9 +55,22 @@ export type User = {
     email: string;
 };
 
+export type AuthUser = {
+    banned: boolean | null,
+    created_at: string,
+    email: string,
+    email_verified_at: string | null,
+    id: number,
+    name: string,
+    role: string[],
+    roles: object[],
+    two_factor_confirmed_at: string | null,
+    updated_at: string | null
+}
+
 export type BaseProps = {
     auth: {
-        user: Author;
+        user: AuthUser;
     };
     name: string;
     errors?: object;

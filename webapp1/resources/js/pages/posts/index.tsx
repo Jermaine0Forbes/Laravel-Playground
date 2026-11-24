@@ -1,25 +1,45 @@
-import { Link, router, InfiniteScroll, Head } from '@inertiajs/react';
+import { Link, router, InfiniteScroll, Head, usePage } from '@inertiajs/react';
 import { route } from 'ziggy-js';
-import { isAuthor } from '@/lib/utils';
-import type { Post, PostIndexProps } from '@/types/global';
+import { isAuthor, canDeletePost } from '@/lib/utils';
+import type { AuthUser, Post, PostIndexProps } from '@/types/global';
+import { AlertDialog, Button, Flex } from '@radix-ui/themes';
+// import { Toaster } from '@/components/ui/sonner';
+import { toast, Toaster } from 'sonner';
+import { useState } from 'react';
 
 
 export default function Index({ posts }: PostIndexProps) {
-    const handleDelete = (id: number) => {
-        if (confirm('Delete this post?')) {
-            router.delete(route('posts.destroy', id));
+
+    const { auth}= usePage().props;
+    const {user: authUser} = auth;
+    const [open, setOpen] = useState<boolean>(false);
+    const [postId, setPostId]= useState<number>(0);
+
+    const canDelete = (post: Post, user: AuthUser = authUser) => {
+        if(canDeletePost(post, user))
+        {
+            setOpen(true)
+            setPostId(post?.id)
+            return;
         }
+        toast("User cannot delete post");
+
+    };
+
+    const handleDelete = () => {
+
     };
     console.log(posts)
 
     return (
         <section data-testid="posts-index-section">
+            <Toaster position='top-center' />
             <Head title="Posts" />
             <div className="mx-auto max-w-4xl py-8">
                 <div className="mb-6 flex items-center justify-between">
                     <h1 className="text-2xl font-bold">Posts</h1>
                     <Link
-                        href={route('posts.create', '')}
+                        href={route('posts.create')}
                         className="bg-ruby rounded px-4 py-2 text-white"
                     >
                         New Post
@@ -83,7 +103,7 @@ export default function Index({ posts }: PostIndexProps) {
                                         </Link>
                                         <button
                                             onClick={() =>
-                                                handleDelete(post.id)
+                                                canDelete(post)
                                             }
                                             className="text-red-600"
                                         >
@@ -96,6 +116,24 @@ export default function Index({ posts }: PostIndexProps) {
                     </table>
                 </InfiniteScroll>
             </div>
+            <AlertDialog.Root open={open}>
+                <AlertDialog.Content maxWidth="450px">
+                    <AlertDialog.Title>Delete Post</AlertDialog.Title>
+                    <AlertDialog.Description>Do you want to delete this post</AlertDialog.Description>
+                    <Flex gap="3" mt="4" justify="end">
+                        <AlertDialog.Cancel>
+                            <Button variant="soft" color="gray">
+                                Cancel
+                            </Button>
+                        </AlertDialog.Cancel>
+                        <AlertDialog.Action>
+                            <Button variant="solid" onClick={handleDelete} >
+                                Delete it
+                            </Button>
+                        </AlertDialog.Action>
+                    </Flex>
+                </AlertDialog.Content>
+            </AlertDialog.Root>
         </section>
     );
 }

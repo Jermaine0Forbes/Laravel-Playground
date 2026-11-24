@@ -13,6 +13,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Post;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 #[Fillable(['name', 'email', 'password'])]
 #[Hidden(['password', 'two_factor_secret', 'two_factor_recovery_codes', 'remember_token'])]
@@ -22,6 +23,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable, TwoFactorAuthenticatable, HasRoles;
 
     protected $guard_name = 'web';
+    protected $appends = ['role'];
 
     /**
      * Get the attributes that should be cast.
@@ -41,4 +43,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    protected function role(): Attribute
+    {
+        return Attribute::make(get: fn($value, $attributes) => $this->getRoleNames());
+    }
+
 }
