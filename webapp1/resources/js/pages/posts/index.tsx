@@ -1,4 +1,4 @@
-import { Link, router, InfiniteScroll, Head, usePage } from '@inertiajs/react';
+import { Link, router, InfiniteScroll, Head, usePage, useHttp } from '@inertiajs/react';
 import { route } from 'ziggy-js';
 import { isAuthor, canDeletePost } from '@/lib/utils';
 import type { AuthUser, Post, PostIndexProps } from '@/types/global';
@@ -11,9 +11,13 @@ import { useState } from 'react';
 export default function Index({ posts }: PostIndexProps) {
 
     const { auth}= usePage().props;
+    console.log('auth');
+    console.log(auth)
     const {user: authUser} = auth;
     const [open, setOpen] = useState<boolean>(false);
     const [postId, setPostId]= useState<number>(0);
+    const {post, processing} = useHttp();
+
 
     const canDelete = (post: Post, user: AuthUser = authUser) => {
         if(canDeletePost(post, user))
@@ -22,18 +26,22 @@ export default function Index({ posts }: PostIndexProps) {
             setPostId(post?.id)
             return;
         }
-        toast("User cannot delete post");
+        toast.error("User cannot delete post", {toasterId: 'notify'});
 
     };
 
-    const handleDelete = () => {
-
+    const handleDelete =  () => {
+        post(route('posts.destroy', postId), {
+            onSuccess: (res) =>{
+              toast.success(`post: ${postId} has been destroyed`, {toasterId: 'notify'});
+            }
+        })
     };
     console.log(posts)
 
     return (
         <section data-testid="posts-index-section">
-            <Toaster position='top-center' />
+            <Toaster id="notify" position='top-center' />
             <Head title="Posts" />
             <div className="mx-auto max-w-4xl py-8">
                 <div className="mb-6 flex items-center justify-between">
@@ -121,13 +129,13 @@ export default function Index({ posts }: PostIndexProps) {
                     <AlertDialog.Title>Delete Post</AlertDialog.Title>
                     <AlertDialog.Description>Do you want to delete this post</AlertDialog.Description>
                     <Flex gap="3" mt="4" justify="end">
-                        <AlertDialog.Cancel>
+                        <AlertDialog.Cancel onClick={() => setOpen(false)}>
                             <Button variant="soft" color="gray">
                                 Cancel
                             </Button>
                         </AlertDialog.Cancel>
                         <AlertDialog.Action>
-                            <Button variant="solid" onClick={handleDelete} >
+                            <Button variant="solid" onClick={handleDelete} disabled={processing}>
                                 Delete it
                             </Button>
                         </AlertDialog.Action>
