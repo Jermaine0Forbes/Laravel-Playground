@@ -16,7 +16,7 @@ export default function Index({ posts }: PostIndexProps) {
     const {user: authUser} = auth;
     const [open, setOpen] = useState<boolean>(false);
     const [postId, setPostId]= useState<number>(0);
-    const {post, processing} = useHttp();
+    const {delete : destroy, processing} = useHttp();
 
 
     const canDelete = (post: Post, user: AuthUser = authUser) => {
@@ -31,9 +31,11 @@ export default function Index({ posts }: PostIndexProps) {
     };
 
     const handleDelete =  () => {
-        post(route('posts.destroy', postId), {
-            onSuccess: (res) =>{
+        destroy(route('posts.destroy',postId), {
+            onSuccess: (res) => {
+              setOpen(false)
               toast.success(`post: ${postId} has been destroyed`, {toasterId: 'notify'});
+              router.reload();
             }
         })
     };

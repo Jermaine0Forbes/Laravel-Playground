@@ -9,6 +9,7 @@ use App\Http\Requests\UpdatePostRequest;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -117,7 +118,9 @@ class PostController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Post $post)
-    {
-        //
+    { 
+        Gate::authorize('can peform action on post', $post);
+       $result =  $post->delete();
+       return response()->json(['message' => "post has been deleted?: ".$result], 200);
     }
 }
