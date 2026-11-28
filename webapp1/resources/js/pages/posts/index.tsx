@@ -3,7 +3,6 @@ import { route } from 'ziggy-js';
 import { isAuthor, canDeletePost } from '@/lib/utils';
 import type { AuthUser, Post, PostIndexProps} from '@/types/global';
 import { AlertDialog, Button, Flex } from '@radix-ui/themes';
-// import { Toaster } from '@/components/ui/sonner';
 import { toast, Toaster } from 'sonner';
 import { useState } from 'react';
 

@@ -38,14 +38,22 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 - ~~implement create category logic~~
 - ~~implement update post logic~~
 - ~~refactor/organize code~~
-- implement delete post logic
+- ~~implement delete post logic~~
 - add ratelimits in login forms
 - create visit/history model
 - refactor/organize code
+    - centralize tests to mock common functions hooks that are included in page
+    - centralize test data or common props that will be used in vitest unit tests
+    - figure out if there are cleaner ways to define services in the boot method of app service provider
+    - use github actions to automatically run regression tests 
 - add broadcasts or events to track user visits
     - use geolocation library to track ip addresses and other information
 - create a backend dashboard of graphs that will showcase visits
 - add oauth and mfa
+    - possibly use phone to authenticate user
+- add functionality to upload images as a user profile picture
+- add aws sdk and transfer files to s3 bucket
+- add functionality to allow users to create a media library
 - add breadcrumbs to layout
 
 

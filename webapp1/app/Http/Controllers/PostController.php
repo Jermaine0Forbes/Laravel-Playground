@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Gate;
 class PostController extends Controller
 {
 
+
+    public function __construct()
+    {
+        $this->middleware('throttle:forms')->only(['store', 'update', 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -23,11 +29,12 @@ class PostController extends Controller
             "posts/index",
             [
                 "posts" =>
-                Inertia::scroll(fn() => 
-                Post::with(["user:id,name", "category:id,name,slug"])
-                ->select(['id', 'title', 'slug', 'user_id', 'category_id'])
-                ->latest()
-                ->paginate(10)
+                Inertia::scroll(
+                    fn() =>
+                    Post::with(["user:id,name", "category:id,name,slug"])
+                        ->select(['id', 'title', 'slug', 'user_id', 'category_id'])
+                        ->latest()
+                        ->paginate(10)
                 )
             ]
         );
@@ -101,13 +108,13 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, Post $post)
     {
         DB::beginTransaction();
-        try{
+        try {
             $post->title = $request->input('title');
             $post->body = $request->input('body');
             $post->save();
             $cSlug = $post->category->slug;
             DB::commit();
-        }catch(Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
         }
@@ -118,9 +125,9 @@ class PostController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Post $post)
-    { 
+    {
         Gate::authorize('can peform action on post', $post);
-       $result =  $post->delete();
-       return response()->json(['message' => "post has been deleted?: ".$result], 200);
+        $result =  $post->delete();
+        return response()->json(['message' => "post has been deleted?: " . $result], 200);
     }
 }
