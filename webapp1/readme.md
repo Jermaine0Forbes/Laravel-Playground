@@ -41,6 +41,7 @@ Posty: is an app that allows users to signup, create posts, and categories. And 
 - implement delete post logic
 - add ratelimits in login forms
 - create visit/history model
+- refactor/organize code
 - add broadcasts or events to track user visits
     - use geolocation library to track ip addresses and other information
 - create a backend dashboard of graphs that will showcase visits

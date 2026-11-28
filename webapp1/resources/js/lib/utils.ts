@@ -18,7 +18,6 @@ export function isAuthor(val: any): val is Author {
 
 export function canDeletePost(post: Post, user: AuthUser): boolean {
 
-    // if(user === null || post === null || post?.id === undefined) return false;
     if ( user?.id === post?.user_id ||  (user?.role && Array.isArray(user?.role) && user?.role.includes('admin')) ) return true;
 
     return false;

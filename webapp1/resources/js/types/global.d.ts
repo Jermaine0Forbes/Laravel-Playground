@@ -47,12 +47,15 @@ export type Post = {
 export type Author = {
     name: string;
     id: number;
+        role: string[],
+    roles: string[],
 };
 
 export type User = {
     id: number;
     name: string;
     email: string;
+    
 };
 
 export type AuthUser = {
@@ -63,14 +66,14 @@ export type AuthUser = {
     id: number,
     name: string,
     role: string[],
-    roles: object[],
+    roles: string[],
     two_factor_confirmed_at: string | null,
     updated_at: string | null
 }
 
 export type BaseProps = {
     auth: {
-        user: AuthUser;
+        user: Author;
     };
     name: string;
     errors?: object;

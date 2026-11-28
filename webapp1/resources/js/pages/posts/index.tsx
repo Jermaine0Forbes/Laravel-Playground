@@ -1,41 +1,45 @@
 import { Link, router, InfiniteScroll, Head, usePage, useHttp } from '@inertiajs/react';
 import { route } from 'ziggy-js';
 import { isAuthor, canDeletePost } from '@/lib/utils';
-import type { AuthUser, Post, PostIndexProps } from '@/types/global';
+import type { AuthUser, Post, PostIndexProps} from '@/types/global';
 import { AlertDialog, Button, Flex } from '@radix-ui/themes';
 // import { Toaster } from '@/components/ui/sonner';
 import { toast, Toaster } from 'sonner';
 import { useState } from 'react';
 
+type AuthConfig = {
+    user: AuthUser,
+
+}
+
 
 export default function Index({ posts }: PostIndexProps) {
 
-    const { auth}= usePage().props;
+    const { auth } = usePage().props;
     console.log('auth');
     console.log(auth)
-    const {user: authUser} = auth;
+    const { user: authUser } = auth as AuthConfig;
     const [open, setOpen] = useState<boolean>(false);
-    const [postId, setPostId]= useState<number>(0);
-    const {delete : destroy, processing} = useHttp();
+    const [postId, setPostId] = useState<number>(0);
+    const { delete: destroy, processing } = useHttp();
 
 
     const canDelete = (post: Post, user: AuthUser = authUser) => {
-        if(canDeletePost(post, user))
-        {
+        if (canDeletePost(post, user)) {
             setOpen(true)
             setPostId(post?.id)
             return;
         }
-        toast.error("User cannot delete post", {toasterId: 'notify'});
+        toast.error("User cannot delete post", { toasterId: 'notify' });
 
     };
 
-    const handleDelete =  () => {
-        destroy(route('posts.destroy',postId), {
+    const handleDelete = () => {
+        destroy(route('posts.destroy', postId), {
             onSuccess: (res) => {
-              setOpen(false)
-              toast.success(`post: ${postId} has been destroyed`, {toasterId: 'notify'});
-              router.reload();
+                setOpen(false)
+                toast.success(`post: ${postId} has been destroyed`, { toasterId: 'notify' });
+                router.reload();
             }
         })
     };
@@ -126,8 +130,8 @@ export default function Index({ posts }: PostIndexProps) {
                     </table>
                 </InfiniteScroll>
             </div>
-            <AlertDialog.Root open={open}>
-                <AlertDialog.Content maxWidth="450px">
+            <AlertDialog.Root open={open} >
+                <AlertDialog.Content maxWidth="450px" role="dialog">
                     <AlertDialog.Title>Delete Post</AlertDialog.Title>
                     <AlertDialog.Description>Do you want to delete this post</AlertDialog.Description>
                     <Flex gap="3" mt="4" justify="end">
